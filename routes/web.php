@@ -27,6 +27,11 @@ Route::get('responden', 'PageController@responden');
 Route::get('keluhan', 'KeluhanController@index');
 
 Route::get('user', 'UserController@index');
+Route::get('user/create','UserController@create'); // create user
+Route::get('user/edit/{id}','UserController@edit'); //edit
+Route::post('user','UserController@store'); //store
+Route::put('user/{id}','UserController@update'); //update
+Route::get('user/delete/{id}','UserController@delete'); //delete
 
 Route::get('saran','SaranController@index'); // list saran
 Route::get('saran/create','SaranController@create'); // create saran

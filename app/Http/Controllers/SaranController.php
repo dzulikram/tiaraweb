@@ -14,8 +14,7 @@ class SaranController extends Controller
      */
     public function index()
     {
-        $sarans = Saran::all();
-        $data['sarans'] = $sarans;
+        $data['sarans'] = Saran::all();
         $data['state'] = "saran";
         return view('saran.list',$data);
     }

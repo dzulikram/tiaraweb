@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use Spatie\Permission\Models\Role;
+//use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -12,65 +12,61 @@ class UserController extends Controller
 	{   
         $data['state'] = "user";
 		$data['users'] = User::all();
-		return view('users.list',$data);
+		return view('user.list',$data);
 	}
 
-    public function create(Request $request)
+    public function create()
     {
-        if(!empty($request->username_exsist))
-        {
-            $data['username_exsist'] = true;
-        }
-        if(!empty($request->email_exsist))
-        {
-            $data['email_exsist'] = true;
-        }
-        $data['roles'] = Role::all();
-    	return view('users.create',$data);
+        $data['state'] = "user";
+        return view('user.create',$data);
     }
 
     public function store(Request $request)
     {
-        $cek_user = User::where('username',$request->username)->first();
-        if(!empty($cek_user))
-        {
-            return redirect('users/create?username_exsist=true');
-        }
-        $cek_email = User::where('email',$request->email)->first();
-        if(!empty($cek_email))
-        {
-            return redirect('users/create?email_exsist=true');
-        }
+        // $cek_user = User::where('username',$request->username)->first();
+        // if(!empty($cek_user))
+        // {
+        //     return redirect('users/create?username_exsist=true');
+        // }
+        
     	$user = new User();
     	$user->name = $request->name;
-    	$user->username = $request->username;
-    	$user->email = $request->email;
+        $user->email = $request->email; 
     	$user->password = \Hash::make($request->password);
-    	$user->nip = $request->nip;
-        $user->nohp = $request->nohp;
+        $user->username = $request->username;
+        $user->no_wa = $request->no_wa;
     	$user->save();
-        $user->syncRoles([$request->role]);
 
-    	return redirect('/users');
+    	return redirect('/user');
     }
 
     public function edit(Request $request)
     {
+        $data['state'] = "user";
     	$data['user'] = User::find($request->id);
-        $data['roles'] = Role::all();
-    	return view('users.edit',$data);
+        //$data['roles'] = Role::all();
+    	return view('user.edit',$data);
     }
 
     public function update(Request $request)
     {
     	$user = User::find($request->id);
     	$user->name = $request->name;
+        $user->email = $request->email; 
     	$user->password = \Hash::make($request->password);
-    	$user->nip = $request->nip;
+        $user->username = $request->username;
+        $user->no_wa = $request->no_wa;
     	$user->save();
 
-        $user->syncRoles([$request->role]);
+        //$user->syncRoles([$request->role]);
 
-    	return redirect('/users');
+    	return redirect('/user');
+    }
+
+    public function delete(Request $request)
+    {
+        $data['state'] = "user";
+        User::destroy($request->id);
+        return redirect('/user');
     }
 }

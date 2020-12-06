@@ -15,7 +15,7 @@
                     @csrf
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="form-group">
+                        <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Nama</label>
                           <input type="text" name="name" class="form-control">
                         </div>
@@ -23,13 +23,13 @@
                     </div>
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="form-group">
+                        <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Saran & Kritik</label>
                           <input type="text" name="saran" class="form-control">
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary pull-right">INPUT SARAN</button>
+                    <button type="submit" class="btn btn-info pull-right">INPUT SARAN</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>
