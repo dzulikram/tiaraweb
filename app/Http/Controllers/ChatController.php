@@ -12,10 +12,6 @@ class ChatController extends Controller
     	$chats = Chat::all();
     	$data['chats'] = $chats;
     	$data['state'] = "chat";
-    	foreach ($chats as $row) 
-    	{
-    		// dd($row->pegawai);
-    	}
     	return view('chat.list',$data);
     }
 
