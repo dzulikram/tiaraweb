@@ -40,8 +40,10 @@ Route::post('saran','SaranController@store'); //store
 Route::put('saran/{id}','SaranController@update'); //update
 
 Route::get('chat','ChatController@index');
- 
 
-// Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('tiket','TiketController@index');
+Route::get('tiket-open','TiketController@indexOpen');
+Route::get('tiket-assigned','TiketController@indexAssigned');
+Route::get('tiket-resolved','TiketController@indexResolved');
+Route::get('assign-tiket/{id}','TiketController@assignTiket');
+Route::post('assign-tiket/{id}','TiketController@storeAssignTiket');
