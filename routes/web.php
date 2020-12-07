@@ -21,10 +21,10 @@ Route::get('maintenance', function () {
 	return view('maintenance');
 });
 
+Auth::routes();
+
 Route::get('dashboard', 'PageController@index');
 Route::get('responden', 'PageController@responden');
-
-Route::get('keluhan', 'KeluhanController@index');
 
 Route::get('user', 'UserController@index');
 Route::get('user/create','UserController@create'); // create user
@@ -39,3 +39,7 @@ Route::get('saran/edit/{id}','SaranController@edit'); //edit
 Route::post('saran','SaranController@store'); //store
 Route::put('saran/{id}','SaranController@update'); //update
  
+
+// Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
