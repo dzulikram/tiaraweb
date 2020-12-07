@@ -38,4 +38,6 @@ Route::get('saran/create','SaranController@create'); // create saran
 Route::get('saran/edit/{id}','SaranController@edit'); //edit
 Route::post('saran','SaranController@store'); //store
 Route::put('saran/{id}','SaranController@update'); //update
+
+Route::get('chat','ChatController@index');
  
