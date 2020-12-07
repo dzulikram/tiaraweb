@@ -6,11 +6,16 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class="nav-item <?php if($state=='keluhan'){echo 'active';} ?>">
-            <a class="nav-link" href="{{url('keluhan')}}">
-              <i class="material-icons">record_voice_over</i>
-              <p>Keluhan</p>
-            </a>
+          <li class="nav-item <?php if($state=='tiket'){echo 'active';} ?>">
+            <a class="<?php if($state=='user'){echo 'nav-link';}else{echo 'dropdown-btn';} ?>" href="#">
+              <i class="material-icons">post_add</i>
+                <p>Tiket</p>
+            </a>        
+            <ul class="<?php if($state=='tiket'){echo 'nav';}else{echo 'dropdown-container';} ?>" >
+              <a class="nav-link" href="#" data-toggle="tab"><span class="material-icons">narrow_right</span> Open</a>
+              <a class="nav-link" href="#" data-toggle="tab"><span class="material-icons">narrow_right</span> Assigned</a>
+              <a class="nav-link" href="#" data-toggle="tab"><span class="material-icons">narrow_right</span> Closed</a>
+            </ul>
           </li>
           <li class="nav-item <?php if($state=='user'){echo 'active';} ?>">
             <a class="nav-link" href="{{url('user')}}">

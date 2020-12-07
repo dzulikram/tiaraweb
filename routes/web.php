@@ -21,10 +21,10 @@ Route::get('maintenance', function () {
 	return view('maintenance');
 });
 
+Auth::routes();
+
 Route::get('dashboard', 'PageController@index');
 Route::get('responden', 'PageController@responden');
-
-Route::get('keluhan', 'KeluhanController@index');
 
 Route::get('user', 'UserController@index');
 Route::get('user/create','UserController@create'); // create user
