@@ -7,7 +7,7 @@
             </a>
           </li>
           <li class="nav-item <?php if($state=='tiket'){echo 'active';} ?>">
-            <a class="<?php if($state=='user'){echo 'nav-link';}else{echo 'dropdown-btn';} ?>" href="#">
+            <a class="<?php if($state=='tiket'){echo 'nav-link';}else{echo 'dropdown-btn';} ?>" href="#">
               <i class="material-icons">post_add</i>
                 <p>Tiket</p>
             </a>        
