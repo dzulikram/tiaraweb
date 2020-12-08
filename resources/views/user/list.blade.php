@@ -32,8 +32,8 @@
                           <td><?php echo $row->name;?></td>
                           <td><?php echo $row->email;?></td>
                           <td><?php echo $row->username;?></td>
-                          <td><a href="user/edit/<?php echo $row->id;?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                              <a href="user/delete/<?php echo $row->id;?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                          <td><a href="{{url('/user/edit')}}/<?php echo $row->id;?>" class="btn btn-success btn-sm" ><i class="fa fa-edit"></i></a>
+                              <a href="{{url('/user/delete')}}/<?php echo $row->id;?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                         </tr>
                         <?php } ?>
                       </tbody>
