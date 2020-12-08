@@ -5,7 +5,6 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <a href="{{url('kategori/create')}}" class="btn btn-info pull-left"><i class="fa fa-plus"></i> TAMBAH KATEGORI</a></br></br>
               <div class="card">
                 <div class="card-header card-header-info">
                   <h4 class="card-title ">DAFTAR KATEGORI</h4>
@@ -17,20 +16,23 @@
                       <thead class=" text-info">
                         <th>No.</th>
                         <th>Kategori</th>
+                        <th>Action</th>
                       </thead>
                       <tbody>
                         <?php
-                        $no=1;
-                        foreach ($kategoris as $row){
-                        ?>
-                        <tr>
-                          <td><?php echo $no++;?></td>
-                          <td><?php echo $row->kategori;?></td>
-                          <td><a href="<?php echo $row->kategori;?>" target="_blank"><?php echo $row->kategori;?></a></td>
-                          <td><a href="kategori/edit/<?php echo $row->id;?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                        $no = 1;
+                        foreach ($kategoris as $row) 
+                        {
+                          ?>
+                          <tr>
+                            <td><?php echo $no; $no++; ?></td>
+                            <td><?php echo $row->kategori; ?></td>
+                            <td><a href="kategori/edit/<?php echo $row->id;?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                               <a href="kategori/delete/<?php echo $row->id;?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                        </tr>
-                        <?php } ?>
+                          </tr>
+                          <?php
+                        }
+                        ?>
                       </tbody>
                     </table>
                   </div>
