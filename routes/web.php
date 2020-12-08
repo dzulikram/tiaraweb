@@ -67,4 +67,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('kategori','KategoriController@store'); //store
 	Route::put('kategori/{id}','KategoriController@update'); //update
 	Route::get('kategori/delete/{id}','KategoriController@delete'); //delete
+
+	Route::get('rekap-kategori','ReportController@tiketByKategori');
+	
 });
