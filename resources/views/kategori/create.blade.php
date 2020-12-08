@@ -16,7 +16,7 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
-                          <label class="bmd-label-floating">Kategori/label>
+                          <label class="bmd-label-floating">Kategori</label>
                           <input type="text" name="kategori" class="form-control">
                         </div>
                       </div>

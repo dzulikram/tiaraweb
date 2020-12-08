@@ -69,5 +69,13 @@ class TiketController extends Controller
         return redirect('tiket-assigned');
     }
 
+    public function harian(Request $request)
+    {
+    	$harian = Tiket::all();
+    	$data['harians'] = $harian;
+        $data['state'] = 'tiket';
+    	return view('rekap.harian',$data);
+    }
+
 
 }

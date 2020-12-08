@@ -41,7 +41,7 @@ class KategoriController extends Controller
         $kategori = new Kategori();
         $kategori->kategori = $request->kategori;
         $kategori->save();
-        return redirect('pojok');
+        return redirect('kategori');
     }
 
     /**

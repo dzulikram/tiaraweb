@@ -32,6 +32,13 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::put('user/{id}','UserController@update'); //update
 	Route::get('user/delete/{id}','UserController@delete'); //delete
 
+	Route::get('rekap/harian', 'TiketController@harian');
+	Route::get('rekap/bulanan', 'TiketController@bulanan');
+	Route::get('rekap/kategori', 'TiketController@kategori');
+	Route::get('rekap/itsupport', 'TiketController@itsupport');
+	Route::get('rekap/user', 'TiketController@user');
+	Route::get('rekap/unit', 'TiketController@unit');
+
 	Route::get('saran','SaranController@index'); // list saran
 	Route::get('saran/create','SaranController@create'); // create saran
 	Route::get('saran/edit/{id}','SaranController@edit'); //edit
