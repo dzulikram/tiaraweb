@@ -17,10 +17,10 @@
               <a class="nav-link" href="#" data-toggle="tab"><span class="material-icons">narrow_right</span> Closed</a>
             </ul>
           </li>
-          <li class="nav-item <?php if($state=='user'){echo 'active';} ?>">
-            <a class="nav-link" href="{{url('user')}}">
-              <i class="material-icons">perm_identity</i>
-              <p>User</p>
+          <li class="nav-item <?php if($state=='kategori'){echo 'active';} ?>">
+            <a class="nav-link" href="{{url('kategori')}}">
+              <i class="material-icons">all_inbox</i>
+              <p>Kategori</p>
             </a>
           </li>
           <li class="nav-item <?php if($state=='pegawai'){echo 'active';} ?>">
@@ -33,6 +33,12 @@
             <a class="nav-link" href="{{url('pojok')}}">
               <i class="material-icons">desktop_windows</i>
               <p>Pojok IT</p>
+            </a>
+          </li>
+          <li class="nav-item <?php if($state=='user'){echo 'active';} ?>">
+            <a class="nav-link" href="{{url('user')}}">
+              <i class="material-icons">perm_identity</i>
+              <p>User</p>
             </a>
           </li>
           <li class="nav-item <?php if($state=='saran'){echo 'active';} ?>">
