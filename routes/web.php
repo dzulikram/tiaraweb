@@ -24,7 +24,6 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('/logout', 'Auth\LoginController@logout');
 	Route::get('dashboard', 'PageController@index');
-	Route::get('responden', 'PageController@responden');
 
 	Route::get('user', 'UserController@index');
 	Route::get('user/create','UserController@create'); // create user
@@ -47,4 +46,25 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('tiket-resolved','TiketController@indexResolved');
 	Route::get('assign-tiket/{id}','TiketController@assignTiket');
 	Route::post('assign-tiket/{id}','TiketController@storeAssignTiket');
+
+	Route::get('pojok','PojokController@index'); // list saran
+	Route::get('pojok/create','PojokController@create'); // create saran
+	Route::get('pojok/edit/{id}','PojokController@edit'); //edit
+	Route::post('pojok','PojokController@store'); //store
+	Route::put('pojok/{id}','PojokController@update'); //update
+	Route::get('pojok/delete/{id}','PojokController@delete'); //delete
+
+	Route::get('pegawai','PegawaiController@index'); // list saran
+	Route::get('pegawai/create','PegawaiController@create'); // create saran
+	Route::get('pegawai/edit/{id}','PegawaiController@edit'); //edit
+	Route::post('pegawai','PegawaiController@store'); //store
+	Route::put('pegawai/{id}','PegawaiController@update'); //update
+	Route::get('pegawai/delete/{id}','PegawaiController@delete'); //delete
+
+	Route::get('kategori','KategoriController@index'); // list saran
+	Route::get('kategori/create','KategoriController@create'); // create saran
+	Route::get('kategori/edit/{id}','KategoriController@edit'); //edit
+	Route::post('kategori','KategoriController@store'); //store
+	Route::put('kategori/{id}','KategoriController@update'); //update
+	Route::get('kategori/delete/{id}','KategoriController@delete'); //delete
 });
