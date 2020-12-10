@@ -6,7 +6,7 @@
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="azure" data-background-color="white" data-image="{{asset('assets/img/sidebar-1.jpg')}}">
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+      <div class="logo"><a href="#" class="simple-text logo-normal">
           <img src="{{asset('assets/img/logo2.png')}}" alt="Image" style="width:190px;height:74px;">
         </a></div>
 
