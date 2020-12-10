@@ -1,5 +1,7 @@
 @extends('layout.app')
 
+@section('title', 'Pegawai')
+
 @section('content')
 <div class="content">
         <div class="container-fluid">
