@@ -17,18 +17,17 @@
               <a class="nav-link" href="{{url('tiket-resolved')}}"><span class="material-icons">narrow_right</span> Closed</a>
             </ul>
           </li>
-          <li class="nav-item <?php if($state=='rekap'){echo 'active';} ?>">
-            <a class="<?php if($state=='rekap'){echo 'nav-link';}else{echo 'dropdown-btn';} ?>">
+          <li class="nav-item <?php if($state=='report'){echo 'active';} ?>">
+            <a class="<?php if($state=='report'){echo 'nav-link';}else{echo 'dropdown-btn';} ?>">
               <i class="material-icons">list</i>
-                <p>Rekap</p>
+                <p>Report</p>
             </a>        
-            <ul class="<?php if($state=='rekap'){echo 'nav';}else{echo 'dropdown-container';} ?>" >
-              <a class="nav-link" href="{{url('tiket-open')}}"><span class="material-icons">narrow_right</span> Harian</a>
-              <a class="nav-link" href="{{url('tiket-open')}}"><span class="material-icons">narrow_right</span> Bulanan</a>
-              <a class="nav-link" href="{{url('tiket-assigned')}}"><span class="material-icons">narrow_right</span> Kategori</a>
-              <a class="nav-link" href="{{url('tiket-resolved')}}"><span class="material-icons">narrow_right</span> IT Support</a>
-              <a class="nav-link" href="{{url('tiket-assigned')}}"><span class="material-icons">narrow_right</span> User</a>
-              <a class="nav-link" href="{{url('tiket-resolved')}}"><span class="material-icons">narrow_right</span> Unit</a>
+            <ul class="<?php if($state=='report'){echo 'nav';}else{echo 'dropdown-container';} ?>" >
+              <a class="nav-link" href="{{url('report-harian')}}"><span class="material-icons">narrow_right</span> Harian</a>
+              <a class="nav-link" href="{{url('report-bulanan')}}"><span class="material-icons">narrow_right</span> Bulanan</a>
+              <a class="nav-link" href="{{url('report-kategori')}}"><span class="material-icons">narrow_right</span> Kategori</a>
+              <a class="nav-link" href="{{url('report-itsupport')}}"><span class="material-icons">narrow_right</span> IT Support</a>
+              <a class="nav-link" href="{{url('report-pegawai')}}"><span class="material-icons">narrow_right</span> Pegawai</a>
             </ul>
           </li>          
           <li class="nav-item <?php if($state=='kategori'){echo 'active';} ?>">

@@ -75,6 +75,14 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::put('kategori/{id}','KategoriController@update'); //update
 	Route::get('kategori/delete/{id}','KategoriController@delete'); //delete
 
-	Route::get('rekap-kategori','ReportController@tiketByKategori');
-	
+	Route::get('report-harian','ReportController@tiketPerDate');
+	Route::post('report-harian/filter','ReportController@filterPerDate');
+	Route::get('report-bulanan','ReportController@tiketPerMonth');
+	Route::post('report-bulanan/filter','ReportController@filterPerMonth');
+	Route::get('report-kategori','ReportController@tiketPerKategori');
+	Route::post('report-kategori/filter','ReportController@filterPerKategori');
+	Route::get('report-itsupport','ReportController@tiketPerItSupport');
+	Route::post('report-itsupport/filter','ReportController@filterPerItSupport');
+	Route::get('report-pegawai','ReportController@tiketPerPegawai');
+	Route::post('report-pegawai/filter','ReportController@filterPerPegawai');
 });

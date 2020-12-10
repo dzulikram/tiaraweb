@@ -10,7 +10,8 @@
                   <p class="card-title">FILTER</p>
                 </div>
                 <div class="card-body">
-                  <form class="form-horizontal" method="post" action="#" enctype="multipart/form-data">
+                  <form class="form-horizontal" method="post" action="{{url('report-harian/filter')}}" enctype="multipart/form-data">
+                    @csrf
                     <div class="table-responsive">
                       <table class="table">
                         <tbody>
@@ -34,11 +35,11 @@
                               </select>
                             </td>
                             <td width="7%">Tahun :</td>   
-                            <td width="33%"><select name="bulan" class="form-control">
+                            <td width="33%"><select name="tahun" class="form-control">
                                 <option></option>
-                                <option value="1" <?php if(!empty($bulan) && $bulan == "1") echo "selected"; ?>>2020</option>
-                                <option value="2" <?php if(!empty($bulan) && $bulan == "2") echo "selected"; ?>>2021</option>
-                                <option value="3" <?php if(!empty($bulan) && $bulan == "3") echo "selected"; ?>>2022</option>                                
+                                <option value="2020" <?php if(!empty($tahun) && $tahun == "2020") echo "selected"; ?>>2020</option>
+                                <option value="2021" <?php if(!empty($tahun) && $tahun == "2021") echo "selected"; ?>>2021</option>
+                                <option value="2022" <?php if(!empty($tahun) && $tahun == "2022") echo "selected"; ?>>2022</option>                                
                               </select></td>
                             <td><input type="submit" value="FILTER" class="btn btn-info"></td>                        
                           </tr>                        
@@ -49,6 +50,9 @@
                 </div>
               </div>
             </div>
+            <?php if(!empty($rekap))
+            {
+              ?>
               <div class="card">
                 <div class="card-header card-header-info">
                   <h4 class="card-title ">DAFTAR TIKET PER HARI</h4>
@@ -59,18 +63,18 @@
                     <table class="table">
                       <thead class=" text-info">
                         <th>No.</th>
-                        <th>Judul</th>
-                        <th>Konten</th>
+                        <th>Tanggal</th>
+                        <th>Jumlah</th>
                       </thead>
                       <tbody>
                         <?php
                         $no=1;
-                        foreach ($harians as $row){
+                        foreach ($rekap as $row){
                         ?>
                         <tr>
-                          <td><?php echo $no++;?></td>
-                          <td><?php echo "a";?></td>
-                          <td><?php echo "a";?></td>                          
+                          <td><?php echo $no;$no++;?></td>
+                          <td><?php echo $row->tanggal;?></td>
+                          <td><?php echo $row->jumlah;?></td>                          
                         </tr>
                         <?php } ?>
                       </tbody>
@@ -79,6 +83,9 @@
                 </div>
               </div>
             </div>
+              <?php
+            }
+            ?>
             <div class="col-md-12">
               <div class="card card-plain">
                 <div class="card-body">
