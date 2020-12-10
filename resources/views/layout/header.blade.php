@@ -19,7 +19,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <style type="text/css">
+  
+  <!-- Bootstrap CSS -->
+<!-- Bootstrap DataTables CSS -->
+<!-- Jquery -->
+<script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<!-- Jquery DataTables -->
+<script type="text/javascript" language="javascript" src="http:////cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+<!-- Bootstrap dataTables Javascript -->
+<script type="text/javascript" language="javascript" src="http://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<style type="text/css">
 
 
   /* Style the sidenav links and the dropdown button */

@@ -12,14 +12,14 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table">
+              <table class="table table-striped table-bordered table-paginate" cellspacing="0" width="100%">
                 <thead class=" text-info">
-                  <th>No.</th>
-                  <th>Nama</th>
-                  <th>No Tiket</th>
-                  <th>Status</th>
-                  <th>Assign To</th>
-                  <th>Action</th>
+                  <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">No.</th>
+                  <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Nama</th>
+                  <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">No Tiket</th>
+                  <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Status</th>
+                  <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Assign To</th>
+                  <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Action</th>
                 </thead>
                 <tbody>
                   <?php

@@ -12,13 +12,13 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table">
+              <table class="table table-striped table-bordered table-paginate" cellspacing="0" width="100%">
                 <thead class=" text-info">
-                  <th>No.</th>
-                  <th>Nama</th>
-                  <th>History Chat</th>
-                  <th>Start Chat</th>
-                  <th>Status</th>
+                  <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">No.</th>
+                  <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Nama</th>
+                  <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">History Chat</th>
+                  <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Start Chat</th>
+                  <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Status</th>
                 </thead>
                 <tbody>
                   <?php

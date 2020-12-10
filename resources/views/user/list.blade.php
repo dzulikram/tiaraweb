@@ -1,5 +1,7 @@
 @extends('layout.app')
 
+@section('title', 'User')
+
 @section('content')
 <div class="content">
         <div class="container-fluid">
@@ -14,13 +16,13 @@
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-striped table-bordered table-paginate" cellspacing="0" width="100%">
                       <thead class=" text-info">
-                        <th>No.</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Username</th>
-                        <th>Action</th>
+                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">No.</th>
+                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Nama</th>
+                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Email</th>
+                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Username</th>
+                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Action</th>
                       </thead>
                       <tbody>
                         <?php

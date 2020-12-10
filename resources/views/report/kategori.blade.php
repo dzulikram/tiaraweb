@@ -60,11 +60,11 @@
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-striped table-bordered table-paginate" cellspacing="0" width="100%">
                       <thead class=" text-info">
-                        <th>No.</th>
-                        <th>Tanggal</th>
-                        <th>Jumlah</th>
+                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">No.</th>
+                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Tanggal</th>
+                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Jumlah</th>
                       </thead>
                       <tbody>
                         <?php
