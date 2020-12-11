@@ -77,5 +77,21 @@ class TiketController extends Controller
     	return view('rekap.harian',$data);
     }
 
+    public function close(Request $request)
+    {
+        $tiket = Tiket::find($request->id);
+        $data['state'] = "tiket";
+        $data['tiket'] = $tiket;
+        return view('tiket.close',$data);
+    }
+
+    public function storeClose(Request $request)
+    {
+        $tiket = Tiket::find($request->id);
+        $tiket->status_tiket = 'resolved';
+        $tiket->save();
+        return redirect('tiket-resolved');
+    }
+
 
 }

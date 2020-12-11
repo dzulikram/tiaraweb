@@ -19,6 +19,13 @@ class PojokController extends Controller
         return view('pojok.list',$data);
     }
 
+    public function indexGuest()
+    {
+        $data['pojoks'] = Pojok::all();
+        $data['state'] = "pojok";
+        return view('guest.list_pojok',$data);   
+    }
+
     /**
      * Show the form for creating a new resource.
      *

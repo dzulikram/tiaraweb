@@ -24,6 +24,12 @@ class SaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function createGuest()
+    {
+        $data['state'] = "saran";
+        return view('guest.create_saran',$data);
+    }
+
     public function create()
     {
         $data['state'] = "saran";
@@ -42,7 +48,7 @@ class SaranController extends Controller
         $saran->name = $request->name;
         $saran->saran = $request->saran;
         $saran->save();
-        return redirect('saran');
+        return redirect('thanks');
     }
 
     /**
@@ -89,5 +95,10 @@ class SaranController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function thanks()
+    {
+        return view('guest.thanks');
     }
 }

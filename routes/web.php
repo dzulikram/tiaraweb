@@ -85,4 +85,12 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('report-itsupport/filter','ReportController@filterPerItSupport');
 	Route::get('report-pegawai','ReportController@tiketPerPegawai');
 	Route::post('report-pegawai/filter','ReportController@filterPerPegawai');
+
+	Route::get('close/{id}','TiketController@close');
+	Route::post('close/{id}','TiketController@storeClose');
 });
+
+
+Route::get('thanks','SaranController@thanks');
+Route::get('input-saran','SaranController@createGuest'); // create saran
+Route::get('pojok-it','PojokController@indexGuest'); // pojok untuk guest
