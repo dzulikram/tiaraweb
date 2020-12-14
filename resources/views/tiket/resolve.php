@@ -7,11 +7,11 @@
             <div class="col-md-12">              
               <div class="card">
                 <div class="card-header card-header-info">
-                  <h4 class="card-title ">ASSIGN TIKET</h4>
+                  <h4 class="card-title ">RESOLVE TIKET</h4>
                   <p class="card-category">Divisi STI Operasional Kaltimra</p>
                 </div>
                 <div class="card-body">
-                  <form method="post" action="{{url('assign-tiket')}}/<?php echo $tiket->id; ?>">
+                  <form method="post" action="{{url('resolve')}}/<?php echo $tiket->id; ?>">
                     @csrf
                     <div class="row">
                       <div class="col-md-12">
@@ -41,7 +41,7 @@
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Jabatan</label>
-                          <input type="text" name="name" class="form-control" value="<?php echo $tiket->pegawai->position; ?>" disabled>
+                          <input type="text" name="position" class="form-control" value="<?php echo $tiket->pegawai->position; ?>" disabled>
                         </div>
                       </div>
                     </div>
@@ -56,27 +56,12 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
-                          <label class="bmd-label-floating">NO Tiket</label>
-                          <input type="text" name="no_tiket" class="form-control" value="<?php echo $tiket->no_tiket; ?>">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">IT Support</label>
-                          <select class="form-control" name="it_support">
-                            <option></option>
-                            <?php foreach ($users as $row) {
-                              ?>
-                              <option value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
-                              <?php
-                            } ?>
-                          </select>
+                          <input type="text" name="it_support" class="form-control" value="<?php echo $tiket->its->name; ?>" disabled>
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-info pull-right">ASSIGN IT SUPPORT</button>
+                    <button type="submit" class="btn btn-info pull-right">RESOLVE</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>

@@ -64,6 +64,7 @@ class TiketController extends Controller
     	$tiket->it_support = $request->it_support;
     	$tiket->assignment_date = $this->getTimeNow();
         $tiket->status_tiket = 'assigned';
+        $tiket->no_tiket = $request->no_tiket;
     	$tiket->save();
 
         return redirect('tiket-assigned');
@@ -77,15 +78,15 @@ class TiketController extends Controller
     	return view('rekap.harian',$data);
     }
 
-    public function close(Request $request)
+    public function resolve(Request $request)
     {
         $tiket = Tiket::find($request->id);
         $data['state'] = "tiket";
         $data['tiket'] = $tiket;
-        return view('tiket.close',$data);
+        return view('tiket.resolve',$data);
     }
 
-    public function storeClose(Request $request)
+    public function storeResolve(Request $request)
     {
         $tiket = Tiket::find($request->id);
         $tiket->status_tiket = 'resolved';

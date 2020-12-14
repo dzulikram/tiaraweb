@@ -86,8 +86,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('report-pegawai','ReportController@tiketPerPegawai');
 	Route::post('report-pegawai/filter','ReportController@filterPerPegawai');
 
-	Route::get('close/{id}','TiketController@close');
-	Route::post('close/{id}','TiketController@storeClose');
+	Route::get('resolve/{id}','TiketController@resolve');
+	Route::post('resolve/{id}','TiketController@storeResolve');
 });
 
 

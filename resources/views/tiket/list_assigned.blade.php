@@ -33,7 +33,7 @@
                       <td><?php echo $row->no_tiket; ?></td>
                       <td><?php echo $row->status_tiket; ?></td>
                       <td><?php echo $row->its->name; ?></td>
-                      <td><a href="{{url('close')}}/<?php echo $row->id; ?>" class="btn btn-primary">CLOSE</a></td>
+                      <td><a href="{{url('resolve')}}/<?php echo $row->id; ?>" class="btn btn-primary">RESOLVE</a></td>
                     </tr>
                     <?php
                   }

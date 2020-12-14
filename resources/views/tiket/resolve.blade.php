@@ -7,11 +7,11 @@
             <div class="col-md-12">              
               <div class="card">
                 <div class="card-header card-header-info">
-                  <h4 class="card-title ">CLOSE TIKET</h4>
+                  <h4 class="card-title ">RESOLVE TIKET</h4>
                   <p class="card-category">Divisi STI Operasional Kaltimra</p>
                 </div>
                 <div class="card-body">
-                  <form method="post" action="{{url('close')}}/<?php echo $tiket->id; ?>">
+                  <form method="post" action="{{url('resolve')}}/<?php echo $tiket->id; ?>">
                     @csrf
                     <div class="row">
                       <div class="col-md-12">
@@ -61,7 +61,7 @@
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-info pull-right">CLOSE</button>
+                    <button type="submit" class="btn btn-info pull-right">RESOLVE</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>
