@@ -59,6 +59,12 @@
               <i class="material-icons">chat</i>
               <p>Saran & Kritik</p>
             </a>
+          </li>
+          <li class="nav-item <?php if($state=='chatkategori'){echo 'active';} ?>">
+            <a class="nav-link" href="{{url('chatkategori')}}">
+              <i class="material-icons">inbox</i>
+              <p>Chat Kategori</p>
+            </a>
           </li>          
         </ul>
       </div>

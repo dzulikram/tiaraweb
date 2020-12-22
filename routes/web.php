@@ -88,6 +88,13 @@ Route::group(['middleware' => ['auth']], function () {
 
 	Route::get('resolve/{id}','TiketController@resolve');
 	Route::post('resolve/{id}','TiketController@storeResolve');
+
+	Route::get('chatkategori','ChatKategoriController@index'); // list saran
+	Route::get('chatkategori/create','ChatKategoriController@create'); // create saran
+	Route::get('chatkategori/edit/{id}','ChatKategoriController@edit'); //edit
+	Route::post('chatkategori','ChatKategoriController@store'); //store
+	Route::put('chatkategori/{id}','ChatKategoriController@update'); //update
+	Route::get('chatkategori/delete/{id}','ChatKategoriController@delete'); //delete
 });
 
 
