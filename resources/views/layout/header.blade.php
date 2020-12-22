@@ -56,4 +56,11 @@
   .material-icon.md-1 { font-size: 1px; }
 
   </style>
+  <?php if(!empty($state) && $state == 'dashboard')
+  {
+    ?>
+      <meta http-equiv="refresh" content="5">
+    <?php
+  }
+  ?>
 </head>

@@ -64,8 +64,23 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
+                          <label class="bmd-label-floating">Kategori</label>
+                          <select class="form-control" name="kategori_id" required>
+                            <option></option>
+                            <?php foreach ($kategoris as $row) {
+                              ?>
+                              <option value="<?php echo $row->id; ?>"><?php echo $row->kategori; ?></option>
+                              <?php
+                            } ?>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">IT Support</label>
-                          <select class="form-control" name="it_support">
+                          <select class="form-control" name="it_support" required>
                             <option></option>
                             <?php foreach ($users as $row) {
                               ?>

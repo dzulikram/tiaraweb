@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Tiket;
 use Carbon\Carbon;
 use App\User;
+use App\Kategori;
 
 class TiketController extends Controller
 {
@@ -52,9 +53,11 @@ class TiketController extends Controller
     {
     	$tiket = Tiket::find($request->id);
         $users = User::where('is_itsupport',1)->get();
+        $kategoris = Kategori::all();
         $data['users'] = $users;
         $data['tiket'] = $tiket;
         $data['state'] = 'tiket';
+        $data['kategoris'] = $kategoris;
     	return view('tiket.assign_tiket',$data);
     }
 
@@ -65,6 +68,7 @@ class TiketController extends Controller
     	$tiket->assignment_date = $this->getTimeNow();
         $tiket->status_tiket = 'assigned';
         $tiket->no_tiket = $request->no_tiket;
+        $tiket->kategori_id = $request->kategori_id;
     	$tiket->save();
 
         return redirect('tiket-assigned');

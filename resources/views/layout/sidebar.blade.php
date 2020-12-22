@@ -14,7 +14,7 @@
             <ul class="<?php if($state=='tiket'){echo 'nav';}else{echo 'dropdown-container';} ?>" >
               <a class="nav-link" href="{{url('tiket-open')}}"><span class="material-icons">narrow_right</span> Open</a>
               <a class="nav-link" href="{{url('tiket-assigned')}}"><span class="material-icons">narrow_right</span> Assigned</a>
-              <a class="nav-link" href="{{url('tiket-resolved')}}"><span class="material-icons">narrow_right</span> Closed</a>
+              <a class="nav-link" href="{{url('tiket-resolved')}}"><span class="material-icons">narrow_right</span> Resolved</a>
             </ul>
           </li>
           <li class="nav-item <?php if($state=='report'){echo 'active';} ?>">

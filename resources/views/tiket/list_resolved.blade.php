@@ -16,6 +16,7 @@
                 <thead class=" text-info">
                   <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">No.</th>
                   <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Nama</th>
+                  <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Email</th>
                   <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">No Tiket</th>
                   <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Status</th>
                   <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Assign To</th>
@@ -29,6 +30,7 @@
                     <tr>
                       <td><?php echo $no; $no++; ?></td>
                       <td><b><?php echo $row->nip; ?></b><br/><?php if(!empty($row->pegawai)) echo $row->pegawai->name; ?></td>
+                      <td><?php echo $row->pegawai->email; ?></td>
                       <td><?php echo $row->no_tiket; ?></td>
                       <td><?php echo $row->status_tiket; ?></td>
                       <td><?php echo $row->its->name; ?></td>

@@ -16,7 +16,7 @@
           </div>
           <div class="card-footer">
             <div class="stats">
-              <a href="{{url('tiket-open')}}">Daftar Semua Tiket</a>
+              <a href="{{url('tiket')}}">Daftar Semua Tiket</a>
             </div>
           </div>
         </div>
@@ -48,7 +48,7 @@
           </div>
           <div class="card-footer">
             <div class="stats">
-              <a href="{{url('tiket-assigned')}}">Daftar Tiket Assigned xxx</a>
+              <a href="{{url('tiket-assigned')}}">Daftar Tiket Assigned</a>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@
           </div>
           <div class="card-footer">
             <div class="stats">
-              <a href="{{url('tiket-assigned')}}">Daftar Tiket Assigned</a>
+              <a href="{{url('tiket-resolved')}}">Daftar Tiket Resolved</a>
             </div>
           </div>
         </div>
@@ -127,7 +127,7 @@
                     <td><?php echo $no; $no++; ?></td>
                     <td><?php echo $row->pegawai->name."<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?></td>
                     <td><?php echo $row->start_date; ?></td>
-                    <td><a href="{{url('resolve-tiket')}}/<?php echo $row->id; ?>" class="btn btn-info">RESOLVE</a></td>
+                    <td><a href="{{url('resolve')}}/<?php echo $row->id; ?>" class="btn btn-info">RESOLVE</a></td>
                   </tr>
                   <?php
                 }
