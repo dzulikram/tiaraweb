@@ -1,16 +1,16 @@
 @extends('layout.app')
 
-@section('title', 'Kategori')
+@section('title', 'Chat Kategori')
 
 @section('content')
 <div class="content">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <a href="{{url('kategori/create')}}" class="btn btn-info pull-left"><i class="fa fa-plus"></i> TAMBAH KATEGORI</a></br></br>
+              <a href="{{url('chatkategori/create')}}" class="btn btn-info pull-left"><i class="fa fa-plus"></i> TAMBAH CHAT KATEGORI</a></br></br>
               <div class="card">
                 <div class="card-header card-header-info">
-                  <h4 class="card-title ">DAFTAR KATEGORI</h4>
+                  <h4 class="card-title ">DAFTAR CHAT KATEGORI</h4>
                   <p class="card-category">Divisi STI Operasional Kaltimra</p>
                 </div>
                 <div class="card-body">
@@ -18,20 +18,20 @@
                     <table class="table table-striped table-bordered table-paginate" cellspacing="0" width="100%">
                       <thead class=" text-info">
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">No.</th>
-                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Kategori</th>
+                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Chat Kategori</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Action</th>
                       </thead>
                       <tbody>
                         <?php
                         $no = 1;
-                        foreach ($kategoris as $row) 
+                        foreach ($chatkategoris as $row) 
                         {
                           ?>
                           <tr>
                             <td><?php echo $no; $no++; ?></td>
-                            <td><?php echo $row->kategori; ?></td>
-                            <td><a href="kategori/edit/<?php echo $row->id;?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                              <a href="kategori/delete/<?php echo $row->id;?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                            <td><?php echo $row->chatkategori; ?></td>
+                            <td><a href="chatkategori/edit/<?php echo $row->id;?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                              <a href="chatkategori/delete/<?php echo $row->id;?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                           </tr>
                           <?php
                         }
