@@ -6,12 +6,19 @@
               <p>Dashboard</p>
             </a>
           </li>
+          <li class="nav-item <?php if($state=='analytics'){echo 'active';} ?>">
+            <a class="nav-link" href="{{url('analytics')}}">
+              <i class="fa fa-pie-chart" aria-hidden="true"></i>
+              <p>Analytics</p>
+            </a>
+          </li>
           <li class="nav-item <?php if($state=='tiket'){echo 'active';} ?>">
             <a class="<?php if($state=='tiket'){echo 'nav-link';}else{echo 'dropdown-btn';} ?>">
               <i class="material-icons">post_add</i>
                 <p>Tiket</p>
             </a>        
             <ul class="<?php if($state=='tiket'){echo 'nav';}else{echo 'dropdown-container';} ?>" >
+              <a class="nav-link" href="{{url('tiket')}}"><span class="material-icons">narrow_right</span> All</a>
               <a class="nav-link" href="{{url('tiket-open')}}"><span class="material-icons">narrow_right</span> Open</a>
               <a class="nav-link" href="{{url('tiket-assigned')}}"><span class="material-icons">narrow_right</span> Assigned</a>
               <a class="nav-link" href="{{url('tiket-resolved')}}"><span class="material-icons">narrow_right</span> Resolved</a>

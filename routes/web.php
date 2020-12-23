@@ -54,6 +54,16 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('assign-tiket/{id}','TiketController@assignTiket');
 	Route::post('assign-tiket/{id}','TiketController@storeAssignTiket');
 
+	Route::get('today-tiket','TiketController@today');
+	Route::get('today-open','TiketController@todayOpen');
+	Route::get('today-assigned','TiketController@todayAssigned');
+	Route::get('today-resolved','TiketController@todayResolved');
+
+	Route::get('tiket/kategori/{kategori_id}','TiketController@tiketByKategori');
+	Route::get('tiket/permasalahan/{permasalahan}','TiketController@tiketByPermasalahan');
+	Route::get('tiket/user/{nip}','TiketController@tiketByUser');
+	Route::get('tiket/support/{it_support}','TiketController@tiketBySupport');
+
 	Route::get('pojok','PojokController@index'); // list saran
 	Route::get('pojok/create','PojokController@create'); // create saran
 	Route::get('pojok/edit/{id}','PojokController@edit'); //edit
@@ -88,6 +98,10 @@ Route::group(['middleware' => ['auth']], function () {
 
 	Route::get('resolve/{id}','TiketController@resolve');
 	Route::post('resolve/{id}','TiketController@storeResolve');
+
+	Route::get('analytics','PageController@analytics');
+
+
 });
 
 

@@ -30,11 +30,17 @@
                     ?>
                     <tr>
                       <td><?php echo $no; $no++; ?></td>
-                      <td><b><?php echo $row->nip; ?></b><br/><?php if(!empty($row->pegawai)) echo $row->pegawai->name; ?></td>
+                      <td><b><?php echo $row->nip; ?></b><br/><?php if(!empty($row->pegawai)) echo $row->pegawai->name; ?><?php if(!empty($row->lokasi))
+                        {
+                          ?>
+                          <br/><?php echo "(".$row->lokasi.")";?> 
+                          <?php
+                        }
+                        ?></td>
                       <td><?php echo $row->pegawai->email; ?></td>
                       <td><?php echo $row->no_tiket; ?></td>
                       <td><?php echo $row->status_tiket; ?></td>
-                      <td><?php echo $row->it_support; ?></td>
+                      <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
                       <td><a href="{{url('assign-tiket')}}/<?php echo $row->id; ?>" class="btn btn-primary">ASSIGN</a></td>
                     </tr>
                     <?php

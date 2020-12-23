@@ -29,11 +29,34 @@
                     ?>
                     <tr>
                       <td><?php echo $no; $no++; ?></td>
-                      <td><b><?php echo $row->nip; ?></b><br/><?php if(!empty($row->pegawai)) echo $row->pegawai->name; ?></td>
+                      <td><b><?php echo $row->nip; ?></b>
+                        <br/><?php if(!empty($row->pegawai)) echo $row->pegawai->name; ?>
+                        <?php if(!empty($row->lokasi))
+                        {
+                          ?>
+                          <br/><?php echo "(".$row->lokasi.")";?> 
+                          <?php
+                        }
+                        ?>
+                      </td>
                       <td><?php echo $row->no_tiket; ?></td>
                       <td><?php echo $row->status_tiket; ?></td>
-                      <td><?php echo $row->it_support; ?></td>
-                      <td><a href="" class="btn btn-primary">ASSIGN</a></td>
+                      <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
+                      <td><?php
+                      if($row->status_tiket == "open")
+                      {
+                        ?>
+                        <a href="{{url('assign-tiket')}}/<?php echo $row->id; ?>" class="btn btn-primary">ASSIGN</a>
+                        <?php
+                      }
+                      if($row->status_tiket == "assigned")
+                      {
+                        ?>
+                        <a href="{{url('resolve')}}/<?php echo $row->id; ?>" class="btn btn-primary">RESOLVE</a>
+                        <?php
+                      }
+                      ?>
+                    </td>
                     </tr>
                     <?php
                   }

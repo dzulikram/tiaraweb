@@ -98,5 +98,68 @@ class TiketController extends Controller
         return redirect('tiket-resolved');
     }
 
+    public function today()
+    {
+        $tikets = Tiket::whereDate('start_date',Carbon::now()->toDateString())->get();
+        $data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+        return view('tiket.list',$data);
+    }
+
+    public function todayOpen()
+    {
+        $tikets = Tiket::whereDate('start_date',Carbon::now()->toDateString())->where('status_tiket','open')->get();
+        $data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+        return view('tiket.list_open',$data);
+    } 
+
+    public function todayAssigned()
+    {
+        $tikets = Tiket::whereDate('start_date',Carbon::now()->toDateString())->where('status_tiket','assigned')->get();
+        $data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+        return view('tiket.list_assigned',$data);
+    }    
+
+    public function todayResolved()
+    {
+        $tikets = Tiket::whereDate('start_date',Carbon::now()->toDateString())->where('status_tiket','resolved')->get();
+        $data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+        return view('tiket.list_resolved',$data);
+    }
+
+    public function tiketByKategori(Request $request)
+    {
+        $tikets = Tiket::where('kategori_id',$request->kategori_id)->get();
+        $data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+        return view('tiket.list',$data);
+    }
+
+    public function tiketByPermasalahan(Request $request)
+    {
+        $tikets = Tiket::where('permasalahan',$request->permasalahan)->get();
+        $data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+        return view('tiket.list',$data);
+    }
+
+    public function tiketByUser(Request $request)
+    {
+        $tikets = Tiket::where('nip',$request->nip)->get();
+        $data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+        return view('tiket.list',$data);
+    }
+
+    public function tiketBySupport(Request $request)
+    {
+        $tikets = Tiket::where('it_support',$request->it_support)->get();
+        $data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+        return view('tiket.list',$data);
+    }
 
 }

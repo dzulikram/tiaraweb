@@ -65,6 +65,7 @@
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">No.</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Tanggal</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Jumlah</th>
+                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Action</th>
                       </thead>
                       <tbody>
                         <?php
@@ -74,7 +75,8 @@
                         <tr>
                           <td><?php echo $no;$no++;?></td>
                           <td><?php echo $row->kategori;?></td>
-                          <td><?php echo $row->jumlah;?></td>                          
+                          <td><?php echo $row->jumlah;?></td>
+                          <td><a href="{{url('tiket/kategori')}}/<?php echo $row->id; ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                         </tr>
                         <?php } ?>
                       </tbody>
