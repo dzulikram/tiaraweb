@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Tiket;
 use Carbon\Carbon;
 use DB;
+use App\User;
+use App\HistoryPassword;
 
 class PageController extends Controller
 {
@@ -59,6 +61,102 @@ class PageController extends Controller
         $data['n_user'] = $n_user;
 
         return view('analytics',$data);
+    }
+
+    public function resetPassword(Request $request)
+    {
+    	$data['username'] = $request->username;
+    	return view('auth.reset_password',$data);
+    }
+
+    public function storeResetPassword(Request $request)
+    {
+    	$username = $request->username;
+    	$old_password = $request->old_password;
+    	$new_password = $request->new_password;
+    	$confirm_new_password = $request->confirm_new_password;
+
+
+    	$user = User::where('username',$request->username)->first();
+    	$cek = \Hash::check($old_password,$user->password);
+    	
+    	if($cek == false)
+    	{
+    		// jika old password salah
+    		\Session::flash('error_message','Password lama anda salah');
+    		return redirect('reset-password?username='.$username);
+    	}
+    	
+    	if($new_password != $confirm_new_password)
+    	{
+    		// jika password tidak sama
+    		\Session::flash('error_message','Password tidak sama');
+    		return redirect('reset-password?username='.$username);	
+    	}
+
+		if(strlen($new_password) < 8)
+    	{
+    		// jika panjang password kurang dari 8
+    		\Session::flash('error_message','Password harus lebih dari 8 karakter');
+    		return redirect('reset-password?username='.$username);
+    	}
+
+    	if( !preg_match("#[0-9]+#", $new_password) ) {
+			$error_message = "Password minimal harus terdiri dari 1 angka";
+			\Session::flash('error_message',$error_message);
+			return redirect('reset-password?username='.$username);
+		}
+
+		if( !preg_match("#[a-z]+#", $new_password) ) {
+			
+			$error_message = "Password minimal harus terdiri dari 1 huruf kecil";
+			\Session::flash('error_message',$error_message);
+			return redirect('reset-password?username='.$username);
+		}
+
+		if( !preg_match("#[A-Z]+#", $new_password) ) {
+			$error_message = "Password minimal harus terdiri dari 1 huruf besar";
+			\Session::flash('error_message',$error_message);
+			return redirect('reset-password?username='.$username);
+		}
+
+		if( !preg_match("#\W+#", $new_password) ) {
+			$error_message = "Password minimal harus terdiri dari 1 symbol";
+			\Session::flash('error_message',$error_message);
+			return redirect('reset-password?username='.$username);
+		}
+
+    	$history = HistoryPassword::where('user_id',$user->id)->orderBy('created_at','desc')->take(15)->get();
+    	$n_password = count($history);
+
+    	if($n_password > 0)
+    	{
+    		foreach ($history as $row) 
+			{
+				$cek_history = \Hash::check($new_password,$row->password);
+				if($cek_history == true)
+				{
+					// jika ada yang sama
+					$error_message = "Password harus berbeda dengan 15 password sebelumnya";
+					\Session::flash('error_message',$error_message);
+					return redirect('reset-password?username='.$username);
+				}
+			}
+    	}
+
+    	$user->password = \Hash::make($new_password);
+    	$user->last_reset = date("Y-m-d");
+    	$user->save();
+
+    	$historyPassword = new HistoryPassword();
+    	$historyPassword->password = $user->password;
+    	$historyPassword->user_id = $user->id;
+    	$historyPassword->save();
+
+
+    	$error_message = "Ubah password berhasil";
+		\Session::flash('error_message',$error_message);
+    	return redirect('login');
     }
 
 

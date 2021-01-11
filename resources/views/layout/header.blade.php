@@ -59,7 +59,14 @@
   <?php if(!empty($state) && $state == 'dashboard')
   {
     ?>
-      <meta http-equiv="refresh" content="5">
+      <meta http-equiv="refresh" content="10">
+    <?php
+  }
+  ?>
+  <?php if(!empty($state) && $state == 'analytics')
+  {
+    ?>
+      <meta http-equiv="refresh" content="20">
     <?php
   }
   ?>

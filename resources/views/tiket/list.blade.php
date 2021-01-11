@@ -43,7 +43,7 @@
                       <td><?php echo $row->status_tiket; ?></td>
                       <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
                       <td><?php
-                      if($row->status_tiket == "open")
+                      if($row->status_tiket != "resolved")
                       {
                         ?>
                         <a href="{{url('assign-tiket')}}/<?php echo $row->id; ?>" class="btn btn-primary">ASSIGN</a>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login Tiara</title>
+	<title>Reset Password</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 <!--===============================================================================================-->	
@@ -29,30 +29,39 @@
 		<div class="container-login100" style="background-image: url('{{asset('assets/img/img-03.jpg')}}');">
 			<div class="wrap-login100">
               
-                <form class="login100-form validate-form" action="{{url('/login')}}" method="post">
+                <form class="login100-form validate-form" action="{{url('/reset-password')}}" method="post">
                 @csrf
                 
                     <div class="container">
-                    </br></br>
 						<center> <img src="{{asset('assets/img/logo5.png')}}" alt="Image" style="width:250px;height:260px;"> </center>
                     </div>
-                    
+                    <input type="hidden" name="username" value="<?php echo $username; ?>">
                     <div class="text-center">
                     	@if(Session::has('error_message'))
                 			{{ Session::get('error_message') }}
+                		@else
+                			Silakan Reset Password untuk Melanjutkan
                 		@endif
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
-						<input class="input100" type="text" name="username" placeholder="Username">
+					<div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
+						<input class="input100" type="password" name="old_password" placeholder="Old Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
-							<i class="fa fa-user"></i>
+							<i class="fa fa-lock"></i>
 						</span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
+						<input class="input100" type="password" name="new_password" placeholder="New Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
+						<input class="input100" type="password" name="confirm_new_password" placeholder="Confirm New Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock"></i>
