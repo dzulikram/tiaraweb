@@ -42,13 +42,15 @@ class PageController extends Controller
         $tiket_open = Tiket::where('status_tiket','open')->get();
         $tiket_assigned = Tiket::where('status_tiket','assigned')->get();
 
-        $n_kategori = DB::select('select k.id,k.kategori,count(t.id) as jumlah from kategori k,tiket t where k.id = t.kategori_id and t.is_autoclose is null group by k.id,k.kategori');
+        $n_kategori = DB::select("select k.id,k.kategori,count(t.id) as jumlah from kategori k,tiket t where k.id = t.kategori_id and t.is_autoclose is null and k.type = 'incident' group by k.id,k.kategori");
 
         $n_autoclose = DB::select("select t.permasalahan, count(t.id) as jumlah from tiket t where t.is_autoclose = 1 group by t.permasalahan");
 
         $n_support = DB::select("select u.id, u.`name`, count(t.id) as jumlah from tiket t, users u where t.it_support = u.id group by u.id, u.name order by jumlah desc limit 3");
 
         $n_user = DB::select("select p.nip, p.name, count(t.id) as jumlah from pegawai p, tiket t where p.nip = t.nip group by p.nip, p.name order by jumlah desc limit 3");
+
+        $n_service_request = DB::select("select k.id,k.kategori,count(t.id) as jumlah from kategori k,tiket t where k.id = t.kategori_id and t.is_autoclose is null and k.type = 'service_request' group by k.id,k.kategori");
 
         $data['n_open'] = $n_open;
         $data['n_assigned'] = $n_assigned;
@@ -59,6 +61,7 @@ class PageController extends Controller
         $data['n_autoclose'] = $n_autoclose;
         $data['n_support'] = $n_support;
         $data['n_user'] = $n_user;
+        $data['n_service_request'] = $n_service_request;
 
         return view('analytics',$data);
     }

@@ -89,21 +89,46 @@
                 $no = 1;
                 foreach ($tiket_open as $row) 
                 {
-                  ?>
-                  <tr>
-                    <td><blink><?php echo $no; $no++; ?></blink></td>
-                    <td><?php echo $row->pegawai->name."<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
-                      <?php if(!empty($row->lokasi))
-                      {
+                  $diff = (strtotime(date("Y-m-d H:i:s")) - strtotime($row->start_date))/60;
+                  if($diff >= 60 && !empty($row->start_date))
+                  {
+                    ?>
+                    <tr style="color: red">
+                      <td><b><?php echo $no; $no++; ?></b></td>
+                      <td><b><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
+                        <?php if(!empty($row->lokasi))
+                        {
+                          ?>
+                          <br/><?php echo "(".$row->lokasi.")";?> 
+                          <?php
+                        }
+                        ?></b>
+                      </td>
+                      <td><b><?php echo $row->call_type."<br/>".$row->start_date; ?></b></td>
+                      <td><a href="{{url('assign-tiket')}}/<?php echo $row->id; ?>" class="btn btn-info">ASSIGN</a></td>
+                    </tr>
+                    <?php
+                  }
+                  else
+                  {
+                    ?>
+                    <tr>
+                      <td><?php echo $no; $no++; ?></td>
+                      <td><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
+                        <?php if(!empty($row->lokasi))
+                        {
+                          ?>
+                          <br/><?php echo "(".$row->lokasi.")";?> 
+                          <?php
+                        }
                         ?>
-                        <br/><?php echo "(".$row->lokasi.")";?> 
-                        <?php
-                      }
-                      ?>
-                    </td>
-                    <td><?php echo $row->start_date; ?></td>
-                    <td><a href="{{url('assign-tiket')}}/<?php echo $row->id; ?>" class="btn btn-danger">ASSIGN</a></td>
-                  </tr>
+                      </td>
+                      <td><?php echo $row->call_type."<br/>".$row->start_date; ?></td>
+                      <td><a href="{{url('assign-tiket')}}/<?php echo $row->id; ?>" class="btn btn-info">ASSIGN</a></td>
+                    </tr>
+                    <?php
+                  }
+                  ?>
                   <?php
                 }
                 ?>
@@ -136,7 +161,7 @@
                     ?>
                     <tr style="color: red">
                       <td><b><?php echo $no; $no++; ?></b></td>
-                      <td><b><?php echo $row->pegawai->name."<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
+                      <td><b><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
                         <?php if(!empty($row->lokasi))
                         {
                           ?>
@@ -145,7 +170,7 @@
                         }
                         ?></b>
                       </td>
-                      <td><b><?php echo $row->start_date; ?></b></td>
+                      <td><b><?php echo $row->call_type."<br/>".$row->start_date; ?></b></td>
                       <td><a href="{{url('resolve')}}/<?php echo $row->id; ?>" class="btn btn-info">RESOLVE</a></td>
                     </tr>
                     <?php
@@ -155,7 +180,7 @@
                     ?>
                     <tr>
                       <td><?php echo $no; $no++; ?></td>
-                      <td><?php echo $row->pegawai->name."<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
+                      <td><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
                         <?php if(!empty($row->lokasi))
                         {
                           ?>
@@ -164,7 +189,7 @@
                         }
                         ?>
                       </td>
-                      <td><?php echo $row->start_date; ?></td>
+                      <td><?php echo $row->call_type."<br/>".$row->start_date; ?></td>
                       <td><a href="{{url('resolve')}}/<?php echo $row->id; ?>" class="btn btn-info">RESOLVE</a></td>
                     </tr>
                     <?php

@@ -85,6 +85,7 @@ class TiketController extends Controller
     public function resolve(Request $request)
     {
         $tiket = Tiket::find($request->id);
+        $kategoris = Kategori::all();
         $data['state'] = "tiket";
         $data['tiket'] = $tiket;
         return view('tiket.resolve',$data);

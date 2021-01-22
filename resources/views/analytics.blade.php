@@ -33,6 +33,34 @@ var chart = new CanvasJS.Chart("chartContainer", {
 });
 chart.render();
 
+var chart5 = new CanvasJS.Chart("serviceChart", {
+  animationEnabled: true,
+  title:{
+    text: "Service Request",
+    horizontalAlign: "left"
+  },
+  data: [{
+    type: "doughnut",
+    startAngle: 60,
+    //innerRadius: 60,
+    indexLabelFontSize: 17,
+    indexLabel: "{label} - #percent%",
+    toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+    dataPoints: [
+    <?php foreach ($n_service_request as $row) 
+    {
+      ?>
+      { y: <?php echo $row->jumlah; ?>, label: "<?php echo $row->kategori; ?>",x: <?php echo $row->id; ?> },
+      <?php
+    }?>
+    ],
+    click: function(e){
+    window.location.href = "{{url('tiket/kategori')}}/"+e.dataPoint.x;
+    },
+  }]
+});
+chart5.render();
+
 var chart2 = new CanvasJS.Chart("autoCloseChart", {
   animationEnabled: true,
   title:{
@@ -221,6 +249,18 @@ chart4.render();
           </div>
           <div class="card-body table-responsive">
             <div id="userChart" style="height: 300px; width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Jumlah Tiket Service Request</h4>
+          </div>
+          <div class="card-body table-responsive">
+            <div id="serviceChart" style="height: 300px; width: 100%;"></div>
           </div>
         </div>
       </div>
