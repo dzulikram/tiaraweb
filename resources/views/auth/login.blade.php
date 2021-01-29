@@ -34,7 +34,7 @@
                 
                     <div class="container">
                     </br></br>
-						<center> <img src="{{asset('assets/img/logo5.png')}}" alt="Image" style="width:250px;height:260px;"> </center>
+						<center> <img src="{{asset('assets/img/LOGO5.png')}}" alt="Image" style="width:250px;height:260px;"> </center>
                     </div>
                     
                     <div class="text-center">
