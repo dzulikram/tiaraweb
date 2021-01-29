@@ -28,6 +28,6 @@ class CreateTableSaran extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_saran');
+        Schema::dropIfExists('saran');
     }
 }
