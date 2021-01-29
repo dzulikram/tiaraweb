@@ -107,6 +107,12 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('chatkategori','ChatKategoriController@store'); //store
 	Route::put('chatkategori/{id}','ChatKategoriController@update'); //update
 	Route::get('chatkategori/delete/{id}','ChatKategoriController@delete'); //delete
+
+	Route::get('pending/{id}','PendingController@getById');
+	Route::post('pending/{id}','PendingController@storeById');
+	Route::get('continue/{id}','PendingController@continue');
+	Route::post('continue/{id}','PendingController@storeContinue');
+
 });
 
 
@@ -116,3 +122,6 @@ Route::get('pojok-it','PojokController@indexGuest'); // pojok untuk guest
 
 Route::get('reset-password','PageController@resetPassword');
 Route::post('reset-password','PageController@StoreResetPassword');
+
+Route::post('get-data','ChatController@getData');
+Route::post('close-tiket','ChatController@closeTicket');
