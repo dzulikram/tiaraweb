@@ -20,7 +20,8 @@ class PageController extends Controller
 
     	$tiket_open = Tiket::where('status_tiket','open')->get();
     	$tiket_assigned = Tiket::where('status_tiket','assigned')->get();
-
+        $tiket_pending = Tiket::where('status_tiket','pending')->get();
+        
     	// assign to view
     	$data['n_open'] = $n_open;
     	$data['n_assigned'] = $n_assigned;
@@ -29,6 +30,8 @@ class PageController extends Controller
         $data['state']="dashboard";
         $data['tiket_assigned'] = $tiket_assigned;
         $data['tiket_open'] = $tiket_open;
+        $data['tiket_pending'] = $tiket_pending;
+        
         return view('dashboard',$data);
     }
 
