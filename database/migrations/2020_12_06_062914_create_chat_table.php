@@ -25,7 +25,6 @@ class CreateChatTable extends Migration
             $table->string('nip')->nullable();
             $table->string('permasalahan')->nullable();
             $table->string('lokasi')->nullable();
-            $table->string('permasalahan')->nullable();
             $table->integer('is_autoclose')->nullable();
             $table->integer('chat_kategori')->nullable();
             $table->string('call_type')->nullable();
