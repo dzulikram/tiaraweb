@@ -107,6 +107,13 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('chatkategori','ChatKategoriController@store'); //store
 	Route::put('chatkategori/{id}','ChatKategoriController@update'); //update
 	Route::get('chatkategori/delete/{id}','ChatKategoriController@delete'); //delete
+
+	Route::get('cuti','CutiController@index'); // list saran
+	Route::get('cuti/create','CutiController@create'); // create saran
+	Route::get('cuti/edit/{id}','CutiController@edit'); //edit
+	Route::post('cuti','CutiController@store'); //store
+	Route::put('cuti/{id}','CutiController@update'); //update
+	Route::get('cuti/delete/{id}','CutiController@delete'); //delete
 });
 
 
