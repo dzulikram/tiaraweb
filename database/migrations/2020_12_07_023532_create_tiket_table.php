@@ -35,7 +35,6 @@ class CreateTiketTable extends Migration
             $table->string('lokasi')->nullable();
             $table->integer('is_autoclose')->nullable();
             $table->string('call_type')->nullable();
-            
         });
     }
 
