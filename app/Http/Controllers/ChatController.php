@@ -52,6 +52,10 @@ class ChatController extends Controller
                 $tiket->kategori_id = $kategori->kategori_id;
             }
         }
+        if(!empty($chat->via))
+        {
+        	$tiket->via = $chat->via;
+        }
         $tiket->permasalahan = $chat->permasalahan;
         $tiket->chat_id = $chat->id;
         $tiket->sender = $chat->sender;
@@ -84,6 +88,11 @@ class ChatController extends Controller
           ]);
 	}
 
+	public function test()
+	{
+		return "test";
+	}
+
     public function getData(Request $request)
     {
         //dd($this->getTimeNow());
@@ -102,10 +111,13 @@ class ChatController extends Controller
     		$chat->state = 0;
     		$chat->status = "open";
             $chat->start_conversation = $this->getTimeNow();
+            if(!empty($request->via))
+            {
+            	$chat->via = $request->via;
+            }
     		$chat->save();
             $this->addHistory($chat->id,$input);
             $this->addHistory($chat->id,$message);
-    		
     	}
     	else if($chat->status == 'open' && $chat->state == 0)
     	{
