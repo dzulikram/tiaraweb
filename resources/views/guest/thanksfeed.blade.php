@@ -12,7 +12,7 @@
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
-				<br/><center><img src="{{asset('assets/thanks4.png')}}" class="img-responsive" style="padding-top:50px;" width="50%"></center></div>
+				<br/><center><img src="{{asset('assets/thanks5.png')}}" class="img-responsive" style="padding-top:50px;" width="50%"></center></div>
 			<div class="col-md-3"></div>
 		</div>
 	</div>

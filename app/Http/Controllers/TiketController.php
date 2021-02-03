@@ -163,4 +163,20 @@ class TiketController extends Controller
         return view('tiket.list',$data);
     }
 
+    public function feedback(Request $request)
+    {
+        $tikets = Tiket::find($request->id);
+        $data['tikets'] = $tikets;
+        $data['state'] = 'feedback';
+    	return view('tiket.feedback',$data);
+    }
+
+    public function storeFeedback(Request $request)
+    {
+        $tikets = Tiket::find($request->id);
+        $tikets->feedback = $request->feedback;
+        $tikets->save();
+        return redirect('/thanksfeed');
+    }
+
 }

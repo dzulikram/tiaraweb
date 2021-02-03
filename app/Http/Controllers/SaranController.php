@@ -101,4 +101,9 @@ class SaranController extends Controller
     {
         return view('guest.thanks');
     }
+
+    public function thanksFeed()
+    {
+        return view('guest.thanksfeed');
+    }
 }
