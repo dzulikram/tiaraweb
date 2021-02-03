@@ -126,8 +126,11 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 Route::get('thanks','SaranController@thanks');
+Route::get('thanksfeed','SaranController@thanksFeed');
 Route::get('input-saran','SaranController@createGuest'); // create saran
 Route::get('pojok-it','PojokController@indexGuest'); // pojok untuk guest
+Route::get('feedback/{id}','TiketController@feedback'); // feedback
+Route::put('feedback/{id}','TiketController@storeFeedback');
 
 Route::get('reset-password','PageController@resetPassword');
 Route::post('reset-password','PageController@StoreResetPassword');
