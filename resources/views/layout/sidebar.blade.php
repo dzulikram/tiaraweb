@@ -6,6 +6,12 @@
         <p>Dashboard</p>
       </a>
     </li>
+    <li class="nav-item <?php if($state=='dashboard-unit'){echo 'active';} ?>">
+      <a class="nav-link" href="{{url('dashboard-unit')}}">
+        <i class="material-icons">dashboard</i>
+        <p>Dashboard Unit</p>
+      </a>
+    </li>
     <li class="nav-item <?php if($state=='analytics'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('analytics')}}">
         <i class="fa fa-pie-chart" aria-hidden="true"></i>
@@ -36,43 +42,55 @@
         <a class="nav-link" href="{{url('report-itsupport')}}"><span class="material-icons">narrow_right</span> IT Support</a>
         <a class="nav-link" href="{{url('report-pegawai')}}"><span class="material-icons">narrow_right</span> Pegawai</a>
       </ul>
-    </li>          
+    </li>
+    @hasrole('admin')
     <li class="nav-item <?php if($state=='kategori'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('kategori')}}">
         <i class="material-icons">all_inbox</i>
         <p>Kategori</p>
       </a>
     </li>
+    @endhasrole
+    @hasrole('admin')
     <li class="nav-item <?php if($state=='pegawai'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('pegawai')}}">
         <i class="material-icons">work</i>
         <p>Pegawai</p>
       </a>
     </li>
+    @endhasrole
+    @hasrole('admin')
     <li class="nav-item <?php if($state=='pojok'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('pojok')}}">
         <i class="material-icons">desktop_windows</i>
         <p>Pojok IT</p>
       </a>
     </li>
+    @endhasrole
+    @hasrole('admin')
     <li class="nav-item <?php if($state=='user'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('user')}}">
         <i class="material-icons">perm_identity</i>
         <p>User</p>
       </a>
     </li>
+    @endhasrole
+    @hasrole('admin')
     <li class="nav-item <?php if($state=='saran'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('saran')}}">
         <i class="material-icons">chat</i>
         <p>Saran & Kritik</p>
       </a>
     </li>
+    @endhasrole
+    @hasrole('admin')
     <li class="nav-item <?php if($state=='cuti'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('cuti')}}">
         <i class="material-icons">person_off</i>
         <p>Cuti</p>
       </a>
     </li>
+    @endhasrole
     <!-- <li class="nav-item <?php if($state=='chatkategori'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('chatkategori')}}">
         <i class="material-icons">inbox</i>

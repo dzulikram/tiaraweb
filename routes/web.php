@@ -24,6 +24,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('/logout', 'Auth\LoginController@logout');
 	Route::get('dashboard', 'PageController@index');
+	Route::get('dashboard-unit', 'PageController@indexUnit');
 
 	Route::get('user', 'UserController@index');
 	Route::get('user/create','UserController@create'); // create user
