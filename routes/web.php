@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('tiket/permasalahan/{permasalahan}','TiketController@tiketByPermasalahan');
 	Route::get('tiket/user/{nip}','TiketController@tiketByUser');
 	Route::get('tiket/support/{it_support}','TiketController@tiketBySupport');
+	Route::get('tiket/unit/{unit}','TiketController@tiketByUnit');
 
 	Route::get('pojok','PojokController@index'); // list saran
 	Route::get('pojok/create','PojokController@create'); // create saran

@@ -137,6 +137,30 @@ var chart4 = new CanvasJS.Chart("userChart", {
 });
 chart4.render();
 
+var chart5 = new CanvasJS.Chart("unitChart", {
+  animationEnabled: true,
+  data: [{
+    type: "doughnut",
+    startAngle: 60,
+    //innerRadius: 60,
+    indexLabelFontSize: 17,
+    indexLabel: "{label} - #percent%",
+    toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+    dataPoints: [
+    <?php foreach ($n_unit as $row) 
+    {
+      ?>
+      { y: <?php echo $row->jumlah; ?>, label: "<?php echo $row->personnel_subarea_name; ?>",x: "<?php echo $row->personnel_subarea_name; ?>" },
+      <?php
+    }?>
+    ],
+    click: function(e){
+    window.location.href = "{{url('tiket/unit')}}/"+e.dataPoint.x;
+    },
+  }]
+});
+chart5.render();
+
 }
 
 </script>
@@ -261,6 +285,16 @@ chart4.render();
           </div>
           <div class="card-body table-responsive">
             <div id="serviceChart" style="height: 300px; width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Jumlah Tiket Per Unit</h4>
+          </div>
+          <div class="card-body table-responsive">
+            <div id="unitChart" style="height: 300px; width: 100%;"></div>
           </div>
         </div>
       </div>

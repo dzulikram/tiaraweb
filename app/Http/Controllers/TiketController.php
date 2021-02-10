@@ -7,6 +7,7 @@ use App\Tiket;
 use Carbon\Carbon;
 use App\User;
 use App\Kategori;
+use DB;
 
 class TiketController extends Controller
 {
@@ -153,6 +154,14 @@ class TiketController extends Controller
         $data['tikets'] = $tikets;
         $data['state'] = 'tiket';
         return view('tiket.list',$data);
+    }
+
+    public function tiketByUnit(Request $request)
+    {
+        $tikets = DB::select("SELECT * FROM `tiket` t,pegawai p where t.nip = p.nip and p.personnel_subarea_name = '".$request->unit."'");
+        $data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+        return view('tiket.list_unit',$data);
     }
 
     public function tiketBySupport(Request $request)
