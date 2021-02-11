@@ -137,6 +137,56 @@ var chart4 = new CanvasJS.Chart("userChart", {
 });
 chart4.render();
 
+var chart6 = new CanvasJS.Chart("biaya", {
+  animationEnabled: true,
+  theme: "light2", // "light1", "light2", "dark1", "dark2"
+  title:{
+    text: "Biaya Yang Dihemat"
+  },
+  axisY: {
+    title: "Biaya"
+  },
+  data: [{        
+    type: "column",  
+    showInLegend: true, 
+    legendMarkerColor: "grey",
+    legendText: "Biaya yang dihemat",
+    dataPoints: [
+    <?php foreach ($n_jarak as $row) 
+    {
+      ?>
+      { y: <?php echo $row->jumlah; ?>, label: "<?php if (empty($row->is_autoclose)) echo "IT Support"; else echo "User" ?>"},
+      <?php
+    }?>      
+    ]
+  }]
+});
+chart6.render();
+
+var chart5 = new CanvasJS.Chart("unitChart", {
+  animationEnabled: true,
+  data: [{
+    type: "doughnut",
+    startAngle: 60,
+    //innerRadius: 60,
+    indexLabelFontSize: 17,
+    indexLabel: "{label} - #percent%",
+    toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+    dataPoints: [
+    <?php foreach ($n_unit as $row) 
+    {
+      ?>
+      { y: <?php echo $row->jumlah; ?>, label: "<?php echo $row->personnel_subarea_name; ?>",x: "<?php echo $row->personnel_subarea_name; ?>" },
+      <?php
+    }?>
+    ],
+    click: function(e){
+    window.location.href = "{{url('tiket/unit')}}/"+e.dataPoint.x;
+    },
+  }]
+});
+chart5.render();
+
 }
 
 </script>
@@ -264,7 +314,30 @@ chart4.render();
           </div>
         </div>
       </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Jumlah Tiket Per Unit</h4>
+          </div>
+          <div class="card-body table-responsive">
+            <div id="unitChart" style="height: 300px; width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-info">
+            <h4 class="card-title">Jumlah Biaya Yang Dihemat</h4>
+          </div>
+          <div class="card-body table-responsive">
+            <div id="biaya" style="height: 300px; width: 100%;"></div>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
+
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 @endsection

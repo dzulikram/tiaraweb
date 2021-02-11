@@ -631,6 +631,7 @@ Terima kasih telah menghubungi Tiara 🙏☺️
     		$chat->save();
             $this->addHistory($chat->id,$input);
             $this->addHistory($chat->id,$message);
+            $this->createTiket($chat);
     	}
     	else if($chat->status == 'open' && $chat->state == 11)
     	{

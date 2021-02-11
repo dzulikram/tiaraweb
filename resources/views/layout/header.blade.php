@@ -63,7 +63,7 @@
     <?php
   }
   ?>
-  <?php if(!empty($state) && $state == 'analytics')
+  <?php if(!empty($state) && $state == 'analytic')
   {
     ?>
       <meta http-equiv="refresh" content="20">
