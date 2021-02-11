@@ -63,6 +63,8 @@ class ChatController extends Controller
         $tiket->is_autoclose = $chat->is_autoclose;
         $tiket->call_type = $chat->call_type;
         $tiket->save();
+
+		return $tiket;
     }
 
 	public function closeTicket(Request $request)
@@ -467,8 +469,7 @@ c. Untuk mengakhiri percakapan";
     	}
     	else if($chat->status == 'open' && $chat->state == 5)
     	{
-    		$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda.
-Terima kasih telah menghubungi Tiara 🙏😊";
+    		
 			$chat->status = "close-conversation";
             $chat->end_conversation = $this->getTimeNow();
             $chat->permasalahan = "Permasalahan ".$input;
@@ -477,7 +478,10 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     		$chat->save();
             $this->addHistory($chat->id,$input);
             $this->addHistory($chat->id,$message);
-            $this->createTiket($chat);
+            $tiketku = $this->createTiket($chat);
+			$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda.
+Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     	}
     	else if($chat->status == 'open' && $chat->state == 6)
     	{
@@ -638,8 +642,7 @@ Terima kasih telah menghubungi Tiara 🙏☺️
     	{
     		if($input == 1)
     		{
-    			$message = "IT Support akan menuju ke tempat anda, mohon ditunggu.
-Terima kasih telah menghubungi Tiara 🙏😊";
+    			
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
 				$chat->state = 30;
@@ -648,11 +651,14 @@ Terima kasih telah menghubungi Tiara 🙏😊";
 				$chat->save();
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
-                $this->createTiket($chat);
+                $tiketku = $this->createTiket($chat);
+				$message = "IT Support akan menuju ke tempat anda, mohon ditunggu.
+Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else if($input == 2)
     		{
-    			$message = "Terimakasih telah membantu dan menghubungi Tiara 🙏😊";
+    			
     			$chat->status = "close-conversation";
                 $chat->permasalahan = "LAN Kendor";
                 $chat->is_autoclose = 1;
@@ -662,7 +668,9 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->save();
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
-                $this->createTiket($chat);
+                $tiketku = $this->createTiket($chat);
+				$message = "Terimakasih telah membantu dan menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else
     		{
@@ -673,8 +681,7 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     	{
     		if($input == 1)
     		{
-    			$message = "IT Support akan menuju ke tempat anda, mohon ditunggu.
-Terima kasih telah menghubungi Tiara 🙏😊";
+    			
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
 				$chat->state = 34;
@@ -683,7 +690,10 @@ Terima kasih telah menghubungi Tiara 🙏😊";
 				$chat->save();
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
-                $this->createTiket($chat);
+                $tiketku = $this->createTiket($chat);
+				$message = "IT Support akan menuju ke tempat anda, mohon ditunggu.
+Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else if($input == 2)
     		{
@@ -730,17 +740,19 @@ c. Untuk mengakhiri percakapan";
     		else if($input == 1)
     		{
 
-    			$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda.
-Terima kasih telah menghubungi Tiara 🙏😊";
+    			
 				$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
                 $chat->permasalahan = "PC Lambat";
                 $chat->call_type = "incident";
     			$chat->state = 47;
-    			$chat->save();
-                $this->createTiket($chat);
+    			$chat->save();                
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
+				$tiketku = $this->createTiket($chat);
+				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda.
+Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else if($input == 3)
     		{
@@ -776,17 +788,19 @@ c. Untuk mengakhiri percakapan";
     		}
     		else if($input == 2)
     		{
-    			$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
-Terima kasih telah menghubungi Tiara 🙏😊";
+    			
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
 				$chat->state = 47;
                 $chat->permasalahan = "Printer tidak bisa cetak";
                 $chat->call_type = "incident";
-				$chat->save();
-                $this->createTiket($chat);
+				$chat->save();                
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
+				$tiketku = $this->createTiket($chat);
+				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
+Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else
     		{
@@ -797,8 +811,7 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     	{
     		if($input == 1 || $input == 2)
     		{
-    			$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
-Terima kasih telah menghubungi Tiara 🙏😊";
+    			
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
     			$chat->state = 47;
@@ -812,9 +825,13 @@ Terima kasih telah menghubungi Tiara 🙏😊";
                 }
                 $chat->call_type = "incident";
     			$chat->save();
-                $this->createTiket($chat);
+
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
+				$tiketku = $this->createTiket($chat);
+				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
+Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else if($input == 3)
     		{
@@ -847,15 +864,17 @@ c. Untuk mengakhiri percakapan";
     	{
     		if($chat->lokasi == 'WFO')
     		{
-    			$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
-Terima kasih telah menghubungi Tiara 🙏😊";
+    			
                 $chat->call_type = "service_request";
     			$chat->state = 23;
     			$chat->status = "close-conversation";
                 $chat->permasalahan = $input;
                 $chat->end_conversation = $this->getTimeNow();
     			$chat->save();
-                $this->createTiket($chat);
+                $tiketku = $this->createTiket($chat);
+				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
+Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else if($chat->lokasi == 'WFH')
     		{
@@ -983,15 +1002,17 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     	}
     	else if($chat->status == 'open' && $chat->state == 30)
     	{
-    		$message = "IT Support akan menuju ke tempat anda, mohon ditunggu.
-Terima kasih telah menghubungi Tiara 🙏😊";
+    		
 			$chat->state = 30;
 			$chat->status = "close-conversation";
             $chat->end_conversation = $this->getTimeNow();
-			$chat->save();	
-            $this->createTiket($chat);
+			$chat->save();	            
             $this->addHistory($chat->id,$input);
             $this->addHistory($chat->id,$message);
+			$tiketku = $this->createTiket($chat);
+			$message = "IT Support akan menuju ke tempat anda, mohon ditunggu.
+Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     	}
     	else if($chat->status == 'open' && $chat->state == 31)
     	{
@@ -1007,22 +1028,23 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     	}
     	else if($chat->status == 'open' && $chat->state == 34)
     	{
-    		$message = "IT Support akan menuju ke tempat anda, mohon ditunggu
-Terima kasih telah menghubungi Tiara 🙏😊";
+    		
     		$chat->status = "close-conversation";
             $chat->end_conversation = $this->getTimeNow();
 			$chat->state = 36;
-			$chat->save();
-            $this->createTiket($chat);
+			$chat->save();            
             $this->addHistory($chat->id,$input);
             $this->addHistory($chat->id,$message);
+			$tiketku = $this->createTiket($chat);
+			$message = "IT Support akan menuju ke tempat anda, mohon ditunggu
+Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     	}
     	else if($chat->status == 'open' && $chat->state == 35)
     	{
     		if($input == 1 || $input == 2)
     		{
-    			$message = "IT Support akan menuju ke tempat anda, mohon ditunggu
-Terima kasih telah menghubungi Tiara 🙏😊";
+    			
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
     			$chat->state = 37;
@@ -1031,11 +1053,14 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->save();
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
-                $this->createTiket($chat);
+                $tiketku = $this->createTiket($chat);
+				$message = "IT Support akan menuju ke tempat anda, mohon ditunggu
+Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else if($input == 3)
     		{
-    			$message = "Terima kasih telah membantu Tiara 🙏😊";
+    			
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
                 $chat->permasalahan = "Belum connect wifi";
@@ -1044,7 +1069,9 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->save();
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
-                $this->createTiket($chat);
+                $tiketku = $this->createTiket($chat);
+				$message = "Terima kasih telah membantu Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else
     		{
@@ -1083,7 +1110,7 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     	{
     		if($input == 1)
     		{
-    			$message = "Terima kasih telah membantu Tiara 🙏☺️";
+    			
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
 				$chat->state = 46;
@@ -1093,12 +1120,13 @@ Terima kasih telah menghubungi Tiara 🙏😊";
 				$chat->save();    	
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);		
-                $this->createTiket($chat);
+                $tiketku = $this->createTiket($chat);
+				$message = "Terima kasih telah membantu Tiara 🙏☺️
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else if($input == 2)
     		{
-    			$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda.
-Terima kasih telah menghubungi Tiara 🙏😊";
+    			
     			$chat->state = 47;
                 $chat->end_conversation = $this->getTimeNow();
                 $chat->permasalahan = "Permasalahan mouse/keyboard pada PC";
@@ -1106,7 +1134,10 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->save();
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
-                $this->createTiket($chat);
+                $tiketku = $this->createTiket($chat);
+				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda.
+Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else
     		{
@@ -1117,7 +1148,6 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     	{
     		if($input == 1)
     		{
-    			$message = "Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
     			$chat->state = 50;
@@ -1127,12 +1157,13 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->save();
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
-                $this->createTiket($chat);
+                $tiketku = $this->createTiket($chat);
+				$message = "Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else if($input == 2)
     		{
-    			$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
-Terima kasih telah menghubungi Tiara 🙏😊";
+    			
 				$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
                 $chat->permasalahan = "PC tidak bisa menyala";
@@ -1141,7 +1172,10 @@ Terima kasih telah menghubungi Tiara 🙏😊";
 				$chat->save();
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
-                $this->createTiket($chat);
+                $tiketku = $this->createTiket($chat);
+				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
+Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else
     		{
@@ -1152,7 +1186,7 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     	{
     		if($input == 1)
     		{
-    			$message = "Terima kasih telah membantu Tiara 🙏☺️";
+    			
     			$chat->state = 50;
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
@@ -1162,12 +1196,13 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->save();
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
-                $this->createTiket($chat);
+                $tiketku = $this->createTiket($chat);
+				$message = "Terima kasih telah membantu Tiara 🙏☺️
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else if($input == 2)
     		{
-    			$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
-Terima kasih telah menghubungi Tiara 🙏😊";
+    			
     			$chat->status = "close-conversation";
                 $chat->permasalahan = "Printer tidak bisa menyala";
                 $chat->end_conversation = $this->getTimeNow();
@@ -1176,7 +1211,10 @@ Terima kasih telah menghubungi Tiara 🙏😊";
 				$chat->save();
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
-                $this->createTiket($chat);
+                $tiketku = $this->createTiket($chat);				
+				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
+Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else
     		{
@@ -1215,7 +1253,7 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     	{
     		if($input == 1)
     		{
-    			$message = "Terima kasih telah membantu Tiara 🙏☺️";
+    			
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
     			$chat->state = 54;
@@ -1225,12 +1263,13 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->save();
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
-                $this->createTiket($chat);
+                $tiketku = $this->createTiket($chat);
+				$message = "Terima kasih telah membantu Tiara 🙏☺️
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else if($input == 2)
     		{
-    			$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
-Terima kasih telah menghubungi Tiara 🙏😊";
+    			
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
                 $chat->permasalahan = "Laptop tidak menyala";
@@ -1239,7 +1278,10 @@ Terima kasih telah menghubungi Tiara 🙏😊";
 				$chat->save();
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
-                $this->createTiket($chat);
+                $tiketku = $this->createTiket($chat);
+				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
+Terima kasih telah menghubungi Tiara 🙏😊
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
     		}
     		else
     		{
