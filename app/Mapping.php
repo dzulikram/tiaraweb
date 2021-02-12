@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Mapping extends Model
 {
     protected $table = "mapping";
+
+    public function regional()
+    {
+        return $this->belongsTo('App\RegionalSti', 'regional_sti', 'id');
+    }
 }
