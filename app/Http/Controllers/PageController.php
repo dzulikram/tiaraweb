@@ -79,7 +79,12 @@ class PageController extends Controller
 
         $n_service_request = DB::select("select k.id,k.kategori,count(t.id) as jumlah from kategori k,tiket t where k.id = t.kategori_id and t.is_autoclose is null and k.type = 'service_request' group by k.id,k.kategori");
 
+
+        $n_jarak = DB::select("select is_autoclose, sum(biaya) as jumlah from tiket t, pegawai p, mapping m where t.nip = p.nip and p.personnel_subarea_name = m.unit and m.jarak > 0 group by is_autoclose");
+
+
         $n_unit = DB::select("SELECT p.personnel_subarea_name, count(t.id) as jumlah FROM `tiket` t,pegawai p where t.nip = p.nip group by p.personnel_subarea_name order by jumlah desc");
+
 
         $data['n_open'] = $n_open;
         $data['n_assigned'] = $n_assigned;
@@ -91,6 +96,8 @@ class PageController extends Controller
         $data['n_support'] = $n_support;
         $data['n_user'] = $n_user;
         $data['n_service_request'] = $n_service_request;
+
+        $data['n_jarak'] = $n_jarak;
         $data['n_unit'] = $n_unit;
 
         return view('analytics',$data);
