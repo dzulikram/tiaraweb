@@ -11,7 +11,6 @@ use DB;
 
 class TiketController extends Controller
 {
-
 	public function getTimeNow()
     {
         return Carbon::now()->toDateTimeString();
@@ -50,28 +49,67 @@ class TiketController extends Controller
     	return view('tiket.list_resolved',$data);
     }
 
+    public function performRequestCurl($uri,$method,$param)
+    {
+        // persiapkan curl
+        $ch = curl_init(); 
+        // set url 
+        curl_setopt($ch, CURLOPT_URL, $uri);
+        // return the transfer as a string 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'accept: application/json',
+            'content-type: application/json',
+          ));
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,json_encode($param));
+
+        // $output contains the output string 
+        $output = curl_exec($ch); 
+        $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        // tutup curl 
+        curl_close($ch);      
+
+        // menampilkan hasil curl
+        return ['response' => $output,'statusCode' => $status_code ];
+    }
+
     public function assignTiket(Request $request)
     {
     	$tiket = Tiket::find($request->id);
-        $users = User::where('is_itsupport',1)->get();
+
         $kategoris = Kategori::all();
+        try {
+            $recid = $tiket->pegawai->mapping->regional->recid;
+            $url = "https://ensomsit.iconpln.co.id/api/tiara_getabsen";
+            $param = array(
+                "team" => "CD0B9D4838B34B5D929A758350B39800"
+            );
+            $response = $this->performRequestCurl($url,"POST",$param);
+            $users = json_decode($response['response']);
+            // dd($users);
+        } catch (\Exception $e) {
+            $users = User::where('is_itsupport',1)->get();    
+        }
+
         $data['users'] = $users;
         $data['tiket'] = $tiket;
         $data['state'] = 'tiket';
         $data['kategoris'] = $kategoris;
+        // dd($data['users']);
     	return view('tiket.assign_tiket',$data);
     }
 
     public function storeAssignTiket(Request $request)
     {
     	$tiket = Tiket::find($request->id);
-    	$tiket->it_support = $request->it_support;
+    	$tiket->it_support_username = $request->it_support_username;
     	$tiket->assignment_date = $this->getTimeNow();
         $tiket->status_tiket = 'assigned';
         $tiket->no_tiket = $request->no_tiket;
         $tiket->kategori_id = $request->kategori_id;
     	$tiket->save();
-
         return redirect('tiket-assigned');
     }
 
