@@ -211,7 +211,8 @@ class TiketController extends Controller
     }
 
     public function feedback(Request $request)
-    {
+    {   
+        
         $tikets = Tiket::find($request->id);
         $data['tikets'] = $tikets;
         $data['state'] = 'feedback';
