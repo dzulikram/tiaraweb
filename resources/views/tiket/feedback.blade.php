@@ -40,7 +40,8 @@
                       <tr>
                           <thead>
                           <th nowrap bgcolor="#C7F2F7" style="vertical-align:middle;text-align:left;color:black;font-size:14px;">IT Support</th>
-                          <td><?php echo $tikets->its->name; ?></td>
+                          <td><?php 
+                          if (empty($tikets->its->name)){echo "";}else{echo $tikets->its->name;} ?></td>
                           </thead>                               
                       </tr>  
                       <tr>
