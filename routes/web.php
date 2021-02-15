@@ -101,6 +101,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('resolve/{id}','TiketController@resolve');
 	Route::post('resolve/{id}','TiketController@storeResolve');
 
+	Route::get('statistic','PageController@statistic');
 	Route::get('analytics','PageController@analytics');
 
 	Route::get('chatkategori','ChatKategoriController@index'); // list saran
