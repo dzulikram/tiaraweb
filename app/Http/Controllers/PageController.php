@@ -106,6 +106,12 @@ class PageController extends Controller
         $data['state']="analytics";
         $data['n_cost'] = $n_cost;
 
+        //$n_response_time = DB::select("SELECT id,sender, TIME_TO_SEC(timediff(end_conversation,start_conversation))/60 as response_time, start_conversation, end_conversation FROM `tiket` order by response_time desc");
+
+
+        $data['state']="analytics";
+        // $data['n_response_time'] = $n_response_time;
+
 
         return view('analytics',$data);
     }

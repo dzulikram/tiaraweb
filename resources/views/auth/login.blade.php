@@ -59,6 +59,19 @@
 						</span>
 					</div>
 
+					<div class="wrap-input100 validate-input m-b-10 text-center">
+						<span><?php echo captcha_img('math'); ?></span>
+						<!-- <button type="button" class="btn btn-success btn-refresh">Refresh</button> -->
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
+						<input class="input100" type="text" name="captcha" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock"></i>
+						</span>
+					</div>
+
 					<div class="container-login100-form-btn p-t-10">
 						<button class="login100-form-btn">
 							Login
