@@ -101,14 +101,11 @@ class PageController extends Controller
 
     public function analytics(Request $request)
     {
-        $n_jarak = DB::select("select is_autoclose, sum(biaya) as jumlah from tiket t, pegawai p, mapping m where t.nip = p.nip and p.personnel_subarea_name = m.unit and m.jarak > 0 group by is_autoclose");
-
-
-        $n_unit = DB::select("SELECT p.personnel_subarea_name, count(t.id) as jumlah FROM `tiket` t,pegawai p where t.nip = p.nip group by p.personnel_subarea_name order by jumlah desc");
+        $n_cost = DB::select("select is_autoclose, is_sppd, sum(biaya) as jumlah, count(t.id) as jumlah_tiket from tiket t, pegawai p, mapping m where t.nip = p.nip and p.personnel_subarea_name = m.unit group by is_autoclose, is_sppd");
 
         $data['state']="analytics";
-        $data['n_jarak'] = $n_jarak;
-        $data['n_unit'] = $n_unit;
+        $data['n_cost'] = $n_cost;
+
 
         return view('analytics',$data);
     }

@@ -5,31 +5,92 @@
 <script>
 window.onload = function () {
 
-var chart6 = new CanvasJS.Chart("biaya", {
+var chart1 = new CanvasJS.Chart("chartCallFitur", {
   animationEnabled: true,
-  theme: "light2", // "light1", "light2", "dark1", "dark2"
+  theme: "light1", // "light1", "light2", "dark1", "dark2"
   title:{
-    text: "Biaya Yang Dihemat"
+    text: "Saving Cost by Call Fitur"
   },
   axisY: {
-    title: "Biaya"
+    title: "Cost"
   },
   data: [{        
     type: "column",  
     showInLegend: true, 
     legendMarkerColor: "grey",
-    legendText: "Biaya yang dihemat",
+    legendText: "Saving Cost by Call Fitur",
     dataPoints: [
-    <?php foreach ($n_jarak as $row) 
+    <?php 
+    $total = 0;
+    foreach ($n_cost as $row) 
     {
-      ?>
-      { y: <?php echo $row->jumlah; ?>, label: "<?php if (empty($row->is_autoclose)) echo "IT Support"; else echo "User" ?>"},
-      <?php
+      if (($row->is_sppd == 1) & ($row->is_autoclose != 1))
+      {
+        ?> { y: <?php $subtotal = $row->jumlah + (95000 * $row->jumlah_tiket); echo $subtotal; $total += $subtotal ?>, label: "<?php echo "SPPD"; ?>"}, <?php 
+      }
+      else if (($row->is_sppd != 1) & ($row->is_autoclose != 1))
+      {
+        ?> { y: <?php $subtotal = 95000 * $row->jumlah_tiket; echo $subtotal; $total += $subtotal ?>, label: "<?php echo "NO SPPD"; ?>"}, <?php
+      } 
+    }
+    ?>      
+    ]
+  }]
+});
+chart1.render();
+
+var chart2 = new CanvasJS.Chart("chartUserSolved", {
+  animationEnabled: true,
+  theme: "light2", // "light1", "light2", "dark1", "dark2"
+  title:{
+    text: "Saving Cost by User Solved"
+  },
+  axisY: {
+    title: "Cost"
+  },
+  data: [{        
+    type: "column",  
+    showInLegend: true, 
+    legendMarkerColor: "grey",
+    legendText: "Saving Cost by User Solved",
+    dataPoints: [
+    <?php 
+    foreach ($n_cost as $row) 
+    {
+      if (($row->is_sppd == 1) & ($row->is_autoclose == 1))
+      {
+        ?> { y: <?php $subtotal = ($row->jumlah_tiket * 100000) + $row->jumlah_tiket; echo $subtotal; $total += $subtotal ?>, label: "<?php echo "SPPD"; ?>"}, <?php
+      }
+      else if (($row->is_sppd != 1) & ($row->is_autoclose != 1))
+      {
+        ?> { y: <?php $subtotal = ($row->jumlah_tiket * 100000) + $row->jumlah; echo $subtotal; $total += $subtotal ?>, label: "<?php echo "NO SPPD"; ?>"}, <?php
+      } 
     }?>      
     ]
   }]
 });
-chart6.render();
+chart2.render();
+
+var chart3 = new CanvasJS.Chart("chartTotalCost", {
+  animationEnabled: true,
+  theme: "light2", // "light1", "light2", "dark1", "dark2"
+  title:{
+    text: "Saving Cost Total"
+  },
+  axisY: {
+    title: "Cost"
+  },
+  data: [{        
+    type: "column",  
+    showInLegend: true, 
+    legendMarkerColor: "grey",
+    legendText: "Saving Cost Total",
+    dataPoints: [
+      { y: <?php echo $total; ?>,  label: "Total Cost" }
+    ]
+  }]
+});
+chart3.render();
 
 }
 
@@ -39,11 +100,33 @@ chart6.render();
   <div class="row">
       <div class="col-lg-6 col-md-12">
         <div class="card">
-          <div class="card-header card-header-info">
-            <h4 class="card-title">Jumlah Biaya Yang Dihemat</h4>
+          <div class="card-header card-header-success">
+            <h4 class="card-title">Saving Cost by Call Fitur</h4>
           </div>
           <div class="card-body table-responsive">
-            <div id="biaya" style="height: 300px; width: 100%;"></div>
+            <div id="chartCallFitur" style="height: 300px; width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-info">
+            <h4 class="card-title">Saving Cost by User Solved</h4>
+          </div>
+          <div class="card-body table-responsive">
+            <div id="chartUserSolved" style="height: 300px; width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Saving Cost Total</h4>
+          </div>
+          <div class="card-body table-responsive">
+            <div id="chartTotalCost" style="height: 300px; width: 100%;"></div>
           </div>
         </div>
       </div>

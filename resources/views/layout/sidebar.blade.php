@@ -20,7 +20,7 @@
     </li>
     <li class="nav-item <?php if($state=='analytics'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('analytics')}}">
-        <i class="fa fa-pie-chart" aria-hidden="true"></i>
+        <i class="fa fa-bar-chart" aria-hidden="true"></i>
         <p>Analytics</p>
       </a>
     </li>
