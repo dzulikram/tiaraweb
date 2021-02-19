@@ -129,6 +129,9 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('mapping/edit/{id}','MappingController@edit'); //edit
 	Route::post('mapping','MappingController@store'); //store
 	Route::put('mapping/{id}','MappingController@update'); //update
+	Route::get('sponsor', 'SponsorController@index');
+	Route::get('sponsor/edit/{id}','SponsorController@edit'); //edit
+	Route::put('sponsor/{id}','SponsorController@update'); //update
 
 });
 
