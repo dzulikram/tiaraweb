@@ -91,11 +91,6 @@ class ChatController extends Controller
           ]);
 	}
 
-	public function test()
-	{
-		return "test";
-	}
-
     public function getData(Request $request)
     {
         //dd($this->getTimeNow());

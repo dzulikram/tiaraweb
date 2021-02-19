@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use DB;
 use App\User;
 use App\HistoryPassword;
+use App\Chat;
 
 class PageController extends Controller
 {
@@ -31,8 +32,31 @@ class PageController extends Controller
         $data['tiket_assigned'] = $tiket_assigned;
         $data['tiket_open'] = $tiket_open;
         $data['tiket_pending'] = $tiket_pending;
+
+        $this->cekForClose();
         
         return view('dashboard',$data);
+    }
+
+    public function getTimeNow()
+    {
+        return Carbon::now()->toDateTimeString();
+    }
+
+    public function cekForClose()
+    {
+        $chat_open = DB::select("select id, TIME_TO_SEC(timediff(NOW(),start_conversation))/60 as selisih from chat where status = 'open' and TIME_TO_SEC(timediff(NOW(),start_conversation))/60 > 10");
+        if(!empty($chat_open))
+        {
+            foreach ($chat_open as $row) 
+            {
+                $chat = Chat::find($row->id);
+                $chat->status = "close-conversation";
+                $chat->end_conversation = $this->getTimeNow();
+                $chat->save();
+            }
+        }
+
     }
 
     public function indexUnit()
@@ -113,7 +137,6 @@ class PageController extends Controller
         $data['state']="analytics";
 
         // $data['n_response_time'] = $n_response_time;
-
 
         return view('analytics',$data);
     }
