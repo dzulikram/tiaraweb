@@ -97,6 +97,14 @@
       </a>
     </li>
     @endhasrole
+    @hasrole('admin')
+    <li class="nav-item <?php if($state=='mapping'){echo 'active';} ?>">
+      <a class="nav-link" href="{{url('mapping')}}">
+        <i class="material-icons">perm_identity</i>
+        <p>Mapping</p>
+      </a>
+    </li>
+    @endhasrole
     <!-- <li class="nav-item <?php if($state=='chatkategori'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('chatkategori')}}">
         <i class="material-icons">inbox</i>

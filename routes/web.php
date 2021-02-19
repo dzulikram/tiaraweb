@@ -124,6 +124,11 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('continue/{id}','PendingController@continue');
 	Route::post('continue/{id}','PendingController@storeContinue');
 
+	Route::get('mapping', 'MappingController@index');
+	Route::get('mapping/create','MappingController@create'); // create user
+	Route::get('mapping/edit/{id}','MappingController@edit'); //edit
+	Route::post('mapping','MappingController@store'); //store
+	Route::put('mapping/{id}','MappingController@update'); //update
 
 });
 

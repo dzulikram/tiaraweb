@@ -102,14 +102,16 @@ class PageController extends Controller
     public function analytics(Request $request)
     {
         $n_cost = DB::select("select is_autoclose, is_sppd, sum(biaya) as jumlah, count(t.id) as jumlah_tiket from tiket t, pegawai p, mapping m where t.nip = p.nip and p.personnel_subarea_name = m.unit group by is_autoclose, is_sppd");
+        $n_user_kategori = DB::select("select count(t.id) as jumlah, nip, t.kategori_id, k.kategori from tiket t, kategori k where k.id = t.kategori_id group by nip, t.kategori_id order by jumlah DESC limit 5");
 
         $data['state']="analytics";
         $data['n_cost'] = $n_cost;
-
+        $data['n_user_kategori'] = $n_user_kategori;
         //$n_response_time = DB::select("SELECT id,sender, TIME_TO_SEC(timediff(end_conversation,start_conversation))/60 as response_time, start_conversation, end_conversation FROM `tiket` order by response_time desc");
 
 
         $data['state']="analytics";
+
         // $data['n_response_time'] = $n_response_time;
 
 
