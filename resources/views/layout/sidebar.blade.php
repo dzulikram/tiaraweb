@@ -91,6 +91,14 @@
       </a>
     </li>
     @endhasrole
+    @hasrole('admin')
+    <li class="nav-item <?php if($state=='sponsor'){echo 'active';} ?>">
+      <a class="nav-link" href="{{url('sponsor')}}">
+        <i class="material-icons">contactless</i>
+        <p>Sponsor</p>
+      </a>
+    </li>
+    @endhasrole
     <!-- <li class="nav-item <?php if($state=='chatkategori'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('chatkategori')}}">
         <i class="material-icons">inbox</i>

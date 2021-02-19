@@ -10,6 +10,7 @@ use App\Tiket;
 use App\Mapping;
 use App\User;
 use App\ChatKategori;
+use App\Sponsor;
 
 class ChatController extends Controller
 {
@@ -102,6 +103,7 @@ class ChatController extends Controller
     	$input = $data['query']['message'];
     	$sender = $data['query']['sender'];
     	$chat = Chat::where('sender',$sender)->where('status','open')->first();
+		$sponsor = Sponsor::first();
     	
     	$message = "";
     	// initial state
@@ -481,7 +483,9 @@ c. Untuk mengakhiri percakapan";
             $tiketku = $this->createTiket($chat);
 			$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda.
 Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     	}
     	else if($chat->status == 'open' && $chat->state == 6)
     	{
@@ -655,7 +659,9 @@ Terima kasih telah menghubungi Tiara 🙏☺️
                 $tiketku = $this->createTiket($chat);
 				$message = "IT Support akan menuju ke tempat anda, mohon ditunggu.
 Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else if($input == 2)
     		{
@@ -671,7 +677,9 @@ Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatr
                 $this->addHistory($chat->id,$message);
                 $tiketku = $this->createTiket($chat);
 				$message = "Terimakasih telah membantu dan menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else
     		{
@@ -694,7 +702,9 @@ Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatr
                 $tiketku = $this->createTiket($chat);
 				$message = "IT Support akan menuju ke tempat anda, mohon ditunggu.
 Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else if($input == 2)
     		{
@@ -753,7 +763,9 @@ c. Untuk mengakhiri percakapan";
 				$tiketku = $this->createTiket($chat);
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda.
 Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else if($input == 3)
     		{
@@ -801,7 +813,9 @@ c. Untuk mengakhiri percakapan";
 				$tiketku = $this->createTiket($chat);
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
 Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else
     		{
@@ -832,7 +846,9 @@ Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatr
 				$tiketku = $this->createTiket($chat);
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
 Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else if($input == 3)
     		{
@@ -875,7 +891,9 @@ c. Untuk mengakhiri percakapan";
                 $tiketku = $this->createTiket($chat);
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
 Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else if($chat->lokasi == 'WFH')
     		{
@@ -1013,7 +1031,9 @@ Terima kasih telah menghubungi Tiara 🙏😊";
 			$tiketku = $this->createTiket($chat);
 			$message = "IT Support akan menuju ke tempat anda, mohon ditunggu.
 Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     	}
     	else if($chat->status == 'open' && $chat->state == 31)
     	{
@@ -1039,7 +1059,9 @@ Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatr
 			$tiketku = $this->createTiket($chat);
 			$message = "IT Support akan menuju ke tempat anda, mohon ditunggu
 Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     	}
     	else if($chat->status == 'open' && $chat->state == 35)
     	{
@@ -1057,7 +1079,9 @@ Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatr
                 $tiketku = $this->createTiket($chat);
 				$message = "IT Support akan menuju ke tempat anda, mohon ditunggu
 Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else if($input == 3)
     		{
@@ -1072,7 +1096,9 @@ Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatr
                 $this->addHistory($chat->id,$message);
                 $tiketku = $this->createTiket($chat);
 				$message = "Terima kasih telah membantu Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else
     		{
@@ -1123,7 +1149,9 @@ Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatr
                 $this->addHistory($chat->id,$message);		
                 $tiketku = $this->createTiket($chat);
 				$message = "Terima kasih telah membantu Tiara 🙏☺️
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else if($input == 2)
     		{
@@ -1138,7 +1166,9 @@ Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatr
                 $tiketku = $this->createTiket($chat);
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda.
 Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else
     		{
@@ -1160,7 +1190,9 @@ Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatr
                 $this->addHistory($chat->id,$message);
                 $tiketku = $this->createTiket($chat);
 				$message = "Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else if($input == 2)
     		{
@@ -1176,7 +1208,9 @@ Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatr
                 $tiketku = $this->createTiket($chat);
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
 Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else
     		{
@@ -1199,7 +1233,9 @@ Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatr
                 $this->addHistory($chat->id,$message);
                 $tiketku = $this->createTiket($chat);
 				$message = "Terima kasih telah membantu Tiara 🙏☺️
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else if($input == 2)
     		{
@@ -1215,7 +1251,9 @@ Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatr
                 $tiketku = $this->createTiket($chat);				
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
 Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else
     		{
@@ -1266,7 +1304,9 @@ Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatr
                 $this->addHistory($chat->id,$message);
                 $tiketku = $this->createTiket($chat);
 				$message = "Terima kasih telah membantu Tiara 🙏☺️
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else if($input == 2)
     		{
@@ -1282,7 +1322,9 @@ Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatr
                 $tiketku = $this->createTiket($chat);
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
 Terima kasih telah menghubungi Tiara 🙏😊
-Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id;
+Untuk memberikan feedback silahkan mengisi link berikut : http://tiara.helmysatria.com/feedback/".$tiketku->id."
+
+".$sponsor->sponsor;
     		}
     		else
     		{

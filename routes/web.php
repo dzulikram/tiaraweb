@@ -123,6 +123,9 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('continue/{id}','PendingController@continue');
 	Route::post('continue/{id}','PendingController@storeContinue');
 
+	Route::get('sponsor', 'SponsorController@index');
+	Route::get('sponsor/edit/{id}','SponsorController@edit'); //edit
+	Route::put('sponsor/{id}','SponsorController@update'); //update
 
 });
 

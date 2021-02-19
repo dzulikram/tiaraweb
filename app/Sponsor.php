@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Saran extends Model
+class Sponsor extends Model
 {
-    protected $table = "saran";
+    protected $table = "sponsor";
 }
-
