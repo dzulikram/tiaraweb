@@ -12,10 +12,16 @@
         <p>Dashboard Unit</p>
       </a>
     </li>
+    <li class="nav-item <?php if($state=='statistic'){echo 'active';} ?>">
+      <a class="nav-link" href="{{url('statistic')}}">
+        <i class="fa fa-pie-chart" aria-hidden="true"></i>
+        <p>Statistic</p>
+      </a>
+    </li>
     <li class="nav-item <?php if($state=='analytics'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('analytics')}}">
-        <i class="fa fa-pie-chart" aria-hidden="true"></i>
-        <p>Statistic & Analytics</p>
+        <i class="fa fa-bar-chart" aria-hidden="true"></i>
+        <p>Analytics</p>
       </a>
     </li>
     <li class="nav-item <?php if($state=='tiket'){echo 'active';} ?>">

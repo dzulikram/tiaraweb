@@ -5,334 +5,188 @@
 <script>
 window.onload = function () {
 
-var chart = new CanvasJS.Chart("chartContainer", {
+var chart1 = new CanvasJS.Chart("chartCallFitur", {
   animationEnabled: true,
+  theme: "light1", // "light1", "light2", "dark1", "dark2"
   title:{
-    text: "Solved by IT Support",
-    horizontalAlign: "left"
-  },
-  data: [{
-    type: "doughnut",
-    startAngle: 60,
-    //innerRadius: 60,
-    indexLabelFontSize: 17,
-    indexLabel: "{label} - #percent%",
-    toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-    dataPoints: [
-    <?php foreach ($n_kategori as $row) 
-    {
-      ?>
-      { y: <?php echo $row->jumlah; ?>, label: "<?php echo $row->kategori; ?>",x: <?php echo $row->id; ?> },
-      <?php
-    }?>
-    ],
-    click: function(e){
-    window.location.href = "{{url('tiket/kategori')}}/"+e.dataPoint.x;
-    },
-  }]
-});
-chart.render();
-
-var chart5 = new CanvasJS.Chart("serviceChart", {
-  animationEnabled: true,
-  title:{
-    text: "Service Request",
-    horizontalAlign: "left"
-  },
-  data: [{
-    type: "doughnut",
-    startAngle: 60,
-    //innerRadius: 60,
-    indexLabelFontSize: 17,
-    indexLabel: "{label} - #percent%",
-    toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-    dataPoints: [
-    <?php foreach ($n_service_request as $row) 
-    {
-      ?>
-      { y: <?php echo $row->jumlah; ?>, label: "<?php echo $row->kategori; ?>",x: <?php echo $row->id; ?> },
-      <?php
-    }?>
-    ],
-    click: function(e){
-    window.location.href = "{{url('tiket/kategori')}}/"+e.dataPoint.x;
-    },
-  }]
-});
-chart5.render();
-
-var chart2 = new CanvasJS.Chart("autoCloseChart", {
-  animationEnabled: true,
-  title:{
-    text: "Solved by User",
-    horizontalAlign: "left"
-  },
-  data: [{
-    type: "doughnut",
-    startAngle: 60,
-    //innerRadius: 60,
-    indexLabelFontSize: 17,
-    indexLabel: "{label} - #percent%",
-    toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-    dataPoints: [
-    <?php foreach ($n_autoclose as $row) 
-    {
-      ?>
-      { y: <?php echo $row->jumlah; ?>, label: "<?php echo $row->permasalahan; ?>" },
-      <?php
-    }?>
-    ],
-    click: function(e){
-    window.location.href = "{{url('tiket/permasalahan')}}/"+e.dataPoint.label;
-    },
-  }]
-});
-chart2.render();
-
-var chart3 = new CanvasJS.Chart("supportChart", {
-  animationEnabled: true,
-  data: [{
-    type: "doughnut",
-    startAngle: 60,
-    //innerRadius: 60,
-    indexLabelFontSize: 17,
-    indexLabel: "{label} - #percent%",
-    toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-    dataPoints: [
-    <?php foreach ($n_support as $row) 
-    {
-      ?>
-      { y: <?php echo $row->jumlah; ?>, label: "<?php echo $row->name; ?>",x: <?php echo $row->id; ?> },
-      <?php
-    }?>
-    ],
-    click: function(e){
-    window.location.href = "{{url('tiket/support')}}/"+e.dataPoint.x;
-    },
-  }]
-});
-chart3.render();
-
-var chart4 = new CanvasJS.Chart("userChart", {
-  animationEnabled: true,
-  data: [{
-    type: "doughnut",
-    startAngle: 60,
-    //innerRadius: 60,
-    indexLabelFontSize: 17,
-    indexLabel: "{label} - #percent%",
-    toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-    dataPoints: [
-    <?php foreach ($n_user as $row) 
-    {
-      ?>
-      { y: <?php echo $row->jumlah; ?>, label: "<?php echo $row->name; ?>",x: "<?php echo $row->nip; ?>" },
-      <?php
-    }?>
-    ],
-    click: function(e){
-    window.location.href = "{{url('tiket/user')}}/"+e.dataPoint.x;
-    },
-  }]
-});
-chart4.render();
-
-var chart6 = new CanvasJS.Chart("biaya", {
-  animationEnabled: true,
-  theme: "light2", // "light1", "light2", "dark1", "dark2"
-  title:{
-    text: "Biaya Yang Dihemat"
+    text: "Saving Cost by Call Fitur"
   },
   axisY: {
-    title: "Biaya"
+    title: "Cost"
   },
   data: [{        
     type: "column",  
     showInLegend: true, 
     legendMarkerColor: "grey",
-    legendText: "Biaya yang dihemat",
+    legendText: "Saving Cost by Call Fitur",
     dataPoints: [
-    <?php foreach ($n_jarak as $row) 
+    <?php 
+    $total = 0;
+    foreach ($n_cost as $row) 
     {
-      ?>
-      { y: <?php echo $row->jumlah; ?>, label: "<?php if (empty($row->is_autoclose)) echo "IT Support"; else echo "User" ?>"},
-      <?php
+      if (($row->is_sppd == 1) & ($row->is_autoclose != 1))
+      {
+        ?> { y: <?php $subtotal = $row->jumlah + (95000 * $row->jumlah_tiket); echo $subtotal; $total += $subtotal ?>, label: "<?php echo "SPPD"; ?>"}, <?php 
+      }
+      else if (($row->is_sppd != 1) & ($row->is_autoclose != 1))
+      {
+        ?> { y: <?php $subtotal = 95000 * $row->jumlah_tiket; echo $subtotal; $total += $subtotal ?>, label: "<?php echo "NO SPPD"; ?>"}, <?php
+      } 
+    }
+    ?>      
+    ]
+  }]
+});
+chart1.render();
+
+var chart2 = new CanvasJS.Chart("chartUserSolved", {
+  animationEnabled: true,
+  theme: "light2", // "light1", "light2", "dark1", "dark2"
+  title:{
+    text: "Saving Cost by User Solved"
+  },
+  axisY: {
+    title: "Cost"
+  },
+  data: [{        
+    type: "column",  
+    showInLegend: true, 
+    legendMarkerColor: "grey",
+    legendText: "Saving Cost by User Solved",
+    dataPoints: [
+    <?php 
+    foreach ($n_cost as $row) 
+    {
+      if (($row->is_sppd == 1) & ($row->is_autoclose == 1))
+      {
+        ?> { y: <?php $subtotal = ($row->jumlah_tiket * 100000) + $row->jumlah_tiket; echo $subtotal; $total += $subtotal ?>, label: "<?php echo "SPPD"; ?>"}, <?php
+      }
+      else if (($row->is_sppd != 1) & ($row->is_autoclose != 1))
+      {
+        ?> { y: <?php $subtotal = ($row->jumlah_tiket * 100000) + $row->jumlah; echo $subtotal; $total += $subtotal ?>, label: "<?php echo "NO SPPD"; ?>"}, <?php
+      } 
     }?>      
     ]
   }]
 });
-chart6.render();
+chart2.render();
 
-var chart5 = new CanvasJS.Chart("unitChart", {
+var chart3 = new CanvasJS.Chart("chartTotalCost", {
   animationEnabled: true,
-  data: [{
-    type: "doughnut",
-    startAngle: 60,
-    //innerRadius: 60,
-    indexLabelFontSize: 17,
-    indexLabel: "{label} - #percent%",
-    toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+  theme: "light2", // "light1", "light2", "dark1", "dark2"
+  title:{
+    text: "Saving Cost Total"
+  },
+  axisY: {
+    title: "Cost"
+  },
+  data: [{        
+    type: "column",  
+    showInLegend: true, 
+    legendMarkerColor: "grey",
+    legendText: "Saving Cost Total",
     dataPoints: [
-    <?php foreach ($n_unit as $row) 
-    {
-      ?>
-      { y: <?php echo $row->jumlah; ?>, label: "<?php echo $row->personnel_subarea_name; ?>",x: "<?php echo $row->personnel_subarea_name; ?>" },
-      <?php
-    }?>
-    ],
-    click: function(e){
-    window.location.href = "{{url('tiket/unit')}}/"+e.dataPoint.x;
-    },
+      { y: <?php echo $total; ?>,  label: "Total Cost" }
+    ]
   }]
 });
-chart5.render();
+chart3.render();
+
+var chart = new CanvasJS.Chart("userkategori", {
+  animationEnabled: true,
+  theme: "light2", // "light1", "light2", "dark1", "dark2"
+  title:{
+    text: "Gangguan Berulang"
+  },
+  axisY: {
+    title: "Jumlah Gangguan"
+  },
+  data: [{        
+    type: "column",  
+    showInLegend: true, 
+    legendMarkerColor: "grey",
+    legendText: "Gangguan Per Orang per Kategori",
+    dataPoints: [      
+    <?php foreach ($n_user_kategori as $row) 
+    {
+      ?>
+      { y: <?php echo $row->jumlah; ?>, label: "<?php echo $row->nip; ?>" },
+      <?php
+    }?>
+    ]
+  }]
+});
+chart.render();
 
 }
 
 </script>
 
-<div class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-warning card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">content_copy</i>
-            </div>
-            <p class="card-category">Semua Tiket</p>
-            <h3 class="card-title"><?php echo $n_tiket; ?></h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <a href="{{url('tiket')}}">Daftar Semua Tiket</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-danger card-header-icon">
-            <div class="card-icon">
-              <i class="fa fa-sign-in"></i>
-            </div>
-            <p class="card-category">Tiket Open</p>
-            <h3 class="card-title"><?php echo $n_open; ?></h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <a href="{{url('tiket-open')}}">Daftar Tiket Open</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-info card-header-icon">
-            <div class="card-icon">
-              <i class="fa fa-users" aria-hidden="true"></i>
-            </div>
-            <p class="card-category">Tiket Assigned</p>
-            <h3 class="card-title"><?php echo $n_assigned; ?></h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <a href="{{url('tiket-assigned')}}">Daftar Tiket Assigned</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-success card-header-icon">
-            <div class="card-icon">
-              <i class="fa fa-check"></i>
-            </div>
-            <p class="card-category">Tiket Resolved</p>
-            <h3 class="card-title"><?php echo $n_resolved; ?></h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <a href="{{url('tiket-resolved')}}">Daftar Tiket Resolved</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-6 col-md-12">
-        <div class="card">
-          <div class="card-header card-header-danger">
-            <h4 class="card-title">Jumlah Tiket per Kategori</h4>
-          </div>
-          <div class="card-body table-responsive">
-            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-12">
-        <div class="card">
-          <div class="card-header card-header-info">
-            <h4 class="card-title">Permasalahan Auto Close</h4>
-          </div>
-          <div class="card-body table-responsive">
-            <div id="autoCloseChart" style="height: 300px; width: 100%;"></div>
-          </div>
-        </div>
-      </div>
-  </div>
+<div class="content">      
   <div class="row">
-      <div class="col-lg-6 col-md-12">
-        <div class="card">
-          <div class="card-header card-header-primary">
-            <h4 class="card-title">Jumlah Tiket per IT Support</h4>
-          </div>
-          <div class="card-body table-responsive">
-            <div id="supportChart" style="height: 300px; width: 100%;"></div>
-          </div>
-        </div>
-      </div>
       <div class="col-lg-6 col-md-12">
         <div class="card">
           <div class="card-header card-header-success">
-            <h4 class="card-title">Jumlah Tiket per User</h4>
+            <h4 class="card-title">Saving Cost by Call Fitur</h4>
           </div>
           <div class="card-body table-responsive">
-            <div id="userChart" style="height: 300px; width: 100%;"></div>
+            <div id="chartCallFitur" style="height: 300px; width: 100%;"></div>
           </div>
         </div>
       </div>
-  </div>
-  <div class="row">
-      <div class="col-lg-6 col-md-12">
-        <div class="card">
-          <div class="card-header card-header-primary">
-            <h4 class="card-title">Jumlah Tiket Service Request</h4>
-          </div>
-          <div class="card-body table-responsive">
-            <div id="serviceChart" style="height: 300px; width: 100%;"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-12">
-        <div class="card">
-          <div class="card-header card-header-primary">
-            <h4 class="card-title">Jumlah Tiket Per Unit</h4>
-          </div>
-          <div class="card-body table-responsive">
-            <div id="unitChart" style="height: 300px; width: 100%;"></div>
-          </div>
-        </div>
-      </div>
-  </div>
-  <div class="row">
       <div class="col-lg-6 col-md-12">
         <div class="card">
           <div class="card-header card-header-info">
-            <h4 class="card-title">Jumlah Biaya Yang Dihemat</h4>
+            <h4 class="card-title">Saving Cost by User Solved</h4>
           </div>
           <div class="card-body table-responsive">
-            <div id="biaya" style="height: 300px; width: 100%;"></div>
+            <div id="chartUserSolved" style="height: 300px; width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Saving Cost Total</h4>
+          </div>
+          <div class="card-body table-responsive">
+            <div id="chartTotalCost" style="height: 300px; width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-info">
+            <h4 class="card-title">Gangguan Berulang</h4>
+          </div>
+          <div class="card-body table-responsive">
+            <table class="table table-hover">
+              <thead class="text-danger">
+                <th>No</th>
+                <th>Nama</th>
+                <th>Jenis Gangguan</th>
+                <th>Jumlah</th>
+              </thead>
+              <tbody>
+                <?php 
+                $no = 1;
+                foreach($n_user_kategori as $row)
+                {
+                  ?>
+                  <tr>
+                    <td><?php echo $no; $no++; ?></td>
+                    <td><?php echo $row->nip; ?></td>
+                    <td><?php echo $row->kategori; ?></td>
+                    <td><?php echo $row->jumlah; ?></td>
+                  </tr>
+                  <?php
+                } 
+                ?>
+              </tbody>
+            </table>
+            <!-- <div id="userkategori" style="height: 300px; width: 100%;"></div> -->
           </div>
         </div>
       </div>
