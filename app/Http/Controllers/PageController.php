@@ -33,7 +33,7 @@ class PageController extends Controller
         $data['tiket_open'] = $tiket_open;
         $data['tiket_pending'] = $tiket_pending;
 
-        $this->cekForClose();
+        //$this->cekForClose();
         
         return view('dashboard',$data);
     }
