@@ -7,7 +7,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-info">
-            <h4 class="card-title ">DAFTAR TIKET OPEN</h4>
+            <h4 class="card-title ">DAFTAR TIKET CREATE ITSM</h4>
             <p class="card-category">Divisi STI Operasional Kaltimra</p>
           </div>
           <div class="card-body">
@@ -39,7 +39,7 @@
                       <td><?php echo $row->pegawai->email; ?></td>
                       <td><?php echo $row->no_tiket; ?></td>
                       <td><?php echo $row->status_tiket; ?></td>
-                      <td><a href="{{url('createitsm-tiket')}}/<?php echo $row->id; ?>" class="btn btn-primary">CREATE ITSM</a></td>
+                      <td><a href="{{url('assign-tiket')}}/<?php echo $row->id; ?>" class="btn btn-primary">ASSIGN</a></td>
                     </tr>
                     <?php
                   }

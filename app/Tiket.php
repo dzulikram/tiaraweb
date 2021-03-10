@@ -15,6 +15,11 @@ class Tiket extends Model
 
     public function its()
     {
-    	return $this->belongsTo('App\User', 'it_support_username', 'username');
+    	return $this->belongsTo('App\User', 'it_support', 'id');
+    }
+
+    public function kategori()
+    {
+    	return $this->belongsTo('App\Kategori', 'kategori_id', 'id');
     }
 }

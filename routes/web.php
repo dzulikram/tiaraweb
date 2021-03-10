@@ -32,6 +32,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('user','UserController@store'); //store
 	Route::put('user/{id}','UserController@update'); //update
 	Route::get('user/delete/{id}','UserController@delete'); //delete
+	Route::get('user/lock/{id}','UserController@lock'); //lock
+	Route::get('user/unlock/{id}','UserController@unlock'); //unlock
 
 	Route::get('rekap/harian', 'TiketController@harian');
 	Route::get('rekap/bulanan', 'TiketController@bulanan');
@@ -54,6 +56,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('tiket-resolved','TiketController@indexResolved');
 	Route::get('assign-tiket/{id}','TiketController@assignTiket');
 	Route::post('assign-tiket/{id}','TiketController@storeAssignTiket');
+	Route::get('tiket-createitsm','TiketController@indexCreateitsm');
+	Route::get('createitsm-tiket/{id}','EmailController@email');
 
 	Route::get('today-tiket','TiketController@today');
 	Route::get('today-open','TiketController@todayOpen');
@@ -132,14 +136,19 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 Route::get('thanks','SaranController@thanks');
+Route::get('landingDesktop','SaranController@landingDesktop');
+Route::get('landing','SaranController@landing');
 Route::get('thanksfeed','SaranController@thanksFeed');
 Route::get('input-saran','SaranController@createGuest'); // create saran
 Route::get('pojok-it','PojokController@indexGuest'); // pojok untuk guest
 Route::get('feedback/{id}','TiketController@feedback'); // feedback
 Route::put('feedback/{id}','TiketController@storeFeedback');
 
+
+
 Route::get('reset-password','PageController@resetPassword');
 Route::post('reset-password','PageController@StoreResetPassword');
 
 Route::post('get-data','ChatController@getData');
 Route::post('close-tiket','ChatController@closeTicket');
+Route::get('locked', function(){return View::make("auth/locked");});

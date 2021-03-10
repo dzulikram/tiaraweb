@@ -32,6 +32,7 @@
       <ul class="<?php if($state=='tiket'){echo 'nav';}else{echo 'dropdown-container';} ?>" >
         <a class="nav-link" href="{{url('tiket')}}"><span class="material-icons">narrow_right</span> All</a>
         <a class="nav-link" href="{{url('tiket-open')}}"><span class="material-icons">narrow_right</span> Open</a>
+        <a class="nav-link" href="{{url('tiket-createitsm')}}"><span class="material-icons">narrow_right</span> Create ITSM</a>
         <a class="nav-link" href="{{url('tiket-assigned')}}"><span class="material-icons">narrow_right</span> Assigned</a>
         <a class="nav-link" href="{{url('tiket-resolved')}}"><span class="material-icons">narrow_right</span> Resolved</a>
       </ul>

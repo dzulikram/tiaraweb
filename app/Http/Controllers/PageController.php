@@ -19,6 +19,7 @@ class PageController extends Controller
     	$n_resolved = Tiket::whereDate('start_date',Carbon::now()->toDateString())->where('status_tiket','resolved')->count();
 
     	$tiket_open = Tiket::where('status_tiket','open')->get();
+		$tiket_createitsm = Tiket::where('status_tiket','createitsm')->get();
     	$tiket_assigned = Tiket::where('status_tiket','assigned')->get();
         $tiket_pending = Tiket::where('status_tiket','pending')->get();
         
@@ -30,6 +31,7 @@ class PageController extends Controller
         $data['state']="dashboard";
         $data['tiket_assigned'] = $tiket_assigned;
         $data['tiket_open'] = $tiket_open;
+		$data['tiket_createitsm'] = $tiket_createitsm;
         $data['tiket_pending'] = $tiket_pending;
         
         return view('dashboard',$data);
@@ -43,6 +45,7 @@ class PageController extends Controller
         $n_resolved = Tiket::whereDate('start_date',Carbon::now()->toDateString())->where('status_tiket','resolved')->count();
 
         $tiket_open = Tiket::where('status_tiket','open')->get();
+		$tiket_createitsm = Tiket::where('status_tiket','createitsm')->get();
         $tiket_assigned = Tiket::where('status_tiket','assigned')->get();
         $tiket_pending = Tiket::where('status_tiket','pending')->get();
         
@@ -54,6 +57,7 @@ class PageController extends Controller
         $data['state']="dashboard-unit";
         $data['tiket_assigned'] = $tiket_assigned;
         $data['tiket_open'] = $tiket_open;
+		$data['tiket_createitsm'] = $tiket_createitsm;
         $data['tiket_pending'] = $tiket_pending;
         
         return view('dashboard',$data);

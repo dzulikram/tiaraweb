@@ -69,4 +69,24 @@ class UserController extends Controller
         User::destroy($request->id);
         return redirect('/user');
     }
+
+    public function lock(Request $request)
+    {
+        $user = User::find($request->id);
+    	$user->is_active = 1;
+        $user->wrong = 5;        
+    	$user->save();
+
+    	return redirect('/user');
+    }
+
+    public function unlock(Request $request)
+    {
+        $user = User::find($request->id);
+    	$user->is_active = 0;
+        $user->wrong = 0;        
+    	$user->save();
+
+    	return redirect('/user');
+    }
 }
