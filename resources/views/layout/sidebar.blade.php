@@ -99,6 +99,12 @@
     </li>
     @endhasrole
     @hasrole('admin')
+    <li class="nav-item <?php if($state=='mapping'){echo 'active';} ?>">
+      <a class="nav-link" href="{{url('mapping')}}">
+        <i class="material-icons">perm_identity</i>
+        <p>Mapping</p>
+      </a>
+    </li>
     <li class="nav-item <?php if($state=='sponsor'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('sponsor')}}">
         <i class="material-icons">contactless</i>

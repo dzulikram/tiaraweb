@@ -34,7 +34,7 @@
                 
                     <div class="container">
                     </br></br>
-						<center> <img src="{{asset('assets/img/LOGO5.png')}}" alt="Image" style="width:250px;height:260px;"> </center>
+						<center> <img src="{{asset('assets/img/logo5.png')}}" alt="Image" style="width:250px;height:260px;"> </center>
                     </div>
                     
                     <div class="text-center">
@@ -65,7 +65,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
-						<input class="input100" type="text" name="captcha" placeholder="Password">
+						<input class="input100" type="text" name="captcha" placeholder="Input Captcha Here">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock"></i>
