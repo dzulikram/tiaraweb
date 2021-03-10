@@ -33,6 +33,14 @@ class TiketController extends Controller
     	return view('tiket.list_open',$data);
     }
 
+    public function indexCreateitsm(Request $request)
+    {
+    	$tikets = Tiket::where('status_tiket','createitsm')->get();
+    	$data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+    	return view('tiket.list_createitsm',$data);
+    }
+
     public function indexAssigned(Request $request)
     {
     	$tikets = Tiket::where('status_tiket','assigned')->get();

@@ -35,6 +35,10 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('user/password/{id}','UserController@password'); //ubah password
 	Route::post('user/password','UserController@resetPassword'); //ubah password
 
+	Route::get('user/lock/{id}','UserController@lock'); //lock
+	Route::get('user/unlock/{id}','UserController@unlock'); //unlock
+
+
 	Route::get('rekap/harian', 'TiketController@harian');
 	Route::get('rekap/bulanan', 'TiketController@bulanan');
 	Route::get('rekap/kategori', 'TiketController@kategori');
@@ -56,6 +60,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('tiket-resolved','TiketController@indexResolved');
 	Route::get('assign-tiket/{id}','TiketController@assignTiket');
 	Route::post('assign-tiket/{id}','TiketController@storeAssignTiket');
+	Route::get('tiket-createitsm','TiketController@indexCreateitsm');
+	Route::get('createitsm-tiket/{id}','EmailController@email');
 
 	Route::get('today-tiket','TiketController@today');
 	Route::get('today-open','TiketController@todayOpen');
@@ -126,19 +132,32 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('continue/{id}','PendingController@continue');
 	Route::post('continue/{id}','PendingController@storeContinue');
 
+	Route::get('mapping', 'MappingController@index');
+	Route::get('mapping/create','MappingController@create'); // create user
+	Route::get('mapping/edit/{id}','MappingController@edit'); //edit
+	Route::post('mapping','MappingController@store'); //store
+	Route::put('mapping/{id}','MappingController@update'); //update
+	Route::get('sponsor', 'SponsorController@index');
+	Route::get('sponsor/edit/{id}','SponsorController@edit'); //edit
+	Route::put('sponsor/{id}','SponsorController@update'); //update
 
 });
 
 
 Route::get('thanks','SaranController@thanks');
+Route::get('landingDesktop','SaranController@landingDesktop');
+Route::get('landing','SaranController@landing');
 Route::get('thanksfeed','SaranController@thanksFeed');
 Route::get('input-saran','SaranController@createGuest'); // create saran
 Route::get('pojok-it','PojokController@indexGuest'); // pojok untuk guest
 Route::get('feedback/{id}','TiketController@feedback'); // feedback
 Route::put('feedback/{id}','TiketController@storeFeedback');
 
+
+
 Route::get('reset-password','PageController@resetPassword');
 Route::post('reset-password','PageController@StoreResetPassword');
 
 Route::post('get-data','ChatController@getData');
 Route::post('close-tiket','ChatController@closeTicket');
+Route::get('locked', function(){return View::make("auth/locked");});

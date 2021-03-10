@@ -34,56 +34,16 @@
                 
                     <div class="container">
                     </br></br>
-						<center> <img src="{{asset('assets/img/logo5.png')}}" alt="Image" style="width:250px;height:260px;"> </center>
+						<center> <img src="{{asset('assets/img/LOGO5.png')}}" alt="Image" style="width:250px;height:260px;"> </center>
                     </div>
                     
-                    <div class="text-center">
-                    	@if(Session::has('error_message'))
-                			{{ Session::get('error_message') }}
-                		@endif
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
-						<input class="input100" type="text" name="username" placeholder="Username">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-user"></i>
-						</span>
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock"></i>
-						</span>
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-10 text-center">
-						<span><?php echo captcha_img('math'); ?></span>
-						<!-- <button type="button" class="btn btn-success btn-refresh">Refresh</button> -->
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
-						<input class="input100" type="text" name="captcha" placeholder="Input Captcha Here">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock"></i>
-						</span>
-					</div>
-
-					<div class="container-login100-form-btn p-t-10">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>
-
-					<div class="text-center w-full p-t-25 p-b-230">
+                    <div class="text-center w-full p-t-25 p-b-230">
                         <a class="txt1" href="#">
-                            PT. PLN (Persero) Divisi STI Operasional Kaltimra
+                            <span>Akun anda sudah terkunci</span></br>
+                            <span>Silahkan menghubungi STI setempat</span>
                         </a>
 					</div>
-
+                    
 				</form>
 			</div>
 		</div>

@@ -32,6 +32,7 @@
       <ul class="<?php if($state=='tiket'){echo 'nav';}else{echo 'dropdown-container';} ?>" >
         <a class="nav-link" href="{{url('tiket')}}"><span class="material-icons">narrow_right</span> All</a>
         <a class="nav-link" href="{{url('tiket-open')}}"><span class="material-icons">narrow_right</span> Open</a>
+        <a class="nav-link" href="{{url('tiket-createitsm')}}"><span class="material-icons">narrow_right</span> Create ITSM</a>
         <a class="nav-link" href="{{url('tiket-assigned')}}"><span class="material-icons">narrow_right</span> Assigned</a>
         <a class="nav-link" href="{{url('tiket-resolved')}}"><span class="material-icons">narrow_right</span> Resolved</a>
       </ul>
@@ -94,6 +95,20 @@
       <a class="nav-link" href="{{url('cuti')}}">
         <i class="material-icons">person_off</i>
         <p>Cuti</p>
+      </a>
+    </li>
+    @endhasrole
+    @hasrole('admin')
+    <li class="nav-item <?php if($state=='mapping'){echo 'active';} ?>">
+      <a class="nav-link" href="{{url('mapping')}}">
+        <i class="material-icons">perm_identity</i>
+        <p>Mapping</p>
+      </a>
+    </li>
+    <li class="nav-item <?php if($state=='sponsor'){echo 'active';} ?>">
+      <a class="nav-link" href="{{url('sponsor')}}">
+        <i class="material-icons">contactless</i>
+        <p>Sponsor</p>
       </a>
     </li>
     @endhasrole

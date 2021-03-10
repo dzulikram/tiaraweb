@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Email;
 use App\Saran;
 
 class SaranController extends Controller
@@ -106,4 +108,11 @@ class SaranController extends Controller
     {
         return view('guest.thanksfeed');
     }
+
+
+    public function landingDesktop()
+    {
+        return view('guest.security_desktop');
+    }
+
 }

@@ -53,17 +53,21 @@ var chart2 = new CanvasJS.Chart("chartUserSolved", {
     showInLegend: true, 
     legendMarkerColor: "grey",
     legendText: "Saving Cost by User Solved",
+    axisY:{
+     minimum: 0,
+    },
     dataPoints: [
     <?php 
     foreach ($n_cost as $row) 
     {
       if (($row->is_sppd == 1) && ($row->is_autoclose == 1))
       {
-        ?> { y: <?php $subtotal = ($row->jumlah_tiket * 100000) + $row->jumlah_tiket; echo $subtotal; $total += $subtotal ?>, label: "<?php echo "SPPD"; ?>"}, <?php
+        ?> { y: <?php $subtotal = ($row->jumlah_tiket * 100000) + $row->jumlah; echo $subtotal; $total += $subtotal ?>, label: "<?php echo "SPPD"; ?>"}, <?php
       }
-      else if (($row->is_sppd != 1) && ($row->is_autoclose != 1))
+
+      else if (($row->is_sppd != 1) && ($row->is_autoclose == 1))
       {
-        ?> { y: <?php $subtotal = ($row->jumlah_tiket * 100000) + $row->jumlah; echo $subtotal; $total += $subtotal ?>, label: "<?php echo "NO SPPD"; ?>"}, <?php
+        ?> { y: <?php $subtotal = ($row->jumlah_tiket * 100000); echo $subtotal; $total += $subtotal ?>, label: "<?php echo "NO SPPD"; ?>"}, <?php
       } 
     }?>      
     ]

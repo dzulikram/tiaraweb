@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use DB;
 use App\User;
 use App\HistoryPassword;
+use App\Chat;
 
 class PageController extends Controller
 {
@@ -19,6 +20,7 @@ class PageController extends Controller
     	$n_resolved = Tiket::whereDate('start_date',Carbon::now()->toDateString())->where('status_tiket','resolved')->count();
 
     	$tiket_open = Tiket::where('status_tiket','open')->get();
+		$tiket_createitsm = Tiket::where('status_tiket','createitsm')->get();
     	$tiket_assigned = Tiket::where('status_tiket','assigned')->get();
         $tiket_pending = Tiket::where('status_tiket','pending')->get();
         
@@ -30,9 +32,33 @@ class PageController extends Controller
         $data['state']="dashboard";
         $data['tiket_assigned'] = $tiket_assigned;
         $data['tiket_open'] = $tiket_open;
+		$data['tiket_createitsm'] = $tiket_createitsm;
         $data['tiket_pending'] = $tiket_pending;
+
+        //$this->cekForClose();
         
         return view('dashboard',$data);
+    }
+
+    public function getTimeNow()
+    {
+        return Carbon::now()->toDateTimeString();
+    }
+
+    public function cekForClose()
+    {
+        $chat_open = DB::select("select id, TIME_TO_SEC(timediff(NOW(),start_conversation))/60 as selisih from chat where status = 'open' and TIME_TO_SEC(timediff(NOW(),start_conversation))/60 > 10");
+        if(!empty($chat_open))
+        {
+            foreach ($chat_open as $row) 
+            {
+                $chat = Chat::find($row->id);
+                $chat->status = "close-conversation";
+                $chat->end_conversation = $this->getTimeNow();
+                $chat->save();
+            }
+        }
+
     }
 
     public function indexUnit()
@@ -43,6 +69,7 @@ class PageController extends Controller
         $n_resolved = Tiket::whereDate('start_date',Carbon::now()->toDateString())->where('status_tiket','resolved')->count();
 
         $tiket_open = Tiket::where('status_tiket','open')->get();
+		$tiket_createitsm = Tiket::where('status_tiket','createitsm')->get();
         $tiket_assigned = Tiket::where('status_tiket','assigned')->get();
         $tiket_pending = Tiket::where('status_tiket','pending')->get();
         
@@ -54,6 +81,7 @@ class PageController extends Controller
         $data['state']="dashboard-unit";
         $data['tiket_assigned'] = $tiket_assigned;
         $data['tiket_open'] = $tiket_open;
+		$data['tiket_createitsm'] = $tiket_createitsm;
         $data['tiket_pending'] = $tiket_pending;
         
         return view('dashboard',$data);
@@ -102,10 +130,11 @@ class PageController extends Controller
     public function analytics(Request $request)
     {
         $n_cost = DB::select("select is_autoclose, is_sppd, sum(biaya) as jumlah, count(t.id) as jumlah_tiket from tiket t, pegawai p, mapping m where t.nip = p.nip and p.personnel_subarea_name = m.unit group by is_autoclose, is_sppd");
+        $n_user_kategori = DB::select("select count(t.id) as jumlah, nip, t.kategori_id, k.kategori from tiket t, kategori k where k.id = t.kategori_id group by nip, t.kategori_id order by jumlah DESC limit 5");
 
         $data['state']="analytics";
         $data['n_cost'] = $n_cost;
-
+        $data['n_user_kategori'] = $n_user_kategori;
         //$n_response_time = DB::select("SELECT id,sender, TIME_TO_SEC(timediff(end_conversation,start_conversation))/60 as response_time, start_conversation, end_conversation FROM `tiket` order by response_time desc");
 
         $n_user_kategori = DB::select("select count(t.id) as jumlah, nip, t.kategori_id, k.kategori from tiket t, kategori k where k.id = t.kategori_id group by nip, t.kategori_id order by jumlah DESC limit 5");
@@ -113,6 +142,7 @@ class PageController extends Controller
         $data['state']="analytics";
 
         // $data['n_response_time'] = $n_response_time;
+
         $data['n_user_kategori'] = $n_user_kategori;
 
         return view('analytics',$data);
@@ -214,6 +244,4 @@ class PageController extends Controller
 		\Session::flash('error_message',$error_message);
     	return redirect('login');
     }
-
-
 }

@@ -105,7 +105,7 @@
                         ?></b>
                       </td>
                       <td><b><?php echo $row->call_type."<br/>".$row->start_date; ?></b></td>
-                      <td><a href="{{url('assign-tiket')}}/<?php echo $row->id; ?>" class="btn btn-info">ASSIGN</a></td>
+                      <td><a href="{{url('createitsm-tiket')}}/<?php echo $row->id; ?>" class="btn btn-info">CREATE ITSM</a></td>
                     </tr>
                     <?php
                   }
@@ -125,7 +125,7 @@
                       </td>
                       <td><?php echo $row->call_type."<br/>".$row->start_date; ?></td>
                       <td>
-                        <a href="{{url('assign-tiket')}}/<?php echo $row->id; ?>" class="btn btn-info">ASSIGN</a>
+                        <a href="{{url('createitsm-tiket')}}/<?php echo $row->id; ?>" class="btn btn-info">CREATE ITSM</a>
                       </td>
                     </tr>
                     <?php
@@ -207,6 +207,72 @@
       </div>
       <div class="col-lg-6 col-md-12">
         <div class="card">
+          <div class="card-header card-header-warning">
+            <h4 class="card-title">Tiket Create ITSM</h4>
+          </div>
+          <div class="card-body table-responsive">
+            <table class="table table-hover">
+              <thead class="text-danger">
+                <th>No</th>
+                <th>Pelapor</th>
+                <th>Jam</th>
+                <th>Action</th>
+              </thead>
+              <tbody>
+                <?php
+                $no = 1;
+                foreach ($tiket_createitsm as $row) 
+                {
+                  $diff = (strtotime(date("Y-m-d H:i:s")) - strtotime($row->start_date))/60;
+                  if($diff >= 60 && !empty($row->start_date))
+                  {
+                    ?>
+                    <tr style="color: red">
+                      <td><b><?php echo $no; $no++; ?></b></td>
+                      <td><b><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
+                        <?php if(!empty($row->lokasi))
+                        {
+                          ?>
+                          <br/><?php echo "(".$row->lokasi.")";?> 
+                          <?php
+                        }
+                        ?></b>
+                      </td>
+                      <td><b><?php echo $row->call_type."<br/>".$row->start_date; ?></b></td>
+                      <td><a href="{{url('assign-tiket')}}/<?php echo $row->id; ?>" class="btn btn-info">ASSIGN</a></td>
+                    </tr>
+                    <?php
+                  }
+                  else
+                  {
+                    ?>
+                    <tr>
+                      <td><?php echo $no; $no++; ?></td>
+                      <td><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
+                        <?php if(!empty($row->lokasi))
+                        {
+                          ?>
+                          <br/><?php echo "(".$row->lokasi.")";?> 
+                          <?php
+                        }
+                        ?>
+                      </td>
+                      <td><?php echo $row->call_type."<br/>".$row->start_date; ?></td>
+                      <td>
+                        <a href="{{url('assign-tiket')}}/<?php echo $row->id; ?>" class="btn btn-info">ASSIGN</a>
+                      </td>
+                    </tr>
+                    <?php
+                  }
+                  ?>
+                  <?php
+                }
+                ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
           <div class="card-header card-header-info">
             <h4 class="card-title">Tiket Assigned</h4>
           </div>
@@ -275,6 +341,7 @@
           </div>
         </div>
       </div>
+    </div>
   </div>
 </div>
 @endsection
