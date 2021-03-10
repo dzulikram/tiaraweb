@@ -24,11 +24,11 @@ var chart1 = new CanvasJS.Chart("chartCallFitur", {
     $total = 0;
     foreach ($n_cost as $row) 
     {
-      if (($row->is_sppd == 1) & ($row->is_autoclose != 1))
+      if (($row->is_sppd == 1) && ($row->is_autoclose != 1))
       {
         ?> { y: <?php $subtotal = $row->jumlah + (95000 * $row->jumlah_tiket); echo $subtotal; $total += $subtotal ?>, label: "<?php echo "SPPD"; ?>"}, <?php 
       }
-      else if (($row->is_sppd != 1) & ($row->is_autoclose != 1))
+      else if (($row->is_sppd != 1) && ($row->is_autoclose != 1))
       {
         ?> { y: <?php $subtotal = 95000 * $row->jumlah_tiket; echo $subtotal; $total += $subtotal ?>, label: "<?php echo "NO SPPD"; ?>"}, <?php
       } 
@@ -57,11 +57,11 @@ var chart2 = new CanvasJS.Chart("chartUserSolved", {
     <?php 
     foreach ($n_cost as $row) 
     {
-      if (($row->is_sppd == 1) & ($row->is_autoclose == 1))
+      if (($row->is_sppd == 1) && ($row->is_autoclose == 1))
       {
         ?> { y: <?php $subtotal = ($row->jumlah_tiket * 100000) + $row->jumlah_tiket; echo $subtotal; $total += $subtotal ?>, label: "<?php echo "SPPD"; ?>"}, <?php
       }
-      else if (($row->is_sppd != 1) & ($row->is_autoclose != 1))
+      else if (($row->is_sppd != 1) && ($row->is_autoclose != 1))
       {
         ?> { y: <?php $subtotal = ($row->jumlah_tiket * 100000) + $row->jumlah; echo $subtotal; $total += $subtotal ?>, label: "<?php echo "NO SPPD"; ?>"}, <?php
       } 

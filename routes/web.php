@@ -32,6 +32,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('user','UserController@store'); //store
 	Route::put('user/{id}','UserController@update'); //update
 	Route::get('user/delete/{id}','UserController@delete'); //delete
+	Route::get('user/password/{id}','UserController@password'); //ubah password
+	Route::post('user/password','UserController@resetPassword'); //ubah password
 
 	Route::get('rekap/harian', 'TiketController@harian');
 	Route::get('rekap/bulanan', 'TiketController@bulanan');

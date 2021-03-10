@@ -42,16 +42,23 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
-                          <label class="bmd-label-floating">Password</label>
-                          <input type="password" name="password" value="<?php echo $user->password;?>" class="form-control">
+                          <label class="bmd-label-floating">No WA</label>
+                          <input type="number" name="no_wa" value="<?php echo $user->no_wa;?>" class="form-control">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
-                          <label class="bmd-label-floating">No WA</label>
-                          <input type="number" name="no_wa" value="<?php echo $user->no_wa;?>" class="form-control">
+                          <label class="bmd-label-floating">Role</label>
+                          <select class="form-control" name="role" required>
+                            <option></option>
+                            <?php foreach ($roles as $row) {
+                              ?>
+                              <option value="<?php echo $row->name; ?>"> <?php echo $row->name;?></option>
+                              <?php
+                            } ?>
+                          </select>
                         </div>
                       </div>
                     </div>
