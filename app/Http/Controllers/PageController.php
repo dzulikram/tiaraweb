@@ -101,14 +101,14 @@ class PageController extends Controller
 
         $n_autoclose = DB::select("select t.permasalahan, count(t.id) as jumlah from tiket t where t.is_autoclose = 1 group by t.permasalahan");
 
-        $n_support = DB::select("select u.id, u.`name`, count(t.id) as jumlah from tiket t, users u where t.it_support = u.id group by u.id, u.name order by jumlah desc limit 3");
+        $n_support = DB::select("select u.id, u.name, count(t.id) as jumlah from tiket t, users u where t.it_support = u.id group by u.id, u.name order by jumlah desc limit 3");
 
         $n_user = DB::select("select p.nip, p.name, count(t.id) as jumlah from pegawai p, tiket t where p.nip = t.nip group by p.nip, p.name order by jumlah desc limit 3");
 
         $n_service_request = DB::select("select k.id,k.kategori,count(t.id) as jumlah from kategori k,tiket t where k.id = t.kategori_id and t.is_autoclose is null and k.type = 'service_request' group by k.id,k.kategori");
 
 
-        $n_unit = DB::select("SELECT p.personnel_subarea_name, count(t.id) as jumlah FROM `tiket` t,pegawai p where t.nip = p.nip group by p.personnel_subarea_name order by jumlah desc");
+        $n_unit = DB::select("SELECT p.personnel_subarea_name, count(t.id) as jumlah FROM tiket t,pegawai p where t.nip = p.nip group by p.personnel_subarea_name order by jumlah desc");
 
 
         $data['n_open'] = $n_open;
@@ -135,7 +135,7 @@ class PageController extends Controller
         $data['state']="analytics";
         $data['n_cost'] = $n_cost;
         $data['n_user_kategori'] = $n_user_kategori;
-        //$n_response_time = DB::select("SELECT id,sender, TIME_TO_SEC(timediff(end_conversation,start_conversation))/60 as response_time, start_conversation, end_conversation FROM `tiket` order by response_time desc");
+        //$n_response_time = DB::select("SELECT id,sender, TIME_TO_SEC(timediff(end_conversation,start_conversation))/60 as response_time, start_conversation, end_conversation FROM tiket order by response_time desc");
 
         $n_user_kategori = DB::select("select count(t.id) as jumlah, nip, t.kategori_id, k.kategori from tiket t, kategori k where k.id = t.kategori_id group by nip, t.kategori_id order by jumlah DESC limit 5");
 
