@@ -137,10 +137,13 @@ class PageController extends Controller
         $data['n_user_kategori'] = $n_user_kategori;
         //$n_response_time = DB::select("SELECT id,sender, TIME_TO_SEC(timediff(end_conversation,start_conversation))/60 as response_time, start_conversation, end_conversation FROM `tiket` order by response_time desc");
 
+        $n_user_kategori = DB::select("select count(t.id) as jumlah, nip, t.kategori_id, k.kategori from tiket t, kategori k where k.id = t.kategori_id group by nip, t.kategori_id order by jumlah DESC limit 5");
 
         $data['state']="analytics";
 
         // $data['n_response_time'] = $n_response_time;
+
+        $data['n_user_kategori'] = $n_user_kategori;
 
         return view('analytics',$data);
     }
@@ -241,6 +244,4 @@ class PageController extends Controller
 		\Session::flash('error_message',$error_message);
     	return redirect('login');
     }
-
-
 }
