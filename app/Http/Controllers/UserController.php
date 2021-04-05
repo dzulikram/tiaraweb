@@ -150,6 +150,7 @@ class UserController extends Controller
         \Session::flash('error_message',$error_message);
 
         return redirect('/user');
+    }
 
     public function lock(Request $request)
     {

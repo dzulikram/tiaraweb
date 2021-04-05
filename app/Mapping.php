@@ -10,6 +10,6 @@ class Mapping extends Model
 
     public function regional()
     {
-        return $this->belongsTo('App\RegionalSti', 'regional_sti', 'id');
+        return $this->belongsTo('App\RegionalSti', 'sti_id', 'id');
     }
 }

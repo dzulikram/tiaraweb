@@ -92,11 +92,11 @@ class TiketController extends Controller
             $recid = $tiket->pegawai->mapping->regional->recid;
             $url = "https://ensomsit.iconpln.co.id/api/tiara_getabsen";
             $param = array(
-                "team" => "CD0B9D4838B34B5D929A758350B39800"
+                "team" => $recid
             );
             $response = $this->performRequestCurl($url,"POST",$param);
             $users = json_decode($response['response']);
-            // dd($users);
+            //dd($recid);
         } catch (\Exception $e) {
             $users = User::where('is_itsupport',1)->get();    
         }
@@ -105,7 +105,7 @@ class TiketController extends Controller
         $data['tiket'] = $tiket;
         $data['state'] = 'tiket';
         $data['kategoris'] = $kategoris;
-        // dd($data['users']);
+        //print_r($users);
     	return view('tiket.assign_tiket',$data);
     }
 
