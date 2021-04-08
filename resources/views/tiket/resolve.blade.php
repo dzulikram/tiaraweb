@@ -105,7 +105,7 @@
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">IT Support</label>
-                    <input type="text" name="it_support" class="form-control" value="<?php echo $tiket->its->name; ?>" disabled>
+                    <input type="text" name="it_support" class="form-control" value="<?php if(!empty($row->its->name)) echo $row->its->name; ?>" disabled>
                   </div>
                 </div>
               </div>

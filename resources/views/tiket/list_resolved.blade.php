@@ -36,7 +36,7 @@
                           <?php
                         }
                         ?></td>
-                      <td><?php echo $row->pegawai->email; ?></td>
+                      <td><?php if(!empty($row->pegawai->email)) echo $row->pegawai->email; ?></td>
                       <td><?php echo $row->no_tiket; ?></td>
                       <td><?php echo $row->status_tiket; ?></td>
                       <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
