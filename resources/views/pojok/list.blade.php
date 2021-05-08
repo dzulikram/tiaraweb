@@ -29,8 +29,8 @@
                           <td><?php echo $no++;?></td>
                           <td><?php echo $row->judul;?></td>
                           <td><a href="<?php echo $row->konten;?>" target="_blank"><?php echo $row->konten;?></a></td>
-                          <td><a href="pojok/edit/<?php echo $row->id;?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                              <a href="pojok/delete/<?php echo $row->id;?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                          <td><a href="pojok/edit/<?php echo $row->id;?>" class="btn btn-success btn-sm btn-round"><i class="fa fa-edit"></i></a>
+                              <a href="pojok/delete/<?php echo $row->id;?>" class="btn btn-danger btn-sm btn-round"><i class="fa fa-trash"></i></a>
                         </tr>
                         <?php } ?>
                       </tbody>
