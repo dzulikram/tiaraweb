@@ -231,7 +231,7 @@ c. Untuk mengakhiri percakapan";
     		}
     		else if($input == 4)
     		{
-    			$message = "Silakan akses alamat berikut tiara.helmysatria.com/pojok-it
+    			$message = "Silakan akses alamat berikut https://tiara.pln.co.id/pojok-it
 Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
@@ -242,7 +242,7 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     		}
     		else if($input == 5)
     		{
-    			$message = "Chat & saran silakan mengakses laman berikut ke tiara.helmysatria.com/input-saran
+    			$message = "Chat & saran silakan mengakses laman berikut ke https://tiara.pln.co.id/saran/create
 Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
@@ -370,7 +370,7 @@ Terima kasih telah menghubungi Tiara 🙏☺️
     		}
     		else if($input == 4)
     		{
-    			$message = "Silakan mengunjungi laman berikut : tiara.helmysatria.com
+    			$message = "Silakan mengunjungi laman berikut : https://tiara.pln.co.id/pojok-it
 Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
@@ -381,7 +381,7 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     		}
     		else if($input == 5)
     		{
-    			$message = "Untuk keluhan dan saran, silakan mengunjungi laman berikut : tiara.helmysatria.com
+    			$message = "Untuk keluhan dan saran, silakan mengunjungi laman berikut : https://tiara.pln.co.id/saran/create
 Terima kasih telah menghubungi Tiara 🙏😊";
 				$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
@@ -509,7 +509,6 @@ c. Untuk mengakhiri percakapan";
 			$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda.
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     	}
@@ -686,7 +685,6 @@ Terima kasih telah menghubungi Tiara 🙏☺️
 				$message = "IT Support akan menuju ke tempat anda, mohon ditunggu.
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -705,7 +703,6 @@ Kritik dan Saran : https://tiara.pln.co.id/saran/create
                 $tiketku = $this->createTiket($chat);
 				$message = "Terimakasih telah membantu dan menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -731,7 +728,6 @@ Kritik dan Saran : https://tiara.pln.co.id/saran/create
 				$message = "IT Support akan menuju ke tempat anda, mohon ditunggu.
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -793,7 +789,6 @@ c. Untuk mengakhiri percakapan";
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda.
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -844,7 +839,6 @@ c. Untuk mengakhiri percakapan";
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -878,7 +872,6 @@ Kritik dan Saran : https://tiara.pln.co.id/saran/create
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -924,7 +917,6 @@ c. Untuk mengakhiri percakapan";
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -1065,7 +1057,6 @@ Terima kasih telah menghubungi Tiara 🙏😊";
 			$message = "IT Support akan menuju ke tempat anda, mohon ditunggu.
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     	}
@@ -1094,7 +1085,6 @@ Kritik dan Saran : https://tiara.pln.co.id/saran/create
 			$message = "IT Support akan menuju ke tempat anda, mohon ditunggu
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     	}
@@ -1115,7 +1105,6 @@ Kritik dan Saran : https://tiara.pln.co.id/saran/create
 				$message = "IT Support akan menuju ke tempat anda, mohon ditunggu
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -1133,7 +1122,6 @@ Kritik dan Saran : https://tiara.pln.co.id/saran/create
                 $tiketku = $this->createTiket($chat);
 				$message = "Terima kasih telah membantu Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -1187,7 +1175,6 @@ Kritik dan Saran : https://tiara.pln.co.id/saran/create
                 $tiketku = $this->createTiket($chat);
 				$message = "Terima kasih telah membantu Tiara 🙏☺️
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -1205,7 +1192,6 @@ Kritik dan Saran : https://tiara.pln.co.id/saran/create
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda.
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -1230,7 +1216,6 @@ Kritik dan Saran : https://tiara.pln.co.id/saran/create
                 $tiketku = $this->createTiket($chat);
 				$message = "Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -1249,7 +1234,6 @@ Kritik dan Saran : https://tiara.pln.co.id/saran/create
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -1275,7 +1259,6 @@ Kritik dan Saran : https://tiara.pln.co.id/saran/create
                 $tiketku = $this->createTiket($chat);
 				$message = "Terima kasih telah membantu Tiara 🙏☺️
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -1294,7 +1277,6 @@ Kritik dan Saran : https://tiara.pln.co.id/saran/create
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -1348,7 +1330,6 @@ Kritik dan Saran : https://tiara.pln.co.id/saran/create
                 $tiketku = $this->createTiket($chat);
 				$message = "Terima kasih telah membantu Tiara 🙏☺️
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}
@@ -1367,7 +1348,6 @@ Kritik dan Saran : https://tiara.pln.co.id/saran/create
 				$message = "Mohon ditunggu, akan ada IT Support yang akan mendatangi anda
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tiara.pln.co.id/feedback/".$tiketku->id."
-Kritik dan Saran : https://tiara.pln.co.id/saran/create
 
 ".$sponsor->sponsor;
     		}

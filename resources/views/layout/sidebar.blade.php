@@ -124,14 +124,14 @@
       </a>
     </li>
     @endhasrole
-    <!-- @hasrole('admin|dispatcher_unit')
+    @hasrole('admin')
     <li class="nav-item <?php if($state=='pojok'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('pojok')}}">
         <i class="material-icons">desktop_windows</i>
         <p>Pojok IT</p>
       </a>
     </li>
-    @endhasrole -->
+    @endhasrole
     @hasrole('admin')
     <li class="nav-item <?php if($state=='user'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('user')}}">

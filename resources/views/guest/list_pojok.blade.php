@@ -17,7 +17,6 @@
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">No.</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Judul</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Konten</th>
-                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Action</th>
                       </thead>
                       <tbody>
                         <?php
@@ -28,8 +27,7 @@
                           <td><?php echo $no++;?></td>
                           <td><?php echo $row->judul;?></td>
                           <td><a href="<?php echo $row->konten;?>" target="_blank"><?php echo $row->konten;?></a></td>
-                          <td><a href="pojok/edit/<?php echo $row->id;?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                              <a href="pojok/delete/<?php echo $row->id;?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                          
                         </tr>
                         <?php } ?>
                       </tbody>
