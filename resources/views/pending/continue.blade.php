@@ -85,31 +85,31 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">End Date</label>
                     <input type="text" class="form-control" value="<?php echo $tiket->end_date; ?>" disabled>
                   </div>
                 </div>
-              </div>
-              <div class="row">
+              </div> -->
+              <!-- <div class="row">
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">NO Tiket</label>
                     <input type="text" name="no_tiket" class="form-control" value="<?php echo $tiket->no_tiket; ?>">
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">Kategori</label>
-                    <select class="form-control" name="kategori_id" required>
+                    <select class="form-control" name="kategori_id" disabled>
                       <option></option>
                       <?php foreach ($kategoris as $row) {
                         ?>
-                        <option value="<?php echo $row->id; ?>" <?php if(($row->id == $tiket->kategori_id) && !empty($tiket->kategori_id)) echo "selected"; ?>><?php echo $row->kategori; ?></option>
+                        <option value="<?php echo $row->id; ?>" <?php if(($row->id == $tiket->kategori_id) && !empty($tiket->kategori_id)) echo "selected"; ?>><?php echo $row->name; ?></option>
                         <?php
                       } ?>
                     </select>
@@ -124,7 +124,7 @@
                       <option></option>
                       <?php foreach ($users as $row) {
                         ?>
-                        <option value="<?php echo $row->id; ?>" <?php if($row->id == $tiket->it_support) echo "selected"; ?>><?php echo $row->name; ?></option>
+                        <option value="<?php echo $row->username; ?>" <?php if($row->username == $tiket->it_support) echo "selected"; ?>><?php echo $row->name; ?></option>
                         <?php
                       } ?>
                     </select>

@@ -7,11 +7,11 @@
       <div class="col-md-12">              
         <div class="card">
           <div class="card-header card-header-info">
-            <h4 class="card-title ">RESOLVE TIKET</h4>
+            <h4 class="card-title ">CREATE TIKET INCIDENT</h4>
             <p class="card-category">Divisi STI Operasional Kaltimra</p>
           </div>
           <div class="card-body">
-            <form method="post" action="{{url('resolve')}}/<?php echo $tiket->id; ?>">
+            <form method="post" action="{{url('incident-tiket')}}/<?php echo $tiket->id; ?>">
               @csrf
               <div class="row">
                 <div class="col-md-12">
@@ -77,14 +77,14 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">Assignment Date</label>
                     <input type="text" class="form-control" value="<?php echo $tiket->assignment_date; ?>" disabled>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <!-- <div class="row">
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
@@ -93,11 +93,52 @@
                   </div>
                 </div>
               </div> -->
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">NO Tiket</label>
-                    <input type="text" name="no_tiket" class="form-control" required>
+                    <input type="text" name="no_tiket" class="form-control" value="<?php echo $tiket->no_tiket; ?>">
+                  </div>
+                </div>
+              </div> -->
+              <div class="row">
+                <div class="col-md-1">
+                  <div class="form-group label-floating has-info">
+                    <label class="bmd-label-floating">Priority</label>
+                    <select class="form-control" name="priority" required>
+                      <option></option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>                      
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group label-floating has-info">
+                    <label class="bmd-label-floating">Urgency</label>
+                    <select class="form-control" name="urgency" required>
+                      <option></option>
+                      <option>Low</option>
+                      <option>Medium</option>
+                      <option>High</option>
+                      <option>Critical</option>                      
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group label-floating has-info">
+                    <label class="bmd-label-floating">Kategori</label>
+                    <select class="form-control" name="kategori_id" required>
+                      <option></option>
+                      <?php foreach ($kategoris as $row) {
+                        ?>
+                        <option value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
+                        <?php
+                      } ?>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -105,11 +146,23 @@
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">IT Support</label>
-                    <input type="text" name="it_support" class="form-control" value="<?php if(!empty($tiket->its->name)) echo $tiket->its->name; ?>" disabled>
+                    <select class="form-control" name="it_support_username" required>
+                      <option></option>
+                      <?php foreach ($users as $row) {
+                        ?>
+                        <option value="<?php if(!empty($row->username)) echo $row->username; ?>
+                          <?php if(!empty($row->LoginID)) echo $row->LoginID; ?>">
+                          <?php if(!empty($row->name)) echo $row->name; ?>
+                          <?php if(!empty($row->Nama)) echo $row->Nama; ?></option>
+                        <?php
+                      } ?>
+                    </select>
                   </div>
                 </div>
-              </div>
-              <button type="submit" class="btn btn-info pull-right">RESOLVE</button>
+              </div>     
+              <button type="submit" class="btn btn-info pull-right">CREATE ITSM</button>
+              <a href="{{url('createitsm-tiket')}}/<?php echo $tiket->id; ?>" class="btn btn-light-dark pull-right">Cancel</a>
+              <!-- <button type="submit" class="btn btn-primary pull-right" disabled>ASSIGN IVANTI (SOON)</button> -->
               <div class="clearfix"></div>
             </form>
           </div>

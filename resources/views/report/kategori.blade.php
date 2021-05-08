@@ -10,7 +10,12 @@
                   <p class="card-title">FILTER</p>
                 </div>
                 <div class="card-body">
+                  @hasrole('admin')
                   <form class="form-horizontal" method="post" action="{{url('report-kategori/filter')}}" enctype="multipart/form-data">
+                  @endhasrole
+                  @hasrole('dispatcher_unit')
+                  <form class="form-horizontal" method="post" action="{{url('report-kategori-unit/filter')}}" enctype="multipart/form-data">
+                  @endhasrole
                     @csrf
                     <div class="table-responsive">
                       <table class="table">
@@ -74,9 +79,16 @@
                         ?>
                         <tr>
                           <td><?php echo $no;$no++;?></td>
-                          <td><?php echo $row->kategori;?></td>
+                          <td><?php echo $row->name;?></td>
                           <td><?php echo $row->jumlah;?></td>
-                          <td><a href="{{url('tiket/kategori')}}/<?php echo $row->id; ?>" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                          <td>
+                          @hasrole('admin')
+                          <a href="{{url('tiket/kategori')}}/<?php echo $row->id; ?>" class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                          @endhasrole
+                          @hasrole('dispatcher_unit')
+                          <a href="{{url('tiket/kategori-unit')}}/<?php echo $row->id; ?>" class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                          @endhasrole
+                          </td>
                         </tr>
                         <?php } ?>
                       </tbody>

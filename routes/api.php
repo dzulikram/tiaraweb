@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 $router->post('get-data', 'ChatController@getData')->middleware('basic_auth');
+Route::post('close-tiket','ChatController@closeTicket')->middleware('basic_auth');

@@ -7,7 +7,7 @@
             <div class="col-md-12">              
               <div class="card">
                 <div class="card-header card-header-info">
-                  <h4 class="card-title ">EDIT SPONSOR</h4>
+                  <h4 class="card-title ">EDIT AWARENESS</h4>
                   <p class="card-category">Divisi STI Operasional Kaltimra</p>
                 </div>
                 <div class="card-body">

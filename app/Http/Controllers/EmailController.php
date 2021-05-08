@@ -6,23 +6,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Email;
 use App\Tiket;
+use App\Kategori;
+use Auth;
 
 class EmailController extends Controller
 {
     public function email(Request $request)
     {
-        $tikets = Tiket::find($request->id);
-        if($tikets->call_type=="incident")
-        {
-            $kategorimail = "incident";
-        }
+        $auth = Auth::user()->id;
+        $tiket = Tiket::find($request->id);
+        $tiket->kategori_id = $request->kategori_id;
+        
+        $tiket->save();          
+        $kategorimail = $tiket->kategori->kategori;
+        Mail::to("dzul.ikram@pln.co.id")->send(new Email($tiket->id,$tiket->call_type,$tiket->permasalahan,$tiket->pegawai->nip,$tiket->pegawai->name,$tiket->pegawai->personnel_subarea_name,$tiket->pegawai->email,$kategorimail));
+        $tiket->status_tiket = 'assigned';
+    	$tiket->save();
+        if($auth != 1)
+            {return redirect('dashboard-unit')->with(['success' => 'Message']);}
         else
-        {
-            $kategorimail = $tikets->kategori->kategori;
-        }
-        Mail::to("dzul.ikram@pln.co.id")->send(new Email($tikets->id,$tikets->call_type,$tikets->permasalahan,$tikets->pegawai->nip,$tikets->pegawai->name,$tikets->pegawai->personnel_subarea_name,$tikets->pegawai->email,$kategorimail));
-        $tikets->status_tiket = 'createitsm';
-    	$tikets->save();
-        return redirect('tiket-open'); 
+            {return redirect('dashboard')->with(['success' => 'Message']);}
     }
 }

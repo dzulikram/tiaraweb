@@ -1,7 +1,5 @@
 @extends('layout.app')
 
-@section('title', 'Pegawai')
-
 @section('content')
 <div class="content">
         <div class="container-fluid">
@@ -40,8 +38,8 @@
                           <td><?php echo $row->personnel_area_name;?></td>
                           <td><?php echo $row->personnel_subarea_name;?></td>
                           <td><?php echo $row->position;?></td>
-                          <td><a href="pegawai/edit/<?php echo $row->id;?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                              <a href="pegawai/delete/<?php echo $row->id;?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                          <td><a href="pegawai/edit/<?php echo $row->id;?>" class="btn btn-success btn-sm btn-round"><i class="fa fa-edit"></i></a>
+                              <a href="pegawai/delete/<?php echo $row->id;?>" class="btn btn-danger btn-sm btn-round"><i class="fa fa-trash"></i></a>
                         </tr>
                         <?php } ?>
                       </tbody>

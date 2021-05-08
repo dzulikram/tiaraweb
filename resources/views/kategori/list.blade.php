@@ -1,13 +1,11 @@
 @extends('layout.app')
 
-@section('title', 'Kategori')
-
 @section('content')
 <div class="content">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <a href="{{url('kategori/create')}}" class="btn btn-info pull-left"><i class="fa fa-plus"></i> TAMBAH KATEGORI</a></br></br>
+              <!-- <a href="{{url('kategori/create')}}" class="btn btn-info pull-left"><i class="fa fa-plus"></i> TAMBAH KATEGORI</a></br></br> -->
               <div class="card">
                 <div class="card-header card-header-info">
                   <h4 class="card-title ">DAFTAR KATEGORI</h4>
@@ -19,6 +17,7 @@
                       <thead class=" text-info">
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">No.</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Kategori</th>
+                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Type</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Action</th>
                       </thead>
                       <tbody>
@@ -26,14 +25,18 @@
                         $no = 1;
                         foreach ($kategoris as $row) 
                         {
+                          if(!empty($row->type))
+                          {
                           ?>
                           <tr>
                             <td><?php echo $no; $no++; ?></td>
-                            <td><?php echo $row->kategori; ?></td>
-                            <td><a href="kategori/edit/<?php echo $row->id;?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                              <a href="kategori/delete/<?php echo $row->id;?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                            <td><?php echo $row->name; ?></td>
+                            <td><?php echo $row->type; ?></td>
+                            <td><a href="kategori/edit/<?php echo $row->id;?>" class="btn btn-success btn-sm btn-round"><i class="fa fa-edit"></i></a>
+                              <a href="kategori/delete/<?php echo $row->id;?>" class="btn btn-danger btn-sm btn-round"><i class="fa fa-trash"></i></a>
                           </tr>
                           <?php
+                          }
                         }
                         ?>
                       </tbody>

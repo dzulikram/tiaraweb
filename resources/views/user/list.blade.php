@@ -1,7 +1,5 @@
 @extends('layout.app')
 
-@section('title', 'User')
-
 @section('content')
 <div class="content">
         <div class="container-fluid">
@@ -35,14 +33,14 @@
                           <td><?php echo $row->email;?></td>
                           <td><?php echo $row->username;?></td>
                           <?php if($row->username!='administrator'){?>
-                          <td><a href="{{url('/user/edit')}}/<?php echo $row->id;?>" class="btn btn-success btn-sm" ><i class="fa fa-edit"></i></a>
-                              <a href="{{url('/user/delete')}}/<?php echo $row->id;?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                              <a href="{{url('/user/password')}}/<?php echo $row->id;?>" class="btn btn-info btn-sm"><i class="fa fa-lock"></i></a>
+                          <td><a href="{{url('/user/edit')}}/<?php echo $row->id;?>" class="btn btn-success btn-sm btn-round" ><i class="fa fa-edit"></i></a>
+                              <a href="{{url('/user/delete')}}/<?php echo $row->id;?>" class="btn btn-danger btn-sm btn-round"><i class="fa fa-trash"></i></a>
+                              <a href="{{url('/user/password')}}/<?php echo $row->id;?>" class="btn btn-info btn-sm btn-round"><i class="fa fa-key"></i></a>
                               <?php if($row->is_active==1){?>
-                              <a href="{{url('/user/unlock')}}/<?php echo $row->id;?>" class="btn btn-info btn-sm"><i class="fa fa-unlock"></i></a>
+                              <a href="{{url('/user/unlock')}}/<?php echo $row->id;?>" class="btn btn-info btn-sm btn-round"><i class="fa fa-unlock"></i></a>
                               <?php }
                               else{ ?> 
-                                <a href="{{url('/user/lock')}}/<?php echo $row->id;?>" class="btn btn-warning btn-sm"><i class="fa fa-lock"></i></a>
+                                <a href="{{url('/user/lock')}}/<?php echo $row->id;?>" class="btn btn-warning btn-sm btn-round"><i class="fa fa-lock"></i></a>
                               <?php } 
                           }?>
                           </td>

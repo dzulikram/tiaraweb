@@ -43,16 +43,23 @@
                       <td><?php echo $row->status_tiket; ?></td>
                       <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
                       <td><?php
-                      if($row->status_tiket != "resolved")
+                      if($row->status_tiket == "open")
                       {
                         ?>
-                        <a href="{{url('assign-tiket')}}/<?php echo $row->id; ?>" class="btn btn-primary">ASSIGN</a>
+                        <a href="{{url('createitsm-tiket')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-warning">CREATE ITSM</a>
                         <?php
-                      }
+                      }                      
                       if($row->status_tiket == "assigned")
                       {
                         ?>
-                        <a href="{{url('resolve')}}/<?php echo $row->id; ?>" class="btn btn-primary">RESOLVE</a>
+                        <a href="{{url('resolve')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-info">RESOLVE</a>
+                        <a href="{{url('pending')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-danger">PENDING</a>
+                        <?php
+                      }
+                      if($row->status_tiket == "pending")
+                      {
+                        ?>
+                        <a href="{{url('continue')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-success">CONTINUE</a>
                         <?php
                       }
                       ?>

@@ -79,7 +79,7 @@ class KategoriController extends Controller
     public function update(Request $request)
     {
         $kategori = Kategori::find($request->id);
-        $kategori->kategori = $request->kategori;
+        $kategori->name = $request->name;
         $kategori->save();
 
         //$kategori->syncRoles([$request->role]);

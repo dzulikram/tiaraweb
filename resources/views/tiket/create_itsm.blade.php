@@ -7,11 +7,11 @@
       <div class="col-md-12">              
         <div class="card">
           <div class="card-header card-header-info">
-            <h4 class="card-title ">RESOLVE TIKET</h4>
+            <h4 class="card-title ">CREATE ITSM</h4>
             <p class="card-category">Divisi STI Operasional Kaltimra</p>
           </div>
           <div class="card-body">
-            <form method="post" action="{{url('resolve')}}/<?php echo $tiket->id; ?>">
+            <form>
               @csrf
               <div class="row">
                 <div class="col-md-12">
@@ -68,50 +68,18 @@
                     <input type="text" name="permasalahan" class="form-control" value="<?php echo $tiket->permasalahan; ?>" disabled>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group label-floating has-info">
-                    <label class="bmd-label-floating">Start Date</label>
-                    <input type="text" class="form-control" value="<?php echo $tiket->start_date; ?>" disabled>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group label-floating has-info">
-                    <label class="bmd-label-floating">Assignment Date</label>
-                    <input type="text" class="form-control" value="<?php echo $tiket->assignment_date; ?>" disabled>
-                  </div>
-                </div>
-              </div>
-              <!-- <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group label-floating has-info">
-                    <label class="bmd-label-floating">End Date</label>
-                    <input type="text" class="form-control" value="<?php echo $tiket->end_date; ?>" disabled>
-                  </div>
-                </div>
-              </div> -->
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group label-floating has-info">
-                    <label class="bmd-label-floating">NO Tiket</label>
-                    <input type="text" name="no_tiket" class="form-control" required>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group label-floating has-info">
-                    <label class="bmd-label-floating">IT Support</label>
-                    <input type="text" name="it_support" class="form-control" value="<?php if(!empty($tiket->its->name)) echo $tiket->its->name; ?>" disabled>
-                  </div>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-info pull-right">RESOLVE</button>
+              </div>                         
               <div class="clearfix"></div>
             </form>
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group label-floating has-info">
+                    <a href="{{url('incident-tiket')}}/<?php echo $tiket->id; ?>" class="btn btn-danger btn-sm"><i class="fa fa-check-square-o" aria-hidden="true"></i> INCIDENT</a>
+                    <a href="{{url('srq-tiket')}}/<?php echo $tiket->id; ?>" class="btn btn-warning btn-sm"><i class="fa fa-minus-square-o" aria-hidden="true"></i> SERVIE REQUEST</a>
+                    <a href="{{url('email-tiket')}}/<?php echo $tiket->id; ?>" class="btn btn-info btn-sm"><i class="fa fa-envelope-o" aria-hidden="true"></i> EMAIL</a>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
       </div>

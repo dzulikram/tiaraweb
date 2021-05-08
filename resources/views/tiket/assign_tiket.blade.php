@@ -77,22 +77,22 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">Assignment Date</label>
                     <input type="text" class="form-control" value="<?php echo $tiket->assignment_date; ?>" disabled>
                   </div>
                 </div>
-              </div>
-              <div class="row">
+              </div> -->
+              <!-- <div class="row">
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">End Date</label>
                     <input type="text" class="form-control" value="<?php echo $tiket->end_date; ?>" disabled>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
@@ -124,7 +124,10 @@
                       <option></option>
                       <?php foreach ($users as $row) {
                         ?>
-                        <option value="<?php if(!empty($row->username)) echo $row->username; ?><?php if(!empty($row->LoginID)) echo $row->LoginID; ?>"><?php if(!empty($row->name)) echo $row->name; ?><?php if(!empty($row->Nama)) echo $row->Nama; ?></option>
+                        <option value="<?php if(!empty($row->username)) echo $row->username; ?>
+                          <?php if(!empty($row->LoginID)) echo $row->LoginID; ?>">
+                          <?php if(!empty($row->name)) echo $row->name; ?>
+                          <?php if(!empty($row->Nama)) echo $row->Nama; ?></option>
                         <?php
                       } ?>
                     </select>
@@ -132,7 +135,7 @@
                 </div>
               </div>
               <button type="submit" class="btn btn-info pull-right">ASSIGN ITSM</button>
-              <button type="submit" class="btn btn-primary pull-right" disabled>ASSIGN IVANTI (SOON)</button>
+              <!-- <button type="submit" class="btn btn-primary pull-right" disabled>ASSIGN IVANTI (SOON)</button> -->
               <div class="clearfix"></div>
             </form>
           </div>

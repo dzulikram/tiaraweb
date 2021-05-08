@@ -55,7 +55,7 @@ class Email extends Mailable
         return $this->from('tiara@pln.co.id')
                     ->cc(['tiara@pln.co.id',$this->email])
                     ->view('email',$data)
-                    ->subject($subject."-IT SUPPORT-".$this->permasalahan." #T".$this->id)
+                    ->subject($subject."-".$this->kategori." #T".$this->id)
                     ->with(
                         [
                             'nama' => 'STI Kaltimra',

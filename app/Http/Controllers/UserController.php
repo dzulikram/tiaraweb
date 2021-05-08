@@ -12,7 +12,7 @@ class UserController extends Controller
 	public function index()
 	{   
         $data['state'] = "user";
-		$data['users'] = User::all();
+		$data['users'] = User::where('is_itsupport',NULL)->get();
 		return view('user.list',$data);
 	}
 

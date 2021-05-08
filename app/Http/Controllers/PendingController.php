@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\Tiket;
 use App\Kategori;
 use App\User;
+use Auth;
 
 class PendingController extends Controller
 {
@@ -24,6 +25,7 @@ class PendingController extends Controller
 
 	public function storeById(Request $request)
 	{
+		$auth = Auth::user()->id;
 		$tiket = Tiket::find($request->id);
 		$tiket->status_tiket = 'pending';
 		$tiket->save();
@@ -34,8 +36,10 @@ class PendingController extends Controller
 		$pending->reason = $request->reason;
 		$pending->action_by = $tiket->it_support;
 		$pending->save();
-
-		return redirect('dashboard');
+		if($auth != 1)
+            {return redirect('dashboard-unit');}
+        else
+            {return redirect('dashboard');}
 	}
 
 	public function getTimeNow()
@@ -56,6 +60,7 @@ class PendingController extends Controller
 
 	public function storeContinue(Request $request)
 	{
+		$auth = Auth::user()->id;
 		$tiket = Tiket::find($request->id);
 		$tiket->status_tiket = 'assigned';
 		$tiket->save();
@@ -63,6 +68,9 @@ class PendingController extends Controller
 		$pending = Pending::where('tiket_id',$tiket->id)->whereNull('end')->first();
 		$pending->end = $this->getTimeNow();
 		$pending->save();
-		return redirect('dashboard');
+		if($auth != 1)
+            {return redirect('dashboard-unit');}
+        else
+            {return redirect('dashboard');}
 	}
 }

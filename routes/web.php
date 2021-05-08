@@ -55,13 +55,29 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('chat','ChatController@index');
 
 	Route::get('tiket','TiketController@index');
-	Route::get('tiket-open','TiketController@indexOpen');
+	Route::get('tiket-open','TiketController@indexOpen');	
+	Route::get('tiket-createitsm','TiketController@indexCreateitsm');
 	Route::get('tiket-assigned','TiketController@indexAssigned');
 	Route::get('tiket-resolved','TiketController@indexResolved');
+	
+	Route::get('tiket-unit','TiketController@indexunit');
+	Route::get('tiket-open-unit','TiketController@indexOpenunit');	
+	Route::get('tiket-createitsm-unit','TiketController@indexCreateitsmunit');
+	Route::get('tiket-assigned-unit','TiketController@indexAssignedunit');
+	Route::get('tiket-resolved-unit','TiketController@indexResolvedunit');
+	
 	Route::get('assign-tiket/{id}','TiketController@assignTiket');
 	Route::post('assign-tiket/{id}','TiketController@storeAssignTiket');
-	Route::get('tiket-createitsm','TiketController@indexCreateitsm');
-	Route::get('createitsm-tiket/{id}','EmailController@email');
+	Route::get('createitsm-tiket/{id}','TiketController@Createitsm');
+	Route::get('email-tiket/{id}','TiketController@emailTiket');
+	Route::post('email-tiket/{id}','EmailController@email');
+	Route::get('incident-tiket/{id}','TiketController@incidentTiket');
+	Route::post('incident-tiket/{id}','TiketController@storeIncidentTiket');
+	Route::get('srq-tiket/{id}','TiketController@srqTiket');
+	Route::post('srq-tiket/{id}','TiketController@storeSrqTiket');
+
+	Route::get('auth','TiketController@auth');
+	Route::get('testApi/{id}','TiketController@testApi');
 
 	Route::get('today-tiket','TiketController@today');
 	Route::get('today-open','TiketController@todayOpen');
@@ -73,6 +89,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('tiket/user/{nip}','TiketController@tiketByUser');
 	Route::get('tiket/support/{it_support}','TiketController@tiketBySupport');
 	Route::get('tiket/unit/{unit}','TiketController@tiketByUnit');
+
+	Route::get('tiket/kategori-unit/{kategori_id}','TiketController@tiketByKategoriunit');
 
 	Route::get('pojok','PojokController@index'); // list saran
 	Route::get('pojok/create','PojokController@create'); // create saran
@@ -106,11 +124,24 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('report-pegawai','ReportController@tiketPerPegawai');
 	Route::post('report-pegawai/filter','ReportController@filterPerPegawai');
 
+	Route::get('report-harian-unit','ReportController@tiketPerDateunit');
+	Route::post('report-harian-unit/filter','ReportController@filterPerDateunit');
+	Route::get('report-bulanan-unit','ReportController@tiketPerMonthunit');
+	Route::post('report-bulanan-unit/filter','ReportController@filterPerMonthunit');
+	Route::get('report-kategori-unit','ReportController@tiketPerKategoriunit');
+	Route::post('report-kategori-unit/filter','ReportController@filterPerKategoriunit');
+	Route::get('report-itsupport-unit','ReportController@tiketPerItSupportunit');
+	Route::post('report-itsupport-unit/filter','ReportController@filterPerItSupportunit');
+	Route::get('report-pegawai-unit','ReportController@tiketPerPegawaiunit');
+	Route::post('report-pegawai-unit/filter','ReportController@filterPerPegawaiunit');
+
 	Route::get('resolve/{id}','TiketController@resolve');
 	Route::post('resolve/{id}','TiketController@storeResolve');
 
 	Route::get('statistic','PageController@statistic');
+	Route::get('statistic-unit','PageController@statisticunit');
 	Route::get('analytics','PageController@analytics');
+	Route::get('analytics-unit','PageController@analyticsunit');
 
 	Route::get('chatkategori','ChatKategoriController@index'); // list saran
 	Route::get('chatkategori/create','ChatKategoriController@create'); // create saran
@@ -159,5 +190,5 @@ Route::get('reset-password','PageController@resetPassword');
 Route::post('reset-password','PageController@StoreResetPassword');
 
 Route::post('get-data','ChatController@getData');
-Route::post('close-tiket','ChatController@closeTicket');
+
 Route::get('locked', function(){return View::make("auth/locked");});

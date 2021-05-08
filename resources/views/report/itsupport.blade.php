@@ -10,7 +10,12 @@
                   <p class="card-title">FILTER</p>
                 </div>
                 <div class="card-body">
+                  @hasrole('admin')
                   <form class="form-horizontal" method="post" action="{{url('report-itsupport/filter')}}" enctype="multipart/form-data">
+                  @endhasrole
+                  @hasrole('dispatcher_unit')
+                  <form class="form-horizontal" method="post" action="{{url('report-itsupport-unit/filter')}}" enctype="multipart/form-data">
+                  @endhasrole
                     @csrf
                     <div class="table-responsive">
                       <table class="table">

@@ -22,7 +22,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
     <?php foreach ($n_kategori as $row) 
     {
       ?>
-      { y: <?php echo $row->jumlah; ?>, label: "<?php echo $row->kategori; ?>",x: <?php echo $row->id; ?> },
+      { y: <?php echo $row->jumlah; ?>, label: "<?php echo $row->name; ?>",x: <?php echo $row->id; ?> },
       <?php
     }?>
     ],
@@ -50,7 +50,7 @@ var chart5 = new CanvasJS.Chart("serviceChart", {
     <?php foreach ($n_service_request as $row) 
     {
       ?>
-      { y: <?php echo $row->jumlah; ?>, label: "<?php echo $row->kategori; ?>",x: <?php echo $row->id; ?> },
+      { y: <?php echo $row->jumlah; ?>, label: "<?php echo $row->name; ?>",x: <?php echo $row->id; ?> },
       <?php
     }?>
     ],
@@ -179,7 +179,12 @@ chart5.render();
           </div>
           <div class="card-footer">
             <div class="stats">
+              @hasrole('admin')
               <a href="{{url('tiket')}}">Daftar Semua Tiket</a>
+              @endhasrole
+              @hasrole('dispatcher_unit')
+              <a href="{{url('tiket-unit')}}">Daftar Semua Tiket</a>
+              @endhasrole
             </div>
           </div>
         </div>
@@ -195,7 +200,12 @@ chart5.render();
           </div>
           <div class="card-footer">
             <div class="stats">
+              @hasrole('admin')
               <a href="{{url('tiket-open')}}">Daftar Tiket Open</a>
+              @endhasrole
+              @hasrole('dispatcher_unit')
+              <a href="{{url('tiket-open-unit')}}">Daftar Tiket Open</a>
+              @endhasrole              
             </div>
           </div>
         </div>
@@ -211,7 +221,12 @@ chart5.render();
           </div>
           <div class="card-footer">
             <div class="stats">
+              @hasrole('admin')
               <a href="{{url('tiket-assigned')}}">Daftar Tiket Assigned</a>
+              @endhasrole
+              @hasrole('dispatcher_unit')
+              <a href="{{url('tiket-assigned-unit')}}">Daftar Tiket Assigned</a>
+              @endhasrole                
             </div>
           </div>
         </div>
@@ -227,7 +242,12 @@ chart5.render();
           </div>
           <div class="card-footer">
             <div class="stats">
+              @hasrole('admin')
               <a href="{{url('tiket-resolved')}}">Daftar Tiket Resolved</a>
+              @endhasrole
+              @hasrole('dispatcher_unit')
+              <a href="{{url('tiket-resolved-unit')}}">Daftar Tiket Resolved</a>
+              @endhasrole              
             </div>
           </div>
         </div>

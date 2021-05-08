@@ -1,7 +1,5 @@
 @extends('layout.app')
 
-@section('title', 'Kategori')
-
 @section('content')
 <div class="content">
         <div class="container-fluid">
@@ -21,11 +19,11 @@
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Kategori</label>
-                          <input type="text" name="kategori" value="<?php echo $kategori->kategori;?>" class="form-control">
+                          <input type="text" name="name" value="<?php echo $kategori->name;?>" class="form-control">
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-info pull-right">UPDATE KATEGORI IT</button>
+                    <button type="submit" class="btn btn-info pull-right">UPDATE KATEGORI</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>

@@ -7,6 +7,8 @@ use App\Tiket;
 use Carbon\Carbon;
 use App\User;
 use App\Kategori;
+use App\RegionalSti;
+use Auth;
 use DB;
 
 class TiketController extends Controller
@@ -57,6 +59,51 @@ class TiketController extends Controller
     	return view('tiket.list_resolved',$data);
     }
 
+    public function indexunit(Request $request)
+    {
+        $auth = Auth::user()->sti_id;
+        $tikets = Tiket::where('sti_id',$auth)->get();
+    	$data['tikets'] = $tikets;
+        $data['state'] = 'tiket-unit';
+    	return view('tiket.list',$data);
+    }
+
+    public function indexOpenunit(Request $request)
+    {
+        $auth = Auth::user()->sti_id;
+    	$tikets = Tiket::where('status_tiket','open')->where('sti_id',$auth)->get();
+    	$data['tikets'] = $tikets;
+        $data['state'] = 'tiket-unit';
+    	return view('tiket.list_open',$data);
+    }
+
+    public function indexCreateitsmunit(Request $request)
+    {
+        $auth = Auth::user()->sti_id;
+    	$tikets = Tiket::where('status_tiket','createitsm')->where('sti_id',$auth)->get();
+    	$data['tikets'] = $tikets;
+        $data['state'] = 'tiket-unit';
+    	return view('tiket.list_createitsm',$data);
+    }
+
+    public function indexAssignedunit(Request $request)
+    {
+        $auth = Auth::user()->sti_id;
+    	$tikets = Tiket::where('status_tiket','assigned')->where('sti_id',$auth)->get();
+    	$data['tikets'] = $tikets;
+        $data['state'] = 'tiket-unit';
+    	return view('tiket.list_assigned',$data);
+    }
+
+    public function indexResolvedunit(Request $request)
+    {
+        $auth = Auth::user()->sti_id;
+    	$tikets = Tiket::where('status_tiket','resolved')->where('sti_id',$auth)->get();
+    	$data['tikets'] = $tikets;
+        $data['state'] = 'tiket-unit';
+    	return view('tiket.list_resolved',$data);
+    }
+
     public function performRequestCurl($uri,$method,$param)
     {
         // persiapkan curl
@@ -81,6 +128,208 @@ class TiketController extends Controller
 
         // menampilkan hasil curl
         return ['response' => $output,'statusCode' => $status_code ];
+    }
+
+    public function Createitsm(Request $request)
+    {
+        $auth = Auth::user()->sti_id;
+    	$tiket = Tiket::find($request->id);
+        $kategoris = Kategori::all();
+    	$data['tiket'] = $tiket;
+        $data['state'] = 'tiket';
+        $data['kategoris'] = $kategoris;
+    	return view('tiket.create_itsm',$data);
+    }
+
+    public function emailTiket(Request $request)
+    {
+        $auth = Auth::user()->sti_id;
+    	$tiket = Tiket::find($request->id);
+        $kategoris = Kategori::where('type','APP')->get();
+    	$data['tiket'] = $tiket;
+        $data['state'] = 'tiket';
+        $data['kategoris'] = $kategoris;
+    	return view('tiket.email_tiket',$data);
+    }
+
+    public function incidentTiket(Request $request)
+    {
+        $auth = Auth::user()->sti_id;
+    	$tiket = Tiket::find($request->id);        
+        try {
+            $recid = $tiket->pegawai->mapping->regional->recid;
+            $url = "https://ensomsit.iconpln.co.id/api/tiara_getabsen";
+            $param = array(
+                "team" => $recid
+            );
+            $response = $this->performRequestCurl($url,"POST",$param);
+            
+            if($auth != 2){$users = json_decode($response['response']);}
+            else{$users = User::where('is_itsupport',2)->get();}                
+            //dd($recid);
+        } catch (\Exception $e) {
+            $users = User::where('is_itsupport',1)->get();    
+        }
+ 
+        $kategoris = Kategori::where('type','INC')->get();
+
+        $data['users'] = $users;
+        $data['tiket'] = $tiket;
+        $data['state'] = 'tiket';
+        $data['kategoris'] = $kategoris;
+    	return view('tiket.incident_tiket',$data);
+    }
+
+    public function storeIncidentTiket(Request $request)
+    {
+        $auth = Auth::user()->id;
+
+    	$tiket = Tiket::find($request->id);
+    	$tiket->it_support_username = $request->it_support_username;
+        $tiket->it_support = $request->it_support_username;
+    	$tiket->assignment_date = $this->getTimeNow();
+        $tiket->status_tiket = 'assigned';
+        $tiket->kategori_id = $request->kategori_id;
+        $tiket->priority = $request->priority;
+        $tiket->urgency = $request->urgency;
+    	$tiket->save();
+        
+        $inc_serviceid = $tiket->kategori->service_id;
+        $inc_category_id = $tiket->kategori->category_id;
+        $inc_owner = $tiket->pegawai->name;
+        $inc_owneremail = $tiket->pegawai->email;
+        $inc_priority = $request->priority;
+        $inc_urgency = $request->urgency;
+        $inc_subject = $tiket->kategori->name;
+        $inc_description = $tiket->permasalahan;
+        $inc_support = $request->it_support_username;
+        $inc_team = $tiket->pegawai->mapping->regional->team;
+        $inc_unitinduk = $tiket->pegawai->personnel_area_name;
+        $inc_unitpel = $tiket->pegawai->personnel_subarea_name;
+
+        $url = "https://ensomsit.iconpln.co.id/api/CreateTicket";
+        $param = array(
+            "type"=>"inc",
+            "timezone"=>"wib",
+            "Service_id"=> $inc_serviceid,
+            "Category_id"=> $inc_category_id,
+            "Owner"=> $inc_owner,
+            "OwnerEmail"=> $inc_owneremail,
+            "Status"=> "New",
+            "Priority"=> $inc_priority,
+            "Urgency"=> $inc_urgency,
+            "Subject"=> $inc_subject,
+            "Description"=> $inc_description,
+            "Source"=>"Chat",
+            "SupportName"=> $inc_support,
+            "TeamSupport"=> $inc_team,
+            "UnitInduk"=> "UIW KALTIMRA",
+            "UnitPelaksana"=> "UP3 BALIKPAPAN"
+        );
+        $response = $this->performRequestCurl($url,"POST",$param);
+        $output = json_decode($response['response']);
+        // echo "<pre>";
+        // print_r($output);
+        // echo "</pre>";
+        if ($output=='201')
+            {$message='success';}
+        else
+            {$message='error';}
+
+        if($auth != 1)
+            {return redirect('dashboard-unit')->with([$message => 'Message']);}
+        else
+            {return redirect('dashboard')->with([$message => 'Message']);}
+    }
+
+    public function srqTiket(Request $request)
+    {
+    	$auth = Auth::user()->sti_id;
+    	$tiket = Tiket::find($request->id);        
+        try {
+            $recid = $tiket->pegawai->mapping->regional->recid;
+            $url = "https://ensomsit.iconpln.co.id/api/tiara_getabsen";
+            $param = array(
+                "team" => $recid
+            );
+            $response = $this->performRequestCurl($url,"POST",$param);
+            
+            if($auth != 2){$users = json_decode($response['response']);}
+            else{$users = User::where('is_itsupport',2)->get();}                
+            //dd($recid);
+        } catch (\Exception $e) {
+            $users = User::where('is_itsupport',1)->get();    
+        }
+ 
+        $kategoris = Kategori::where('type','REQ')->get();
+
+        $data['users'] = $users;
+        $data['tiket'] = $tiket;
+        $data['state'] = 'tiket';
+        $data['kategoris'] = $kategoris;
+    	return view('tiket.srq_tiket',$data);
+    }
+
+    public function storeSrqTiket(Request $request)
+    {
+        $auth = Auth::user()->id;
+
+    	$tiket = Tiket::find($request->id);
+    	$tiket->it_support_username = $request->it_support_username;
+        $tiket->it_support = $request->it_support_username;
+    	$tiket->assignment_date = $this->getTimeNow();
+        $tiket->status_tiket = 'assigned';
+        $tiket->kategori_id = $request->kategori_id;
+        $tiket->priority = $request->priority;
+        $tiket->urgency = $request->urgency;
+    	$tiket->save();
+        
+        $srq_serviceid = $tiket->kategori->service_id;
+        $srq_category_id = $tiket->kategori->category_id;
+        $srq_owner = $tiket->pegawai->name;
+        $srq_owneremail = $tiket->pegawai->email;
+        $srq_priority = $request->priority;
+        $srq_urgency = $request->urgency;
+        $srq_subject = $tiket->kategori->name;
+        $srq_description = $tiket->permasalahan;
+        $srq_support = $request->it_support_username;
+        $srq_team = $tiket->pegawai->mapping->regional->team;
+        $srq_unitinduk = $tiket->pegawai->personnel_area_name;
+        $srq_unitpel = $tiket->pegawai->personnel_subarea_name;
+
+        $url = "https://ensomsit.iconpln.co.id/api/CreateTicket";
+        $param = array(
+            "type"=>"request",
+            "timezone"=>"wib",
+            "Service_id"=> $srq_serviceid,
+            "Category_id"=> $srq_category_id,
+            "Owner"=> $srq_owner,
+            "OwnerEmail"=> $srq_owneremail,
+            "Status"=> "New",
+            "Priority"=> $srq_priority,
+            "Urgency"=> $srq_urgency,
+            "Subject"=> $srq_subject,
+            "Description"=> $srq_description,
+            "Source"=>"Chat",
+            "SupportName"=> $srq_support,
+            "TeamSupport"=> $srq_team,
+            "UnitInduk"=> "UIW KALTIMRA",
+            "UnitPelaksana"=> "UP3 BALIKPAPAN"
+        );
+        $response = $this->performRequestCurl($url,"POST",$param);
+        $output = json_decode($response['response']);
+        // echo "<pre>";
+        // print_r($output);
+        // echo "</pre>";
+        if ($output=='201')
+            {$message='success';}
+        else
+            {$message='error';}
+
+        if($auth != 1)
+            {return redirect('dashboard-unit')->with([$message => 'Message']);}
+        else
+            {return redirect('dashboard')->with([$message => 'Message']);}
     }
 
     public function assignTiket(Request $request)
@@ -111,14 +360,19 @@ class TiketController extends Controller
 
     public function storeAssignTiket(Request $request)
     {
+        $auth = Auth::user()->id;
     	$tiket = Tiket::find($request->id);
     	$tiket->it_support_username = $request->it_support_username;
+        $tiket->it_support = $request->it_support_username;
     	$tiket->assignment_date = $this->getTimeNow();
         $tiket->status_tiket = 'assigned';
         $tiket->no_tiket = $request->no_tiket;
         $tiket->kategori_id = $request->kategori_id;
     	$tiket->save();
-        return redirect('tiket-assigned');
+        if($auth != 1)
+            {return redirect('dashboard-unit');}
+        else
+            {return redirect('dashboard');}
     }
 
     public function harian(Request $request)
@@ -135,15 +389,21 @@ class TiketController extends Controller
         $kategoris = Kategori::all();
         $data['state'] = "tiket";
         $data['tiket'] = $tiket;
+        //echo $tiket->its->name;
         return view('tiket.resolve',$data);
     }
 
     public function storeResolve(Request $request)
     {
+        $auth = Auth::user()->id;
         $tiket = Tiket::find($request->id);
+        $tiket->no_tiket = $request->no_tiket;
         $tiket->status_tiket = 'resolved';
         $tiket->save();
-        return redirect('tiket-resolved');
+        if($auth != 1)
+            {return redirect('dashboard-unit');}
+        else
+            {return redirect('dashboard');}
     }
 
     public function today()
@@ -181,6 +441,15 @@ class TiketController extends Controller
     public function tiketByKategori(Request $request)
     {
         $tikets = Tiket::where('kategori_id',$request->kategori_id)->get();
+        $data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+        return view('tiket.list',$data);
+    }
+
+    public function tiketByKategoriunit(Request $request)
+    {
+        $auth = Auth::user()->sti_id;
+        $tikets = Tiket::where('kategori_id',$request->kategori_id)->where('sti_id',$auth)->get();
         $data['tikets'] = $tikets;
         $data['state'] = 'tiket';
         return view('tiket.list',$data);
@@ -235,4 +504,40 @@ class TiketController extends Controller
         return redirect('/thanksfeed');
     }
 
+    public function auth()
+    {
+        $user = Auth::user()->sti_id;
+        echo $user;
+    }
+
+    public function testApi(Request $request)
+    {
+    	$tiket = Tiket::find($request->id);        
+        
+            
+            $url = "https://ensomsit.iconpln.co.id/api/CreateTicket";
+            $param = array(
+                "type"=>"request",
+                "timezone"=>"wib",
+                "Service_id"=> "D29A5302A3A246D2A75B85FA58AD2130",
+                "Category_id"=> "72A09DD5B45D41579F726D7D2A6C70FC",
+                "Owner"=> "Darma",
+                "OwnerEmail"=> "esraldi.2@gmail.com",
+                "Status"=> "New",
+                "Priority"=> "1",
+                "Urgency"=> "High",
+                "Subject"=> "Test SR API 20210507 No 1 with tiara",
+                "Description"=> "Test API from CI PHP",
+                "Source"=>"Chat",
+                "SupportName"=> "abdur.rachim",
+                "TeamSupport"=> "STI REGIONAL JAKARTA 2",
+                "UnitInduk"=> "PUSDIKLAT",
+                "UnitPelaksana"=> "UDIKLAT BOGOR"
+            );
+            $response = $this->performRequestCurl($url,"POST",$param);
+            $users = json_decode($response['response']);
+            echo "<pre>";
+            print_r($users);
+            echo "</pre>";
+    }
 }

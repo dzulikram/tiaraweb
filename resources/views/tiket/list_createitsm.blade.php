@@ -39,7 +39,7 @@
                       <td><?php echo $row->pegawai->email; ?></td>
                       <td><?php echo $row->no_tiket; ?></td>
                       <td><?php echo $row->status_tiket; ?></td>
-                      <td><a href="{{url('assign-tiket')}}/<?php echo $row->id; ?>" class="btn btn-primary">ASSIGN</a></td>
+                      <td><a href="{{url('assign-tiket')}}/<?php echo $row->id; ?>" class="btn btn-warning">ASSIGN</a></td>
                     </tr>
                     <?php
                   }

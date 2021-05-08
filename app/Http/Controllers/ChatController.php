@@ -37,6 +37,10 @@ class ChatController extends Controller
         $tiket->status = $chat->status;
         $tiket->nip = $chat->nip;
         $tiket->history = $chat->history;
+
+		$stiid = $tiket->pegawai->mapping->regional->id;
+		$tiket->sti_id = $stiid;
+
         if($chat->is_autoclose == 1)
         {
             $tiket->status_tiket = "resolved";
@@ -98,7 +102,7 @@ class ChatController extends Controller
     	$input = $data['query']['message'];
     	$sender = $data['query']['sender'];
     	$chat = Chat::where('sender',$sender)->where('status','open')->first();
-		$sponsor = Sponsor::all();
+		$sponsor = Sponsor::where('id',1)->first();
     	
     	$message = "";
     	// initial state
@@ -157,7 +161,8 @@ c. Untuk mengakhiri percakapan";
 4. Pojok TI
 5. Chat dan Layanan
 6. Service Request
-7. Kembali ke menu utama
+7. Reset Password/Permintaan VPN
+8. Kembali ke menu utama
 c. Untuk mengakhiri percakapan";
     			$chat->state = 2;
                 $chat->lokasi = "WFO";
@@ -174,7 +179,8 @@ c. Untuk mengakhiri percakapan";
 4. Pojok IT
 5. Chat dan Saran
 6. Service Request
-7. Kembali ke menu utama
+7. Reset Password/Permintaan VPN
+8. Kembali ke menu utama
 c. Untuk mengakhiri percakapan";
     			$chat->state = 3;
                 $chat->lokasi = "WFH";
@@ -245,7 +251,7 @@ Terima kasih telah menghubungi Tiara 🙏😊";
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
     		}
-    		else if($input == 7)
+    		else if($input == 8)
     		{
     			$nip = $chat->nip;
     			$pegawai = Pegawai::where('nip',$nip)->first();
@@ -288,11 +294,23 @@ Layanan apa yang anda butuhkan?
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
     		}
+			else if($input == 7)
+    		{
+    			$message = "Untuk permohonan reset password atau permintaan VPN silahkan mengakses laman berikut : https://linktr.ee/stikaltimra
+Terima kasih telah menghubungi Tiara 🙏😊";
+    			$chat->status = "close-conversation";
+                $chat->end_conversation = $this->getTimeNow();
+				$chat->state = 7;
+				$chat->save();
+                $this->addHistory($chat->id,$input);
+                $this->addHistory($chat->id,$message);
+    		}
     		else
     		{
     			$message = "Mohon masukkan sesuai pilihan";
     		}
     	}
+		
     	//wfo
     	else if($chat->status == 'open' && $chat->state == 3)
     	{
@@ -372,7 +390,7 @@ Terima kasih telah menghubungi Tiara 🙏😊";
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
     		}
-    		else if($input == 6)
+    		else if($input == 8)
     		{
     			$nip = $chat->nip;
     			$pegawai = Pegawai::where('nip',$nip)->first();
@@ -386,7 +404,7 @@ c. Untuk mengakhiri percakapan";
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
     		}
-    		else if($input == 7)
+    		else if($input == 6)
     		{
     			$message = "Service request apa yang anda butuhkan?
 Layanan apa yang anda butuhkan?
@@ -415,11 +433,23 @@ Layanan apa yang anda butuhkan?
                 $this->addHistory($chat->id,$input);
                 $this->addHistory($chat->id,$message);
     		}
+			else if($input == 7)
+    		{
+    			$message = "Untuk permohonan reset password atau permintaan VPN silahkan mengakses laman berikut : https://linktr.ee/stikaltimra
+Terima kasih telah menghubungi Tiara 🙏😊";
+    			$chat->status = "close-conversation";
+                $chat->end_conversation = $this->getTimeNow();
+				$chat->state = 7;
+				$chat->save();
+                $this->addHistory($chat->id,$input);
+                $this->addHistory($chat->id,$message);
+    		}
     		else
     		{
     			$message = "Mohon masukkan sesuai pilihan";
     		}
     	}
+
     	//wfh
     	else if($chat->status == 'open' && $chat->state == 4)
     	{
@@ -480,7 +510,7 @@ c. Untuk mengakhiri percakapan";
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     	}
     	else if($chat->status == 'open' && $chat->state == 6)
     	{
@@ -656,7 +686,7 @@ Terima kasih telah menghubungi Tiara 🙏☺️
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else if($input == 2)
     		{
@@ -674,7 +704,7 @@ Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.i
 				$message = "Terimakasih telah membantu dan menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else
     		{
@@ -699,7 +729,7 @@ Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.i
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else if($input == 2)
     		{
@@ -760,7 +790,7 @@ c. Untuk mengakhiri percakapan";
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else if($input == 3)
     		{
@@ -810,7 +840,7 @@ c. Untuk mengakhiri percakapan";
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else
     		{
@@ -843,7 +873,7 @@ Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.i
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else if($input == 3)
     		{
@@ -888,7 +918,7 @@ c. Untuk mengakhiri percakapan";
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else if($chat->lokasi == 'WFH')
     		{
@@ -1028,7 +1058,7 @@ Terima kasih telah menghubungi Tiara 🙏😊";
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     	}
     	else if($chat->status == 'open' && $chat->state == 31)
     	{
@@ -1056,7 +1086,7 @@ Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.i
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     	}
     	else if($chat->status == 'open' && $chat->state == 35)
     	{
@@ -1076,7 +1106,7 @@ Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.i
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else if($input == 3)
     		{
@@ -1093,7 +1123,7 @@ Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.i
 				$message = "Terima kasih telah membantu Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else
     		{
@@ -1146,7 +1176,7 @@ Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.i
 				$message = "Terima kasih telah membantu Tiara 🙏☺️
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else if($input == 2)
     		{
@@ -1163,7 +1193,7 @@ Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.i
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else
     		{
@@ -1187,7 +1217,7 @@ Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.i
 				$message = "Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else if($input == 2)
     		{
@@ -1205,7 +1235,7 @@ Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.i
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else
     		{
@@ -1230,7 +1260,7 @@ Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.i
 				$message = "Terima kasih telah membantu Tiara 🙏☺️
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else if($input == 2)
     		{
@@ -1248,7 +1278,7 @@ Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.i
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else
     		{
@@ -1301,7 +1331,7 @@ Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.i
 				$message = "Terima kasih telah membantu Tiara 🙏☺️
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else if($input == 2)
     		{
@@ -1319,7 +1349,7 @@ Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.i
 Terima kasih telah menghubungi Tiara 🙏😊
 Untuk memberikan feedback silahkan mengisi link berikut : https://tiara.pln.co.id//feedback/".$tiketku->id."
 
-".$sponsor;
+".$sponsor->sponsor;
     		}
     		else
     		{
