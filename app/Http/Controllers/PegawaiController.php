@@ -11,7 +11,7 @@ class PegawaiController extends Controller
     public function index()
     {   
         $data['state'] = "pegawai";
-        $data['pegawais'] = Pegawai::all();
+        $data['pegawais'] = Pegawai::where('personnel_area','6300')->get();
         return view('pegawai.list',$data);
     }
 
