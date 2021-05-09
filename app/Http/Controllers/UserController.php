@@ -155,7 +155,7 @@ class UserController extends Controller
     public function lock(Request $request)
     {
         $user = User::find($request->id);
-    	$user->is_active = 1;
+    	$user->is_aktif = 1;
         $user->wrong = 5;        
     	$user->save();
 
@@ -165,7 +165,7 @@ class UserController extends Controller
     public function unlock(Request $request)
     {
         $user = User::find($request->id);
-    	$user->is_active = 0;
+    	$user->is_aktif = 0;
         $user->wrong = 0;        
     	$user->save();
 

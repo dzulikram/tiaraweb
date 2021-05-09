@@ -38,9 +38,8 @@ class ChatController extends Controller
         $tiket->nip = $chat->nip;
         $tiket->history = $chat->history;
 
-		$stiid = $tiket->pegawai->mapping->regional->id;
-		$tiket->sti_id = $stiid;
-
+		$stiid = $tiket->pegawai->mapping->sti_id;
+		
         if($chat->is_autoclose == 1)
         {
             $tiket->status_tiket = "resolved";

@@ -60,7 +60,7 @@
               ?> -->
               <div class="card">
                 <div class="card-header card-header-info">
-                  <h4 class="card-title ">DAFTAR TIKET PER IT SUPPORT</h4>
+                  <h4 class="card-title ">DAFTAR TIKET PER PEGAWAI</h4>
                   <p class="card-category">Divisi STI Operasional Kaltimra</p>
                 </div>
                 <div class="card-body">

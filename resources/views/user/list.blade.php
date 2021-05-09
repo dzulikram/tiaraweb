@@ -36,7 +36,7 @@
                           <td><a href="{{url('/user/edit')}}/<?php echo $row->id;?>" class="btn btn-success btn-sm btn-round" ><i class="fa fa-edit"></i></a>
                               <a href="{{url('/user/delete')}}/<?php echo $row->id;?>" class="btn btn-danger btn-sm btn-round"><i class="fa fa-trash"></i></a>
                               <a href="{{url('/user/password')}}/<?php echo $row->id;?>" class="btn btn-info btn-sm btn-round"><i class="fa fa-key"></i></a>
-                              <?php if($row->is_active==1){?>
+                              <?php if($row->is_aktif==1){?>
                               <a href="{{url('/user/unlock')}}/<?php echo $row->id;?>" class="btn btn-info btn-sm btn-round"><i class="fa fa-unlock"></i></a>
                               <?php }
                               else{ ?> 
