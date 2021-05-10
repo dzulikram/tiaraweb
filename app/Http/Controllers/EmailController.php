@@ -18,7 +18,7 @@ class EmailController extends Controller
         $tiket->kategori_id = $request->kategori_id;
         
         $tiket->save();          
-        $kategorimail = $tiket->kategori->kategori;
+        $kategorimail = $tiket->kategori->name;
         Mail::to("dzul.ikram@pln.co.id")->send(new Email($tiket->id,$tiket->call_type,$tiket->permasalahan,$tiket->pegawai->nip,$tiket->pegawai->name,$tiket->pegawai->personnel_subarea_name,$tiket->pegawai->email,$kategorimail));
         $tiket->status_tiket = 'assigned';
     	$tiket->save();

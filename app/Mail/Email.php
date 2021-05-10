@@ -42,7 +42,7 @@ class Email extends Mailable
             }
         else
             {
-            $subject='[SRQ]';
+            $subject='[RQ]';
             }
         $data['id']=$this->id;
         $data['call_type']=$this->call_type;
