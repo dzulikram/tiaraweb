@@ -39,6 +39,7 @@ class ChatController extends Controller
         $tiket->history = $chat->history;
 
 		$stiid = $tiket->pegawai->mapping->sti_id;
+		$tiket->sti_id = $stiid;
 		
         if($chat->is_autoclose == 1)
         {
