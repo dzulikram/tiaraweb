@@ -124,6 +124,14 @@
       </a>
     </li>
     @endhasrole
+    @hasrole('dispatcher_unit')
+    <li class="nav-item <?php if($state=='pegawai'){echo 'active';} ?>">
+      <a class="nav-link" href="{{url('pegawai-unit')}}">
+        <i class="material-icons">work</i>
+        <p>Pegawai</p>
+      </a>
+    </li>
+    @endhasrole
     @hasrole('admin')
     <li class="nav-item <?php if($state=='pojok'){echo 'active';} ?>">
       <a class="nav-link" href="{{url('pojok')}}">

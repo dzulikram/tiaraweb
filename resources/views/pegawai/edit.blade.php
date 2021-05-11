@@ -89,14 +89,23 @@
                         </div>
                       </div>
                     </div>
+                    @hasrole('admin')                   
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
-                          <label class="bmd-label-floating">Sender</label>
-                          <input type="number" name="sender" value="<?php echo $pegawai->sender;?>" class="form-control">
+                          <label class="bmd-label-floating">STI Operasional</label>
+                          <select class="form-control" name="sti_id" required>
+                            <option></option>
+                            <?php foreach ($sti as $row) {
+                              ?>
+                              <option value="<?php echo $row->id; ?>"><?php echo $row->team; ?></option>
+                              <?php
+                            } ?>
+                          <select>
                         </div>
                       </div>
-                    </div>
+                    </div> 
+                    @endhasrole                   
                     <button type="submit" class="btn btn-info pull-right">UPDATE PEGAWAI</button>
                     <div class="clearfix"></div>
                   </form>

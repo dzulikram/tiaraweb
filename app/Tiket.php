@@ -22,4 +22,9 @@ class Tiket extends Model
     {
     	return $this->belongsTo('App\Kategori', 'kategori_id', 'id');
     }
+
+    public function regional()
+    {
+    	return $this->belongsTo('App\RegionalSti', 'sti_id', 'id');
+    }
 }

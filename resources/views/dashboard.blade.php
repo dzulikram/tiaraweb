@@ -29,7 +29,12 @@
           </div>
           <div class="card-footer">
             <div class="stats">
+              @hasrole('admin')
               <a href="{{url('today-tiket')}}">Daftar Semua Tiket Hari Ini</a>
+              @endhasrole
+              @hasrole('dispatcher_unit')
+              <a href="{{url('today-tiket-unit')}}">Daftar Semua Tiket Hari Ini</a>
+              @endhasrole
             </div>
           </div>
         </div>
@@ -45,7 +50,12 @@
           </div>
           <div class="card-footer">
             <div class="stats">
+              @hasrole('admin')
               <a href="{{url('today-open')}}">Daftar Tiket Open Hari Ini</a>
+              @endhasrole
+              @hasrole('dispatcher_unit')
+              <a href="{{url('today-open-unit')}}">Daftar Tiket Open Hari Ini</a>
+              @endhasrole
             </div>
           </div>
         </div>
@@ -61,7 +71,12 @@
           </div>
           <div class="card-footer">
             <div class="stats">
+              @hasrole('admin')
               <a href="{{url('today-assigned')}}">Daftar Tiket Assigned Hari Ini</a>
+              @endhasrole
+              @hasrole('dispatcher_unit')
+              <a href="{{url('today-assigned-unit')}}">Daftar Tiket Assigned Hari Ini</a>
+              @endhasrole
             </div>
           </div>
         </div>
@@ -77,7 +92,12 @@
           </div>
           <div class="card-footer">
             <div class="stats">
+              @hasrole('admin')
               <a href="{{url('today-resolved')}}">Daftar Tiket Resolved Hari Ini</a>
+              @endhasrole
+              @hasrole('dispatcher_unit')
+              <a href="{{url('today-resolved-unit')}}">Daftar Tiket Resolved Hari Ini</a>
+              @endhasrole
             </div>
           </div>
         </div>

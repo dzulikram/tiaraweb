@@ -84,6 +84,11 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('today-assigned','TiketController@todayAssigned');
 	Route::get('today-resolved','TiketController@todayResolved');
 
+	Route::get('today-tiket-unit','TiketController@todayunit');
+	Route::get('today-open-unit','TiketController@todayOpenunit');
+	Route::get('today-assigned-unit','TiketController@todayAssignedunit');
+	Route::get('today-resolved-unit','TiketController@todayResolvedunit');
+
 	Route::get('tiket/kategori/{kategori_id}','TiketController@tiketByKategori');
 	Route::get('tiket/permasalahan/{permasalahan}','TiketController@tiketByPermasalahan');
 	Route::get('tiket/user/{nip}','TiketController@tiketByUser');
@@ -105,6 +110,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('pegawai','PegawaiController@store'); //store
 	Route::put('pegawai/{id}','PegawaiController@update'); //update
 	Route::get('pegawai/delete/{id}','PegawaiController@delete'); //delete
+
+	Route::get('pegawai-unit','PegawaiController@indexunit'); // list saran
 
 	Route::get('kategori','KategoriController@index'); // list saran
 	Route::get('kategori/create','KategoriController@create'); // create saran

@@ -157,7 +157,7 @@ class TiketController extends Controller
         $auth = Auth::user()->sti_id;
     	$tiket = Tiket::find($request->id);        
         try {
-            $recid = $tiket->pegawai->mapping->regional->recid;
+            $recid = $tiket->regional->recid;
             $url = "https://ensomsit.iconpln.co.id/api/tiara_getabsen";
             $param = array(
                 "team" => $recid
@@ -194,43 +194,44 @@ class TiketController extends Controller
         $tiket->urgency = $request->urgency;
     	$tiket->save();
         
-        $inc_serviceid = $tiket->kategori->service_id;
-        $inc_category_id = $tiket->kategori->category_id;
-        $inc_owner = $tiket->pegawai->name;
-        $inc_owneremail = $tiket->pegawai->email;
-        $inc_priority = $request->priority;
-        $inc_urgency = $request->urgency;
-        $inc_subject = $tiket->kategori->name;
-        $inc_description = $tiket->permasalahan;
-        $inc_support = $request->it_support_username;
-        $inc_team = $tiket->pegawai->mapping->regional->team;
-        $inc_unitinduk = $tiket->pegawai->personnel_area_name;
-        $inc_unitpel = $tiket->pegawai->personnel_subarea_name;
+        // $inc_serviceid = $tiket->kategori->service_id;
+        // $inc_category_id = $tiket->kategori->category_id;
+        // $inc_owner = $tiket->pegawai->name;
+        // $inc_owneremail = $tiket->pegawai->email;
+        // $inc_priority = $request->priority;
+        // $inc_urgency = $request->urgency;
+        // $inc_subject = $tiket->kategori->name;
+        // $inc_description = $tiket->permasalahan;
+        // $inc_support = $request->it_support_username;
+        // $inc_team = $tiket->regional->team;
+        // $inc_unitinduk = $tiket->pegawai->personnel_area_name;
+        // $inc_unitpel = $tiket->pegawai->personnel_subarea_name;
 
-        $url = "https://ensomsit.iconpln.co.id/api/CreateTicket";
-        $param = array(
-            "type"=>"inc",
-            "timezone"=>"wib",
-            "Service_id"=> $inc_serviceid,
-            "Category_id"=> $inc_category_id,
-            "Owner"=> $inc_owner,
-            "OwnerEmail"=> $inc_owneremail,
-            "Status"=> "New",
-            "Priority"=> $inc_priority,
-            "Urgency"=> $inc_urgency,
-            "Subject"=> $inc_subject,
-            "Description"=> $inc_description,
-            "Source"=>"Chat",
-            "SupportName"=> $inc_support,
-            "TeamSupport"=> $inc_team,
-            "UnitInduk"=> "UIW KALTIMRA",
-            "UnitPelaksana"=> "UP3 BALIKPAPAN"
-        );
-        $response = $this->performRequestCurl($url,"POST",$param);
-        $output = json_decode($response['response']);
+        // $url = "https://ensomsit.iconpln.co.id/api/CreateTicket";
+        // $param = array(
+        //     "type"=>"inc",
+        //     "timezone"=>"wib",
+        //     "Service_id"=> $inc_serviceid,
+        //     "Category_id"=> $inc_category_id,
+        //     "Owner"=> $inc_owner,
+        //     "OwnerEmail"=> $inc_owneremail,
+        //     "Status"=> "New",
+        //     "Priority"=> $inc_priority,
+        //     "Urgency"=> $inc_urgency,
+        //     "Subject"=> $inc_subject,
+        //     "Description"=> $inc_description,
+        //     "Source"=>"Chat",
+        //     "SupportName"=> $inc_support,
+        //     "TeamSupport"=> $inc_team,
+        //     "UnitInduk"=> "UIW KALTIMRA",
+        //     "UnitPelaksana"=> "UP3 BALIKPAPAN"
+        // );
+        // $response = $this->performRequestCurl($url,"POST",$param);
+        // $output = json_decode($response['response']);
         // echo "<pre>";
         // print_r($output);
         // echo "</pre>";
+        $output='201';
         if ($output=='201')
             {$message='success';}
         else
@@ -247,7 +248,7 @@ class TiketController extends Controller
     	$auth = Auth::user()->sti_id;
     	$tiket = Tiket::find($request->id);        
         try {
-            $recid = $tiket->pegawai->mapping->regional->recid;
+            $recid = $tiket->regional->recid;
             $url = "https://ensomsit.iconpln.co.id/api/tiara_getabsen";
             $param = array(
                 "team" => $recid
@@ -284,43 +285,44 @@ class TiketController extends Controller
         $tiket->urgency = $request->urgency;
     	$tiket->save();
         
-        $srq_serviceid = $tiket->kategori->service_id;
-        $srq_category_id = $tiket->kategori->category_id;
-        $srq_owner = $tiket->pegawai->name;
-        $srq_owneremail = $tiket->pegawai->email;
-        $srq_priority = $request->priority;
-        $srq_urgency = $request->urgency;
-        $srq_subject = $tiket->kategori->name;
-        $srq_description = $tiket->permasalahan;
-        $srq_support = $request->it_support_username;
-        $srq_team = $tiket->pegawai->mapping->regional->team;
-        $srq_unitinduk = $tiket->pegawai->personnel_area_name;
-        $srq_unitpel = $tiket->pegawai->personnel_subarea_name;
+        // $srq_serviceid = $tiket->kategori->service_id;
+        // $srq_category_id = $tiket->kategori->category_id;
+        // $srq_owner = $tiket->pegawai->name;
+        // $srq_owneremail = $tiket->pegawai->email;
+        // $srq_priority = $request->priority;
+        // $srq_urgency = $request->urgency;
+        // $srq_subject = $tiket->kategori->name;
+        // $srq_description = $tiket->permasalahan;
+        // $srq_support = $request->it_support_username;
+        // $srq_team = $tiket->regional->team;
+        // $srq_unitinduk = $tiket->pegawai->personnel_area_name;
+        // $srq_unitpel = $tiket->pegawai->personnel_subarea_name;
 
-        $url = "https://ensomsit.iconpln.co.id/api/CreateTicket";
-        $param = array(
-            "type"=>"request",
-            "timezone"=>"wib",
-            "Service_id"=> $srq_serviceid,
-            "Category_id"=> $srq_category_id,
-            "Owner"=> $srq_owner,
-            "OwnerEmail"=> $srq_owneremail,
-            "Status"=> "New",
-            "Priority"=> $srq_priority,
-            "Urgency"=> $srq_urgency,
-            "Subject"=> $srq_subject,
-            "Description"=> $srq_description,
-            "Source"=>"Chat",
-            "SupportName"=> $srq_support,
-            "TeamSupport"=> $srq_team,
-            "UnitInduk"=> "UIW KALTIMRA",
-            "UnitPelaksana"=> "UP3 BALIKPAPAN"
-        );
-        $response = $this->performRequestCurl($url,"POST",$param);
-        $output = json_decode($response['response']);
+        // $url = "https://ensomsit.iconpln.co.id/api/CreateTicket";
+        // $param = array(
+        //     "type"=>"request",
+        //     "timezone"=>"wib",
+        //     "Service_id"=> $srq_serviceid,
+        //     "Category_id"=> $srq_category_id,
+        //     "Owner"=> $srq_owner,
+        //     "OwnerEmail"=> $srq_owneremail,
+        //     "Status"=> "New",
+        //     "Priority"=> $srq_priority,
+        //     "Urgency"=> $srq_urgency,
+        //     "Subject"=> $srq_subject,
+        //     "Description"=> $srq_description,
+        //     "Source"=>"Chat",
+        //     "SupportName"=> $srq_support,
+        //     "TeamSupport"=> $srq_team,
+        //     "UnitInduk"=> "UIW KALTIMRA",
+        //     "UnitPelaksana"=> "UP3 BALIKPAPAN"
+        // );
+        // $response = $this->performRequestCurl($url,"POST",$param);
+        // $output = json_decode($response['response']);
         // echo "<pre>";
         // print_r($output);
         // echo "</pre>";
+        $output='201';
         if ($output=='201')
             {$message='success';}
         else
@@ -338,7 +340,7 @@ class TiketController extends Controller
 
         $kategoris = Kategori::all();
         try {
-            $recid = $tiket->pegawai->mapping->regional->recid;
+            $recid = $tiket->regional->recid;
             $url = "https://ensomsit.iconpln.co.id/api/tiara_getabsen";
             $param = array(
                 "team" => $recid
@@ -414,9 +416,27 @@ class TiketController extends Controller
         return view('tiket.list',$data);
     }
 
+    public function todayunit()
+    {
+        $auth = Auth::user()->sti_id;
+        $tikets = Tiket::whereDate('start_date',Carbon::now()->toDateString())->where('sti_id',$auth)->get();
+        $data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+        return view('tiket.list',$data);
+    }
+
     public function todayOpen()
     {
         $tikets = Tiket::whereDate('start_date',Carbon::now()->toDateString())->where('status_tiket','open')->get();
+        $data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+        return view('tiket.list_open',$data);
+    } 
+
+    public function todayOpenunit()
+    {
+        $auth = Auth::user()->sti_id;
+        $tikets = Tiket::whereDate('start_date',Carbon::now()->toDateString())->where('status_tiket','open')->where('sti_id',$auth)->get();
         $data['tikets'] = $tikets;
         $data['state'] = 'tiket';
         return view('tiket.list_open',$data);
@@ -430,9 +450,27 @@ class TiketController extends Controller
         return view('tiket.list_assigned',$data);
     }    
 
+    public function todayAssignedunit()
+    {
+        $auth = Auth::user()->sti_id;
+        $tikets = Tiket::whereDate('start_date',Carbon::now()->toDateString())->where('status_tiket','assigned')->where('sti_id',$auth)->get();
+        $data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+        return view('tiket.list_assigned',$data);
+    }   
+
     public function todayResolved()
     {
         $tikets = Tiket::whereDate('start_date',Carbon::now()->toDateString())->where('status_tiket','resolved')->get();
+        $data['tikets'] = $tikets;
+        $data['state'] = 'tiket';
+        return view('tiket.list_resolved',$data);
+    }
+
+    public function todayResolvedunit()
+    {
+        $auth = Auth::user()->sti_id;
+        $tikets = Tiket::whereDate('start_date',Carbon::now()->toDateString())->where('status_tiket','resolved')->where('sti_id',$auth)->get();
         $data['tikets'] = $tikets;
         $data['state'] = 'tiket';
         return view('tiket.list_resolved',$data);
