@@ -88,8 +88,8 @@ class ReportController extends Controller
     {
     	if(!empty($request->bulan))
     	{
-    		$query = "select date(t.start_date) as tanggal, count(t.id) as jumlah from tiket t where month(t.start_date) = '".$request->bulan."' and year(t.start_date) = '".$request->tahun."' group by date(t.start_date)";
-    		$rekap = DB::select($query);
+    		$query = "select extract(day from t.start_date) as tanggal, count(t.id) as jumlah from tiket t where extract(month from t.start_date) = '".$request->bulan."' and extract(year from t.start_date) = '".$request->tahun."' group by extract(day from t.start_date)";
+			$rekap = DB::select($query);
     		$data['bulan'] = $request->bulan;
     		$data['tahun'] = $request->tahun;
     		$data['rekap'] = $rekap;
