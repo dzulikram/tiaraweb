@@ -14,7 +14,7 @@ class ReportController extends Controller
     	$data['state'] = "report";
     	if(!empty($request->bulan))
     	{
-    		$query = "select k.id, k.name, count(t.id) as jumlah from kategori k, tiket t where k.id = t.kategori_id and month(t.start_date) = '".$request->bulan."' and year(t.start_date) = '".$request->tahun."' group by k.id order by jumlah desc";
+    		$query = "select k.id, k.name, count(t.id) as jumlah from kategori k, tiket t where k.id = t.kategori_id and extract(month from t.start_date) = '".$request->bulan."' and extract(year from t.start_date) = '".$request->tahun."' group by k.id order by jumlah desc";
     		$rekap = DB::select($query);
     		$data['bulan'] = $request->bulan;
     		$data['tahun'] = $request->tahun;
@@ -39,7 +39,7 @@ class ReportController extends Controller
     	$data['state'] = "report";
     	if(!empty($request->bulan))
     	{
-    		$query = "select u.id, u.name, count(t.id) as jumlah from users u, tiket t where u.username = t.it_support and month(t.start_date) = '".$request->bulan."' and year(t.start_date) = '".$request->tahun."' group by u.id order by jumlah desc";
+    		$query = "select u.id, u.name, count(t.id) as jumlah from users u, tiket t where u.username = t.it_support and extract(month from t.start_date) = '".$request->bulan."' and extract(year from t.start_date) = '".$request->tahun."' group by u.id order by jumlah desc";
 	    	$rekap = DB::select($query);
 	    	$data['rekap'] = $rekap;
 	    	$data['bulan'] = $request->bulan;
@@ -64,7 +64,7 @@ class ReportController extends Controller
     	$data['state'] = "report";
     	if(!empty($request->bulan))
     	{
-    		$query = "select p.nip, p.name, count(t.id) as jumlah from pegawai p, tiket t where p.nip = t.nip and month(t.start_date) = '".$request->bulan."' and year(t.start_date) = '".$request->tahun."' group by p.nip,p.name order by jumlah desc";
+    		$query = "select p.nip, p.name, count(t.id) as jumlah from pegawai p, tiket t where p.nip = t.nip and extract(month from t.start_date) = '".$request->bulan."' and extract(year from t.start_date) = '".$request->tahun."' group by p.nip,p.name order by jumlah desc";
     		$rekap = DB::select($query);
     		$data['bulan'] = $request->bulan;
     		$data['tahun'] = $request->tahun;
@@ -107,7 +107,7 @@ class ReportController extends Controller
     {
     	if(!empty($request->tahun))
     	{
-    		$query = "select month(t.start_date) as bulan, count(t.id) as jumlah from tiket t where year(t.start_date) = '".$request->tahun."' group by month(t.start_date)";
+    		$query = "select extract(month from t.start_date) as bulan, count(t.id) as jumlah from tiket t where extract(year from t.start_date) = '".$request->tahun."' group by extract(month from t.start_date)";
     		$data['tahun'] = $request->tahun;
     		$rekap = DB::select($query);
     		$data['rekap'] = $rekap;
@@ -127,7 +127,7 @@ class ReportController extends Controller
     	$data['state'] = "report-unit";
     	if(!empty($request->bulan))
     	{
-    		$query = "select k.id, k.name, count(t.id) as jumlah from kategori k, tiket t where k.id = t.kategori_id and month(t.start_date) = '".$request->bulan."' and year(t.start_date) = '".$request->tahun."' and t.sti_id = ".$auth." group by k.id order by jumlah desc";
+    		$query = "select k.id, k.name, count(t.id) as jumlah from kategori k, tiket t where k.id = t.kategori_id and extract(month from t.start_date) = '".$request->bulan."' and extract(year from t.start_date) = '".$request->tahun."' and t.sti_id = ".$auth." group by k.id order by jumlah desc";
     		$rekap = DB::select($query);
     		$data['bulan'] = $request->bulan;
     		$data['tahun'] = $request->tahun;
@@ -153,7 +153,7 @@ class ReportController extends Controller
     	$data['state'] = "report-unit";
     	if(!empty($request->bulan))
     	{
-    		$query = "select u.id, u.name, count(t.id) as jumlah from users u, tiket t where u.username = t.it_support and month(t.start_date) = '".$request->bulan."' and year(t.start_date) = '".$request->tahun."' and t.sti_id = ".$auth." group by u.id order by jumlah desc";
+    		$query = "select u.id, u.name, count(t.id) as jumlah from users u, tiket t where u.username = t.it_support and extract(month from t.start_date) = '".$request->bulan."' and extract(year from t.start_date) = '".$request->tahun."' and t.sti_id = ".$auth." group by u.id order by jumlah desc";
 	    	$rekap = DB::select($query);
 	    	$data['rekap'] = $rekap;
 	    	$data['bulan'] = $request->bulan;
@@ -179,7 +179,7 @@ class ReportController extends Controller
     	$data['state'] = "report-unit";
     	if(!empty($request->bulan))
     	{
-    		$query = "select p.nip, p.name, count(t.id) as jumlah from pegawai p, tiket t where p.nip = t.nip and month(t.start_date) = '".$request->bulan."' and year(t.start_date) = '".$request->tahun."' and t.sti_id = ".$auth." group by p.nip, p.name order by jumlah desc";
+    		$query = "select p.nip, p.name, count(t.id) as jumlah from pegawai p, tiket t where p.nip = t.nip and extract(month from t.start_date) = '".$request->bulan."' and extract(year from t.start_date) = '".$request->tahun."' and t.sti_id = ".$auth." group by p.nip, p.name order by jumlah desc";
     		$rekap = DB::select($query);
     		$data['bulan'] = $request->bulan;
     		$data['tahun'] = $request->tahun;
@@ -204,7 +204,7 @@ class ReportController extends Controller
 		$auth = Auth::user()->sti_id;
     	if(!empty($request->bulan))
     	{
-    		$query = "select date(t.start_date) as tanggal, count(t.id) as jumlah from tiket t where month(t.start_date) = '".$request->bulan."' and year(t.start_date) = '".$request->tahun."' and t.sti_id = ".$auth." group by date(t.start_date)";
+    		$query = "select extract(day from t.start_date) as tanggal, count(t.id) as jumlah from tiket t where extract(month from t.start_date) = '".$request->bulan."' and extract(year from t.start_date) = '".$request->tahun."' and t.sti_id = ".$auth." group by extract(day from t.start_date)";
     		$rekap = DB::select($query);
     		$data['bulan'] = $request->bulan;
     		$data['tahun'] = $request->tahun;
@@ -224,7 +224,7 @@ class ReportController extends Controller
     	if(!empty($request->tahun))
     	{
 			$auth = Auth::user()->sti_id;
-    		$query = "select month(t.start_date) as bulan, count(t.id) as jumlah from tiket t where year(t.start_date) = '".$request->tahun."' and t.sti_id = ".$auth." group by month(t.start_date)";
+    		$query = "select extract(month from t.start_date) as bulan, count(t.id) as jumlah from tiket t where extract(year from t.start_date) = '".$request->tahun."' and t.sti_id = ".$auth." group by extract(month from t.start_date)";
     		$data['tahun'] = $request->tahun;
     		$rekap = DB::select($query);
     		$data['rekap'] = $rekap;
