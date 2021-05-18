@@ -52,6 +52,14 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
+                          <label class="bmd-label-floating">Business Area</label>
+                          <input type="text" name="business_area" value="<?php echo $pegawai->business_area;?>" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Personnel Subarea</label>
                           <input type="text" name="personnel_subarea" value="<?php echo $pegawai->personnel_subarea;?>" class="form-control">
                         </div>
@@ -68,8 +76,32 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
+                          <label class="bmd-label-floating">Business Area Name</label>
+                          <input type="text" name="business_area_name" value="<?php echo $pegawai->business_area_name;?>" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Personnel Subarea Name</label>
                           <input type="text" name="personnel_subarea_name" value="<?php echo $pegawai->personnel_subarea_name;?>" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group label-floating has-info">
+                          <label class="bmd-label-floating">Unit Induk</label>
+                          <input type="text" name="unit_induk" value="<?php echo $pegawai->unit_induk;?>" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group label-floating has-info">
+                          <label class="bmd-label-floating">Unit</label>
+                          <input type="text" name="unit" value="<?php echo $pegawai->unit;?>" class="form-control">
                         </div>
                       </div>
                     </div>

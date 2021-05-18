@@ -41,9 +41,13 @@ class PegawaiController extends Controller
         $pegawai->nip = $request->nip;
         $pegawai->username = $request->username;
         $pegawai->personnel_area = $request->personnel_area;
+        $pegawai->business_area = $request->business_area;
         $pegawai->personnel_subarea = $request->personnel_subarea;
         $pegawai->personnel_area_name = $request->personnel_area_name;
+        $pegawai->business_area_name = $request->business_area_name;
         $pegawai->personnel_subarea_name = $request->personnel_subarea_name;
+        $pegawai->unit_induk = $request->unit_induk;
+        $pegawai->unit = $request->unit;
         $pegawai->position = $request->position;
         $pegawai->email = $request->email;
         if($auth == 1)
@@ -83,9 +87,13 @@ class PegawaiController extends Controller
         $pegawai->nip = $request->nip;
         $pegawai->username = $request->username;
         $pegawai->personnel_area = $request->personnel_area;
+        $pegawai->business_area = $request->business_area;
         $pegawai->personnel_subarea = $request->personnel_subarea;
         $pegawai->personnel_area_name = $request->personnel_area_name;
+        $pegawai->business_area_name = $request->business_area_name;
         $pegawai->personnel_subarea_name = $request->personnel_subarea_name;
+        $pegawai->unit_induk = $request->unit_induk;
+        $pegawai->unit = $request->unit;
         $pegawai->position = $request->position;
         $pegawai->email = $request->email;
         if($auth == 1)

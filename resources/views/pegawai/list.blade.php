@@ -20,8 +20,8 @@
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Nama</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">NIP</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Username</th>
-                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Personnel Area Name</th>
-                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Personnel Sub Area Name</th>
+                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Unit Induk</th>
+                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Unit</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Position</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Action</th>
                       </thead>
@@ -35,8 +35,8 @@
                           <td><?php echo $row->name;?></td>
                           <td><?php echo $row->nip;?></td>
                           <td><?php echo $row->username;?></td>
-                          <td><?php echo $row->personnel_area_name;?></td>
-                          <td><?php echo $row->personnel_subarea_name;?></td>
+                          <td><?php echo $row->unit_induk;?></td>
+                          <td><?php echo $row->unit;?></td>
                           <td><?php echo $row->position;?></td>
                           <td><a href="pegawai/edit/<?php echo $row->id;?>" class="btn btn-success btn-sm btn-round"><i class="fa fa-edit"></i></a>
                               <a href="pegawai/delete/<?php echo $row->id;?>" class="btn btn-danger btn-sm btn-round"><i class="fa fa-trash"></i></a>

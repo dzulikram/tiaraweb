@@ -50,6 +50,14 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
+                          <label class="bmd-label-floating">Business Area</label>
+                          <input type="text" name="business_area" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Personnel Subarea</label>
                           <input type="text" name="personnel_subarea" class="form-control">
                         </div>
@@ -66,8 +74,32 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
+                          <label class="bmd-label-floating">Business Area Name</label>
+                          <input type="text" name="business_area_name" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Personnel Subarea Name</label>
                           <input type="text" name="personnel_subarea_name" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group label-floating has-info">
+                          <label class="bmd-label-floating">Unit Induk</label>
+                          <input type="text" name="unit_induk" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group label-floating has-info">
+                          <label class="bmd-label-floating">Unit</label>
+                          <input type="text" name="unit" class="form-control">
                         </div>
                       </div>
                     </div>
