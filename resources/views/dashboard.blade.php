@@ -128,7 +128,7 @@
                     ?>
                     <tr style="color: red">
                       <td><b><?php echo $no; $no++; ?></b></td>
-                      <td><b><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
+                      <td><b><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->unit_induk." - ".$row->pegawai->unit; ?>
                         <?php if(!empty($row->lokasi))
                         {
                           ?>
@@ -147,7 +147,7 @@
                     ?>
                     <tr>
                       <td><?php echo $no; $no++; ?></td>
-                      <td><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
+                      <td><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->unit_induk." - ".$row->pegawai->unit; ?>
                         <?php if(!empty($row->lokasi))
                         {
                           ?>
@@ -194,7 +194,7 @@
                     ?>
                     <tr style="color: red">
                       <td><b><?php echo $no; $no++; ?></b></td>
-                      <td><b><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
+                      <td><b><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->unit_induk." - ".$row->pegawai->unit; ?>
                         <?php if(!empty($row->lokasi))
                         {
                           ?>
@@ -213,7 +213,7 @@
                     ?>
                     <tr>
                       <td><?php echo $no; $no++; ?></td>
-                      <td><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
+                      <td><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->unit_induk." - ".$row->pegawai->unit; ?>
                         <?php if(!empty($row->lokasi))
                         {
                           ?>
@@ -262,7 +262,7 @@
                     ?>
                     <tr style="color: red">
                       <td><b><?php echo $no; $no++; ?></b></td>
-                      <td><b><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
+                      <td><b><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->unit_induk." - ".$row->pegawai->unit; ?>
                         <?php if(!empty($row->lokasi))
                         {
                           ?>
@@ -281,7 +281,7 @@
                     ?>
                     <tr>
                       <td><?php echo $no; $no++; ?></td>
-                      <td><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
+                      <td><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->unit_induk." - ".$row->pegawai->unit; ?>
                         <?php if(!empty($row->lokasi))
                         {
                           ?>
@@ -328,7 +328,7 @@
                     ?>
                     <tr style="color: red">
                       <td><b><?php echo $no; $no++; ?></b></td>
-                      <td><b><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
+                      <td><b><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->unit_induk." - ".$row->pegawai->unit; ?>
                         <?php if(!empty($row->lokasi))
                         {
                           ?>
@@ -350,7 +350,7 @@
                     ?>
                     <tr>
                       <td><?php echo $no; $no++; ?></td>
-                      <td><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->personnel_area_name." - ".$row->pegawai->personnel_subarea_name; ?>
+                      <td><?php echo $row->pegawai->name."(".$row->pegawai->nip.")<br/>".$row->pegawai->position."<br/>".$row->pegawai->unit_induk." - ".$row->pegawai->unit; ?>
                         <?php if(!empty($row->lokasi))
                         {
                           ?>

@@ -210,7 +210,7 @@ c. Untuk mengakhiri percakapan";
     		}
     		else if($input == 2)
     		{
-    			$message = "Aplikasi apa yang bermasalah?";
+    			$message = "Aplikasi apa yang bermasalah dan seperti apa permasalahannya?";
 				$chat->state = 5;
 				$chat->save();
                 $this->addHistory($chat->id,$input);
@@ -329,7 +329,7 @@ c. Untuk mengakhiri percakapan";
     		}
     		else if($input == 2)
     		{
-    			$message = "Aplikasi apa yang bermasalah?";
+    			$message = "Aplikasi apa yang bermasalah dan seperti apa permasalahannya?";
     			$chat->state = 10;
     			$chat->save();
                 $this->addHistory($chat->id,$input);

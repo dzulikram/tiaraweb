@@ -41,7 +41,7 @@
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">Unit</label>
-                    <input type="text" name="personnel_area_name" class="form-control" value="<?php echo $tiket->pegawai->personnel_area_name; ?>" disabled>
+                    <input type="text" name="personnel_area_name" class="form-control" value="<?php echo $tiket->pegawai->unit_induk; ?>" disabled>
                   </div>
                 </div>
               </div>
@@ -49,7 +49,7 @@
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">Sub Unit</label>
-                    <input type="text" name="personnel_subarea_name" class="form-control" value="<?php echo $tiket->pegawai->personnel_subarea_name; ?>" disabled>
+                    <input type="text" name="personnel_subarea_name" class="form-control" value="<?php echo $tiket->pegawai->unit; ?>" disabled>
                   </div>
                 </div>
               </div>

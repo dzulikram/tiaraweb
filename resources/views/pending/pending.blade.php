@@ -41,7 +41,7 @@
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">Unit</label>
-                    <input type="text" name="personnel_area_name" class="form-control" value="<?php echo $tiket->pegawai->personnel_area_name; ?>" disabled>
+                    <input type="text" name="personnel_area_name" class="form-control" value="<?php echo $tiket->pegawai->unit_induk; ?>" disabled>
                   </div>
                 </div>
               </div>
@@ -49,7 +49,7 @@
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">Sub Unit</label>
-                    <input type="text" name="personnel_subarea_name" class="form-control" value="<?php echo $tiket->pegawai->personnel_subarea_name; ?>" disabled>
+                    <input type="text" name="personnel_subarea_name" class="form-control" value="<?php echo $tiket->pegawai->unit; ?>" disabled>
                   </div>
                 </div>
               </div>
@@ -77,6 +77,22 @@
                   </div>
                 </div>
               </div>
+              <?php if($tiket->kategori_id<='97'){?>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group label-floating has-info">
+                    <label class="bmd-label-floating">Kategori</label>
+                    <select class="form-control" name="kategori_id" disabled>
+                      <option></option>
+                      <?php foreach ($kategoris as $row) {
+                        ?>
+                        <option value="<?php echo $row->id; ?>" <?php if(($row->id == $tiket->kategori_id) && !empty($tiket->kategori_id)) echo "selected"; ?>><?php echo $row->name; ?></option>
+                        <?php
+                      } ?>
+                    </select>
+                  </div>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
@@ -93,29 +109,15 @@
                   </div>
                 </div>
               </div> -->
-              <!-- <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group label-floating has-info">
-                    <label class="bmd-label-floating">NO Tiket</label>
-                    <input type="text" name="no_tiket" class="form-control" value="<?php echo $tiket->no_tiket; ?>">
-                  </div>
-                </div>
-              </div> -->
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
-                    <label class="bmd-label-floating">Kategori</label>
-                    <select class="form-control" name="kategori_id" required>
-                      <option></option>
-                      <?php foreach ($kategoris as $row) {
-                        ?>
-                        <option value="<?php echo $row->id; ?>" <?php if(($row->id == $tiket->kategori_id) && !empty($tiket->kategori_id)) echo "selected"; ?>><?php echo $row->name; ?></option>
-                        <?php
-                      } ?>
-                    </select>
+                    <label class="bmd-label-floating">NO Tiket</label>
+                    <input type="text" name="no_tiket" class="form-control" value="<?php echo $tiket->no_tiket; ?>" disabled>
                   </div>
                 </div>
               </div>
+              
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
@@ -131,11 +133,12 @@
                   </div>
                 </div>
               </div>
+              <?php } ?>
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">Reason</label>
-                    <input type="text" name="reason" class="form-control">
+                    <input type="text" name="reason" class="form-control" required>
                   </div>
                 </div>
               </div>
