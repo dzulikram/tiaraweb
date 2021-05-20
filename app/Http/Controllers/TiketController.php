@@ -231,21 +231,21 @@ class TiketController extends Controller
         );
         $response = $this->performRequestCurl($url,"POST",$param);
         $output = json_decode($response['response']);
-        echo "<pre>";
-        print_r($output);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($output);
+        // echo "</pre>";
         $no_tiket = $output->IncidentNumber;
         $tiket->no_tiket = $no_tiket;
         $tiket->save();
-        // if (!empty($no_tiket))
-        //      {$message='success';}
-        // else
-        //      {$message='error';}
+        if (!empty($no_tiket))
+             {$message='success';}
+        else
+             {$message='error';}
 
-        // if($auth != 1)
-        //     {return redirect('dashboard-unit')->with([$message => 'Message']);}
-        // else
-        //     {return redirect('dashboard')->with([$message => 'Message']);}
+        if($auth != 1)
+            {return redirect('dashboard-unit')->with([$message => 'Message']);}
+        else
+            {return redirect('dashboard')->with([$message => 'Message']);}
     }
 
     public function srqTiket(Request $request)
@@ -290,6 +290,7 @@ class TiketController extends Controller
         $tiket->urgency = $request->urgency;
     	$tiket->save();
         
+        $srq_timezone = $tiket->regional->timezone;
         $srq_serviceid = $tiket->kategori->service_id;
         $srq_category_id = $tiket->kategori->category_id;
         $srq_owner = $tiket->pegawai->name;
@@ -307,7 +308,7 @@ class TiketController extends Controller
         $url = "http://10.68.35.241:7004/api/CreateTicket";
         $param = array(
             "type"=>"request",
-            "timezone"=>"wib",
+            "timezone"=> $srq_timezone,
             "Service_id"=> $srq_serviceid,
             "Category_id"=> $srq_category_id,
             "Owner"=> $srq_owner,
@@ -326,21 +327,21 @@ class TiketController extends Controller
         );
         $response = $this->performRequestCurl($url,"POST",$param);
         $output = json_decode($response['response']);
-        echo "<pre>";
-        print_r($output);
-        echo "</pre>";
-        // $no_tiket = $output->ServiceReqNumber;
-        // $tiket->no_tiket = $no_tiket;
-        // $tiket->save();
-        // if (!empty($no_tiket))
-        //      {$message='success';}
-        // else
-        //      {$message='error';}
+        // echo "<pre>";
+        // print_r($output);
+        // echo "</pre>";
+        $no_tiket = $output->ServiceReqNumber;
+        $tiket->no_tiket = $no_tiket;
+        $tiket->save();
+        if (!empty($no_tiket))
+             {$message='success';}
+        else
+             {$message='error';}
 
-        // if($auth != 1)
-        //     {return redirect('dashboard-unit')->with([$message => 'Message']);}
-        // else
-        //     {return redirect('dashboard')->with([$message => 'Message']);}
+        if($auth != 1)
+            {return redirect('dashboard-unit')->with([$message => 'Message']);}
+        else
+            {return redirect('dashboard')->with([$message => 'Message']);}
     }
 
     public function assignTiket(Request $request)
