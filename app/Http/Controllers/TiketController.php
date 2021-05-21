@@ -231,21 +231,21 @@ class TiketController extends Controller
         );
         $response = $this->performRequestCurl($url,"POST",$param);
         $output = json_decode($response['response']);
-        // echo "<pre>";
-        // print_r($output);
-        // echo "</pre>";
+        echo "<pre>";
+        print_r($output);
+        echo "</pre>";
         $no_tiket = $output->IncidentNumber;
         $tiket->no_tiket = $no_tiket;
         $tiket->save();
-        if (!empty($no_tiket))
-             {$message='success';}
-        else
-             {$message='error';}
+        // if (!empty($no_tiket))
+        //      {$message='success';}
+        // else
+        //      {$message='error';}
 
-        if($auth != 1)
-            {return redirect('dashboard-unit')->with([$message => 'Message']);}
-        else
-            {return redirect('dashboard')->with([$message => 'Message']);}
+        // if($auth != 1)
+        //     {return redirect('dashboard-unit')->with([$message => 'Message']);}
+        // else
+        //     {return redirect('dashboard')->with([$message => 'Message']);}
     }
 
     public function srqTiket(Request $request)
@@ -327,21 +327,21 @@ class TiketController extends Controller
         );
         $response = $this->performRequestCurl($url,"POST",$param);
         $output = json_decode($response['response']);
-        // echo "<pre>";
-        // print_r($output);
-        // echo "</pre>";
+        echo "<pre>";
+        print_r($output);
+        echo "</pre>";
         $no_tiket = $output->ServiceReqNumber;
         $tiket->no_tiket = $no_tiket;
         $tiket->save();
-        if (!empty($no_tiket))
-             {$message='success';}
-        else
-             {$message='error';}
+        // if (!empty($no_tiket))
+        //      {$message='success';}
+        // else
+        //      {$message='error';}
 
-        if($auth != 1)
-            {return redirect('dashboard-unit')->with([$message => 'Message']);}
-        else
-            {return redirect('dashboard')->with([$message => 'Message']);}
+        // if($auth != 1)
+        //     {return redirect('dashboard-unit')->with([$message => 'Message']);}
+        // else
+        //     {return redirect('dashboard')->with([$message => 'Message']);}
     }
 
     public function assignTiket(Request $request)
