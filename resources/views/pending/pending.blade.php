@@ -142,7 +142,8 @@
                   </div>
                 </div>
               </div>
-              <button type="submit" class="btn btn-info pull-right">PENDING</button>
+              <button type="submit" class="btn btn-info btn-sm pull-right">PENDING</button>
+              <a href="{{url('dashboard')}}" class="btn btn-sm btn-light-dark pull-right">CANCEL</a>
               <div class="clearfix"></div>
             </form>
           </div>

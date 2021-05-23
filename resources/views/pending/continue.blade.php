@@ -133,7 +133,8 @@
                 </div>
               </div>
               <?php } ?>
-              <button type="submit" class="btn btn-info pull-right">CONTINUE</button>
+              <button type="submit" class="btn btn-sm btn-info pull-right">CONTINUE</button>
+              <a href="{{url('dashboard')}}" class="btn btn-sm btn-light-dark pull-right">CANCEL</a>
               <div class="clearfix"></div>
             </form>
           </div>

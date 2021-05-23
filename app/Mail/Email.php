@@ -17,14 +17,14 @@ class Email extends Mailable
      *
      * @return void
      */
-    public function __construct($id,$call_type,$permasalahan,$nip,$name,$personnel_subarea_name,$email,$kategori)
+    public function __construct($id,$call_type,$permasalahan,$nip,$name,$unit,$email,$kategori)
     {
         $this->id=$id;
         $this->call_type=$call_type;
         $this->permasalahan=$permasalahan;
         $this->nip=$nip;
         $this->name=$name;
-        $this->unit=$personnel_subarea_name;
+        $this->unit=$unit;
         $this->email=$email;
         $this->kategori=$kategori;
     }

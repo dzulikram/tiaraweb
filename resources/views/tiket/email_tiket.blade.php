@@ -65,7 +65,7 @@
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">Permasalahan</label>
-                    <input type="text" name="permasalahan" class="form-control" value="<?php echo $tiket->permasalahan; ?>" disabled>
+                    <input type="text" name="permasalahan" class="form-control" value="<?php echo $tiket->permasalahan; ?>" required>
                   </div>
                 </div>
               </div>
@@ -84,8 +84,8 @@
                   </div>
                 </div>
               </div> 
-              <button type="submit" class="btn btn-info pull-right">CREATE ITSM</button>       
-              <a href="{{url('createitsm-tiket')}}/<?php echo $tiket->id; ?>" class="btn btn-light-dark pull-right">Cancel</a>     
+              <button type="submit" class="btn btn-sm btn-info pull-right">CREATE ITSM</button>       
+              <a href="{{url('createitsm-tiket')}}/<?php echo $tiket->id; ?>" class="btn btn-sm btn-light-dark pull-right">Cancel</a>     
               <div class="clearfix"></div>
             </form>
           </div>
