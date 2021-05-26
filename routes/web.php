@@ -196,6 +196,4 @@ Route::put('feedback/{id}','TiketController@storeFeedback');
 Route::get('reset-password','PageController@resetPassword');
 Route::post('reset-password','PageController@StoreResetPassword');
 
-Route::post('get-data','ChatController@getData');
-
 Route::get('locked', function(){return View::make("auth/locked");});

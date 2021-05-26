@@ -63,6 +63,13 @@
     <?php
   }
   ?>
+  <?php if(!empty($state) && $state == 'dashboard-unit')
+  {
+    ?>
+      <meta http-equiv="refresh" content="10">
+    <?php
+  }
+  ?>
   <?php if(!empty($state) && $state == 'analytic')
   {
     ?>
