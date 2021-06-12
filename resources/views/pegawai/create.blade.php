@@ -19,7 +19,7 @@
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Nama</label>
-                          <input type="text" name="name" class="form-control">
+                          <input type="text" name="name" class="form-control" required>
                         </div>
                       </div>
                     </div>
@@ -27,7 +27,7 @@
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">NIP</label>
-                          <input type="text" name="nip" class="form-control">
+                          <input type="text" name="nip" class="form-control" required>
                         </div>
                       </div>
                     </div>
@@ -67,7 +67,7 @@
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Personnel Area Name</label>
-                          <input type="text" name="personnel_area_name" class="form-control">
+                          <input type="text" name="personnel_area_name" class="form-control" required>
                         </div>
                       </div>
                     </div>
@@ -75,7 +75,7 @@
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Business Area Name</label>
-                          <input type="text" name="business_area_name" class="form-control">
+                          <input type="text" name="business_area_name" class="form-control" required>
                         </div>
                       </div>
                     </div>
@@ -91,7 +91,7 @@
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Unit Induk</label>
-                          <input type="text" name="unit_induk" class="form-control">
+                          <input type="text" name="unit_induk" class="form-control" required>
                         </div>
                       </div>
                     </div>
@@ -99,7 +99,7 @@
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Unit</label>
-                          <input type="text" name="unit" class="form-control">
+                          <input type="text" name="unit" class="form-control" required>
                         </div>
                       </div>
                     </div>
@@ -107,7 +107,7 @@
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Position</label>
-                          <input type="text" name="position" class="form-control">
+                          <input type="text" name="position" class="form-control" required>
                         </div>
                       </div>
                     </div>
@@ -115,7 +115,7 @@
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Email</label>
-                          <input type="text" name="email" class="form-control">
+                          <input type="text" name="email" class="form-control" required>
                         </div>
                       </div>
                     </div>
