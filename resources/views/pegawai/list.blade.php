@@ -19,7 +19,7 @@
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">No.</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Nama</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">NIP</th>
-                        <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Username</th>
+                        <!-- <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Username</th> -->
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Unit Induk</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Unit</th>
                         <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Position</th>
@@ -33,8 +33,7 @@
                         <tr>
                           <td><?php echo $no++;?></td>
                           <td><?php echo $row->name;?></td>
-                          <td><?php echo $row->nip;?></td>
-                          <td><?php echo $row->username;?></td>
+                          <td><?php echo $row->nip;?></td>                          
                           <td><?php echo $row->unit_induk;?></td>
                           <td><?php echo $row->unit;?></td>
                           <td><?php echo $row->position;?></td>
