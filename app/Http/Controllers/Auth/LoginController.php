@@ -95,7 +95,7 @@ class LoginController extends Controller
         $user->wrong = $user->wrong + 1;
         if($user->wrong == 5)
         {
-            $user->is_active = 1;
+            $user->is_aktif = 1;
         }
         $user->save();
         $this->incrementLoginAttempts($request);

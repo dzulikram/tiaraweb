@@ -194,49 +194,59 @@ class TiketController extends Controller
         $tiket->urgency = $request->urgency;
     	$tiket->save();
         
-        $inc_timezone = $tiket->regional->timezone;
-        $inc_serviceid = $tiket->kategori->service_id;
-        $inc_category_id = $tiket->kategori->category_id;
-        $inc_owner = $tiket->pegawai->name;
-        $inc_owneremail = $tiket->pegawai->email;
-        $inc_priority = $request->priority;
-        $inc_urgency = $request->urgency;
-        $inc_subject = $tiket->kategori->name;
-        $inc_description = $tiket->permasalahan;
-        $inc_support = $request->it_support_username;
-        $inc_team = $tiket->regional->team;
-        $inc_unitinduk = $tiket->pegawai->personnel_area_name;
-        $inc_unitpel = $tiket->pegawai->business_area_name;
-        $inc_unitsubpel = $tiket->pegawai->personnel_subarea_name;    
+        if($auth != 421)
+        {
+            $inc_timezone = $tiket->regional->timezone;
+            $inc_serviceid = $tiket->kategori->service_id;
+            $inc_category_id = $tiket->kategori->category_id;
+            $inc_owner = $tiket->pegawai->name;
+            $inc_owneremail = $tiket->pegawai->email;
+            $inc_priority = $request->priority;
+            $inc_urgency = $request->urgency;
+            $inc_subject = $tiket->kategori->name;
+            $inc_description = $tiket->permasalahan;
+            $inc_support = $request->it_support_username;
+            $inc_team = $tiket->regional->team;
+            $inc_unitinduk = $tiket->pegawai->personnel_area_name;
+            $inc_unitpel = $tiket->pegawai->business_area_name;
+            $inc_unitsubpel = $tiket->pegawai->personnel_subarea_name;    
 
-        $url = "http://10.68.35.241:7004/api/CreateTicket";
-        $param = array(
-            "type"=>"inc",
-            "timezone"=> $inc_timezone,
-            "Service_id"=> $inc_serviceid,
-            "Category_id"=> $inc_category_id,
-            "Owner"=> $inc_owner,
-            "OwnerEmail"=> $inc_owneremail,
-            "Status"=> "New",
-            "Priority"=> $inc_priority,
-            "Urgency"=> $inc_urgency,
-            "Subject"=> $inc_subject,
-            "Description"=> $inc_description,
-            "Source"=>"Chat",
-            "SupportName"=> $inc_support,
-            "TeamSupport"=> $inc_team,
-            "UnitInduk"=> $inc_unitinduk,
-            "UnitPelaksana"=> $inc_unitpel,
-            "UnitSubPelaksana"=> $inc_unitsubpel
-        );
-        $response = $this->performRequestCurl($url,"POST",$param);
-        $output = json_decode($response['response']);
-        // echo "<pre>";
-        // print_r($output);
-        // echo "</pre>";
-        $no_tiket = $output->IncidentNumber;
-        $tiket->no_tiket = $no_tiket;
-        $tiket->save();
+            $url = "http://10.68.35.241:7004/api/CreateTicket";
+            $param = array(
+                "type"=>"inc",
+                "timezone"=> $inc_timezone,
+                "Service_id"=> $inc_serviceid,
+                "Category_id"=> $inc_category_id,
+                "Owner"=> $inc_owner,
+                "OwnerEmail"=> $inc_owneremail,
+                "Status"=> "New",
+                "Priority"=> $inc_priority,
+                "Urgency"=> $inc_urgency,
+                "Subject"=> $inc_subject,
+                "Description"=> $inc_description,
+                "Source"=>"Chat",
+                "SupportName"=> $inc_support,
+                "TeamSupport"=> $inc_team,
+                "UnitInduk"=> $inc_unitinduk,
+                "UnitPelaksana"=> $inc_unitpel,
+                "UnitSubPelaksana"=> $inc_unitsubpel
+            );
+            $response = $this->performRequestCurl($url,"POST",$param);
+            $output = json_decode($response['response']);
+            // echo "<pre>";
+            // print_r($output);
+            // echo "</pre>";
+            $no_tiket = $output->IncidentNumber;
+            $tiket->no_tiket = $no_tiket;
+            $tiket->save();
+        }
+        else
+        {
+            $no_tiket = $request->id;
+            $tiket->no_tiket = $no_tiket;
+            $tiket->save();
+        }
+        
         if (!empty($no_tiket))
              {$message='success';}
         else
@@ -290,49 +300,59 @@ class TiketController extends Controller
         $tiket->urgency = $request->urgency;
     	$tiket->save();
         
-        $srq_timezone = $tiket->regional->timezone;
-        $srq_serviceid = $tiket->kategori->service_id;
-        $srq_category_id = $tiket->kategori->category_id;
-        $srq_owner = $tiket->pegawai->name;
-        $srq_owneremail = $tiket->pegawai->email;
-        $srq_priority = $request->priority;
-        $srq_urgency = $request->urgency;
-        $srq_subject = $tiket->kategori->name;
-        $srq_description = $tiket->permasalahan;
-        $srq_support = $request->it_support_username;
-        $srq_team = $tiket->regional->team;
-        $srq_unitinduk = $tiket->pegawai->personnel_area_name;
-        $srq_unitpel = $tiket->pegawai->business_area_name;
-        $srq_subunitpel = $tiket->pegawai->personnel_subarea_name;
+        if($auth != 421)
+        {
+            $srq_timezone = $tiket->regional->timezone;
+            $srq_serviceid = $tiket->kategori->service_id;
+            $srq_category_id = $tiket->kategori->category_id;
+            $srq_owner = $tiket->pegawai->name;
+            $srq_owneremail = $tiket->pegawai->email;
+            $srq_priority = $request->priority;
+            $srq_urgency = $request->urgency;
+            $srq_subject = $tiket->kategori->name;
+            $srq_description = $tiket->permasalahan;
+            $srq_support = $request->it_support_username;
+            $srq_team = $tiket->regional->team;
+            $srq_unitinduk = $tiket->pegawai->personnel_area_name;
+            $srq_unitpel = $tiket->pegawai->business_area_name;
+            $srq_subunitpel = $tiket->pegawai->personnel_subarea_name;
 
-        $url = "http://10.68.35.241:7004/api/CreateTicket";
-        $param = array(
-            "type"=>"request",
-            "timezone"=> $srq_timezone,
-            "Service_id"=> $srq_serviceid,
-            "Category_id"=> $srq_category_id,
-            "Owner"=> $srq_owner,
-            "OwnerEmail"=> $srq_owneremail,
-            "Status"=> "New",
-            "Priority"=> $srq_priority,
-            "Urgency"=> $srq_urgency,
-            "Subject"=> $srq_subject,
-            "Description"=> $srq_description,
-            "Source"=>"Chat",
-            "SupportName"=> $srq_support,
-            "TeamSupport"=> $srq_team,
-            "UnitInduk"=> $srq_unitinduk,
-            "UnitPelaksana"=> $srq_unitpel,
-            "UnitSubPelaksana"=> $srq_subunitpel
-        );
-        $response = $this->performRequestCurl($url,"POST",$param);
-        $output = json_decode($response['response']);
-        // echo "<pre>";
-        // print_r($output);
-        // echo "</pre>";
-        $no_tiket = $output->ServiceReqNumber;
-        $tiket->no_tiket = $no_tiket;
-        $tiket->save();
+            $url = "http://10.68.35.241:7004/api/CreateTicket";
+            $param = array(
+                "type"=>"request",
+                "timezone"=> $srq_timezone,
+                "Service_id"=> $srq_serviceid,
+                "Category_id"=> $srq_category_id,
+                "Owner"=> $srq_owner,
+                "OwnerEmail"=> $srq_owneremail,
+                "Status"=> "New",
+                "Priority"=> $srq_priority,
+                "Urgency"=> $srq_urgency,
+                "Subject"=> $srq_subject,
+                "Description"=> $srq_description,
+                "Source"=>"Chat",
+                "SupportName"=> $srq_support,
+                "TeamSupport"=> $srq_team,
+                "UnitInduk"=> $srq_unitinduk,
+                "UnitPelaksana"=> $srq_unitpel,
+                "UnitSubPelaksana"=> $srq_subunitpel
+            );
+            $response = $this->performRequestCurl($url,"POST",$param);
+            $output = json_decode($response['response']);
+            // echo "<pre>";
+            // print_r($output);
+            // echo "</pre>";
+            $no_tiket = $output->ServiceReqNumber;
+            $tiket->no_tiket = $no_tiket;
+            $tiket->save();
+        }
+        else
+        {
+            $no_tiket = $request->id;
+            $tiket->no_tiket = $no_tiket;
+            $tiket->save();
+        }
+
         if (!empty($no_tiket))
              {$message='success';}
         else

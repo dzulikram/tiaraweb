@@ -82,7 +82,7 @@
     <li class="nav-item <?php if($state=='report'){echo 'active';} ?>">
       <a class="<?php if($state=='report'){echo 'nav-link';}else{echo 'dropdown-btn';} ?>">
         <i class="material-icons">list</i>
-          <p>Report All</p>
+          <p>Report</p>
       </a>        
       <ul class="<?php if($state=='report'){echo 'nav';}else{echo 'dropdown-container';} ?>" >
         <a class="nav-link" href="{{url('report-harian')}}"><span class="material-icons">narrow_right</span> Harian</a>

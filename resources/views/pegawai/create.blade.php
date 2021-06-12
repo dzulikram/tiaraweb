@@ -31,15 +31,15 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Username</label>
                           <input type="text" name="username" class="form-control">
                         </div>
                       </div>
-                    </div>
-                    <div class="row">
+                    </div> -->
+                    <!-- <div class="row">
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Personnel Area</label>
@@ -62,7 +62,7 @@
                           <input type="text" name="personnel_subarea" class="form-control">
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
