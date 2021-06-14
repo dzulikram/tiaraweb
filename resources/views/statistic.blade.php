@@ -257,7 +257,7 @@ chart5.render();
       <div class="col-lg-6 col-md-12">
         <div class="card">
           <div class="card-header card-header-danger">
-            <h4 class="card-title">Jumlah Tiket per Kategori</h4>
+            <h4 class="card-title">Jumlah Tiket per Kategori - Top 5</h4>
           </div>
           <div class="card-body table-responsive">
             <div id="chartContainer" style="height: 300px; width: 100%;"></div>
@@ -267,7 +267,7 @@ chart5.render();
       <div class="col-lg-6 col-md-12">
         <div class="card">
           <div class="card-header card-header-info">
-            <h4 class="card-title">Permasalahan Auto Close</h4>
+            <h4 class="card-title">Permasalahan Auto Close - Top 5</h4>
           </div>
           <div class="card-body table-responsive">
             <div id="autoCloseChart" style="height: 300px; width: 100%;"></div>
@@ -279,7 +279,7 @@ chart5.render();
       <div class="col-lg-6 col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title">Jumlah Tiket per IT Support</h4>
+            <h4 class="card-title">Jumlah Tiket per IT Support - Top 5</h4>
           </div>
           <div class="card-body table-responsive">
             <div id="supportChart" style="height: 300px; width: 100%;"></div>
@@ -289,7 +289,7 @@ chart5.render();
       <div class="col-lg-6 col-md-12">
         <div class="card">
           <div class="card-header card-header-success">
-            <h4 class="card-title">Jumlah Tiket per User</h4>
+            <h4 class="card-title">Jumlah Tiket per User - Top 5</h4>
           </div>
           <div class="card-body table-responsive">
             <div id="userChart" style="height: 300px; width: 100%;"></div>
@@ -301,7 +301,7 @@ chart5.render();
       <div class="col-lg-6 col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title">Jumlah Tiket Service Request</h4>
+            <h4 class="card-title">Jumlah Tiket Service Request - Top 5</h4>
           </div>
           <div class="card-body table-responsive">
             <div id="serviceChart" style="height: 300px; width: 100%;"></div>

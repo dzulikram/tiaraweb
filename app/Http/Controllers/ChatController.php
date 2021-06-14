@@ -142,7 +142,7 @@ c. Untuk mengakhiri percakapan";
     		}
     		else
     		{
-    			$message = "Mohon maaf, NIP anda tidak ditemukan, silakan email ke helpdeskwankaltimra@pln.co.id";
+    			$message = "Mohon maaf, NIP anda tidak ditemukan, silakan hubungi STI Regional Setempat 🙏";
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
     			$chat->state = 56;
