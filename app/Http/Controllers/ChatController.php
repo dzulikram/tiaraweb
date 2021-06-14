@@ -11,6 +11,7 @@ use App\Mapping;
 use App\User;
 use App\ChatKategori;
 use App\Sponsor;
+use App\RegionalSti;
 
 class ChatController extends Controller
 {
@@ -154,6 +155,9 @@ c. Untuk mengakhiri percakapan";
     	{
     		if($input == 1)
     		{
+				$pegawai = Pegawai::where('nip',$chat->nip)->first();
+				if($pegawai->sti_id == 12)
+				{
     			$message = "Layanan apa yang saat ini anda butuhkan?
 1. Layanan jaringan
 2. Layanan Aplikasi
@@ -164,6 +168,19 @@ c. Untuk mengakhiri percakapan";
 7. Reset Password/Permintaan VPN
 8. Kembali ke menu utama
 c. Untuk mengakhiri percakapan";
+				}
+				else
+				{
+				$message = "Layanan apa yang saat ini anda butuhkan?
+1. Layanan jaringan
+2. Layanan Aplikasi
+3. Layanan Desktop
+4. Pojok TI
+5. Chat dan Layanan
+6. Service Request
+8. Kembali ke menu utama
+c. Untuk mengakhiri percakapan";
+				}
     			$chat->state = 2;
                 $chat->lokasi = "WFO";
     			$chat->save();
@@ -172,16 +189,32 @@ c. Untuk mengakhiri percakapan";
     		}
     		else if($input == 2)
     		{
+    			$pegawai = Pegawai::where('nip',$chat->nip)->first();
+				if($pegawai->sti_id == 12)
+				{
     			$message = "Layanan apa yang saat ini anda butuhkan?
-1. Layanan VPN
+1. Layanan jaringan
 2. Layanan Aplikasi
-3. Percakapan dengan IT Support
-4. Pojok IT
-5. Chat dan Saran
+3. Layanan Desktop
+4. Pojok TI
+5. Chat dan Layanan
 6. Service Request
 7. Reset Password/Permintaan VPN
 8. Kembali ke menu utama
 c. Untuk mengakhiri percakapan";
+				}
+				else
+				{
+				$message = "Layanan apa yang saat ini anda butuhkan?
+1. Layanan jaringan
+2. Layanan Aplikasi
+3. Layanan Desktop
+4. Pojok TI
+5. Chat dan Layanan
+6. Service Request
+8. Kembali ke menu utama
+c. Untuk mengakhiri percakapan";
+				}
     			$chat->state = 3;
                 $chat->lokasi = "WFH";
     			$chat->save();
@@ -340,24 +373,19 @@ c. Untuk mengakhiri percakapan";
                 $pegawai = Pegawai::where('nip',$chat->nip)->first();
                 if(!empty($pegawai))
                 {
-                    $mapping = Mapping::where('unit',$pegawai->personnel_subarea_name)->first();
+                    $kontak = RegionalSti::where('id',$pegawai->sti_id)->first();
                 }
-                if(!empty($mapping))
-                {
-                    $it_support = User::where('username',$mapping->it_support)->first();
-                }
-
-                if(!empty($it_support->no_wa))
+                if(!empty($kontak->wa_support))
                 {
                     $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
-http://wa.me/".$it_support->no_wa."
+http://wa.me/".$kontak->wa_support."
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
                 }
                 else
                 {
                     $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
-http://wa.me/62811533364
+http://wa.me/6281385282208
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
                 }
@@ -630,29 +658,24 @@ c. Untuk mengakhiri percakapan";
     	else if($chat->status == 'open' && $chat->state == 10)
     	{
     		$pegawai = Pegawai::where('nip',$chat->nip)->first();
-            if(!empty($pegawai))
-            {
-                $mapping = Mapping::where('unit',$pegawai->personnel_subarea_name)->first();
-            }
-            if(!empty($mapping))
-            {
-                $it_support = User::where('username',$mapping->it_support)->first();
-            }
-
-            if(!empty($it_support->no_wa))
-            {
-                $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
-http://wa.me/".$it_support->no_wa."
+                if(!empty($pegawai))
+                {
+                    $kontak = RegionalSti::where('id',$pegawai->sti_id)->first();
+                }
+                if(!empty($kontak->wa_support))
+                {
+                    $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
+http://wa.me/".$kontak->wa_support."
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
-            }
-            else
-            {
-                $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
-http://wa.me/62811533364
+                }
+                else
+                {
+                    $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
+http://wa.me/6281385282208
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
-            }
+                }
     		$chat->status = "close-conversation";
             $chat->end_conversation = $this->getTimeNow();
             $chat->permasalahan = "Permasalahan aplikasi ".$input;
@@ -925,24 +948,19 @@ Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tia
     			$pegawai = Pegawai::where('nip',$chat->nip)->first();
                 if(!empty($pegawai))
                 {
-                    $mapping = Mapping::where('unit',$pegawai->personnel_subarea_name)->first();
+                    $kontak = RegionalSti::where('id',$pegawai->sti_id)->first();
                 }
-                if(!empty($mapping))
-                {
-                    $it_support = User::where('username',$mapping->it_support)->first();
-                }
-
-                if(!empty($it_support->no_wa))
+                if(!empty($kontak->wa_support))
                 {
                     $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
-http://wa.me/".$it_support->no_wa."
+http://wa.me/".$kontak->wa_support."
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
                 }
                 else
                 {
                     $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
-http://wa.me/62811533364
+http://wa.me/6281385282208
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
                 }
@@ -978,24 +996,19 @@ Terima kasih telah menghubungi Tiara 🙏☺️
     			$pegawai = Pegawai::where('nip',$chat->nip)->first();
                 if(!empty($pegawai))
                 {
-                    $mapping = Mapping::where('unit',$pegawai->personnel_subarea_name)->first();
+                    $kontak = RegionalSti::where('id',$pegawai->sti_id)->first();
                 }
-                if(!empty($mapping))
-                {
-                    $it_support = User::where('username',$mapping->it_support)->first();
-                }
-
-                if(!empty($it_support->no_wa))
+                if(!empty($kontak->wa_support))
                 {
                     $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
-http://wa.me/".$it_support->no_wa."
+http://wa.me/".$kontak->wa_support."
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
                 }
                 else
                 {
                     $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
-http://wa.me/62811533364
+http://wa.me/6281385282208
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
                 }

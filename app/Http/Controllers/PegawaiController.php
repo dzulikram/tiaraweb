@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pegawai;
 use App\RegionalSti;
+use App\Unit;
 use Auth;
+use DB;
 //use Spatie\Permission\Models\Role;
 
 class PegawaiController extends Controller
@@ -27,8 +29,12 @@ class PegawaiController extends Controller
     
     public function create()
     {
+        $auth = Auth::user()->sti_id;
         $data['state'] = "pegawai";
         $data['sti'] = RegionalSti::all();
+        $data['unit_induk'] = DB::select("select * from unit where sti_id = ".$auth." group by unit_induk");
+        $data['unit_pelaksana'] = DB::select("select * from unit where sti_id = ".$auth." group by unit_pelaksana");
+        $data['unit_subpelaksana'] = DB::select("select * from unit where sti_id = ".$auth." and unit_subpelaksana<>'' ");
         return view('pegawai.create',$data);
     }
 
@@ -72,9 +78,13 @@ class PegawaiController extends Controller
 
     public function edit(Request $request)
     {
+        $auth = Auth::user()->sti_id;
         $data['state'] = "pegawai";
         $data['pegawai'] = Pegawai::find($request->id);
         $data['sti'] = RegionalSti::all();
+        $data['unit_induk'] = DB::select("select * from unit where sti_id = ".$auth." group by unit_induk");
+        $data['unit_pelaksana'] = DB::select("select * from unit where sti_id = ".$auth." group by unit_pelaksana");
+        $data['unit_subpelaksana'] = DB::select("select * from unit where sti_id = ".$auth." and unit_subpelaksana<>'' ");
         //$data['roles'] = Role::all();
         return view('pegawai.edit',$data);
     }

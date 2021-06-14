@@ -6,7 +6,7 @@
           <div class="row">
             
             <div class="col-md-12">
-              <a href="{{url('pegawai/create')}}" class="btn btn-info pull-left"><i class="fa fa-plus"></i> TAMBAH PEGAWAI</a></br></br>
+              <a href="{{url('pegawai/create')}}" class="btn btn-info pull-left"><i class="fa fa-plus"></i>  TAMBAH PEGAWAI</a></br></br>
               <div class="card">
                 <div class="card-header card-header-info">
                   <h4 class="card-title ">DAFTAR PEGAWAI</h4>

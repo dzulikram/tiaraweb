@@ -104,15 +104,15 @@ class PageController extends Controller
         $tiket_open = Tiket::where('status_tiket','open')->get();
         $tiket_assigned = Tiket::where('status_tiket','assigned')->get();
 
-        $n_kategori = DB::select("select k.id,k.name,count(t.id) as jumlah from kategori k,tiket t where k.id = t.kategori_id and t.is_autoclose is null and k.type = 'INC' group by k.id,k.name");
+        $n_kategori = DB::select("select k.id,k.name,count(t.id) as jumlah from kategori k,tiket t where k.id = t.kategori_id and t.is_autoclose is null and k.type = 'INC' group by k.id,k.name order by jumlah desc limit 5");
 
-        $n_autoclose = DB::select("select t.permasalahan, count(t.id) as jumlah from tiket t where t.is_autoclose = 1 group by t.permasalahan");
+        $n_autoclose = DB::select("select t.permasalahan, count(t.id) as jumlah from tiket t where t.is_autoclose = 1 group by t.permasalahan order by jumlah desc limit 5");
 
-        $n_support = DB::select("select u.id, u.name, count(t.id) as jumlah from tiket t, users u where t.it_support = u.username group by u.id, u.name order by jumlah desc limit 3");
+        $n_support = DB::select("select u.id, u.name, count(t.id) as jumlah from tiket t, users u where t.it_support = u.username group by u.id, u.name order by jumlah desc limit 5");
 
-        $n_user = DB::select("select p.nip, p.name, count(t.id) as jumlah from pegawai p, tiket t where p.nip = t.nip group by p.nip, p.name order by jumlah desc limit 3");
+        $n_user = DB::select("select p.nip, p.name, count(t.id) as jumlah from pegawai p, tiket t where p.nip = t.nip group by p.nip, p.name order by jumlah desc limit 5");
 
-        $n_service_request = DB::select("select k.id,k.name,count(t.id) as jumlah from kategori k,tiket t where k.id = t.kategori_id and t.is_autoclose is null and k.type = 'REQ' group by k.id,k.name");
+        $n_service_request = DB::select("select k.id,k.name,count(t.id) as jumlah from kategori k,tiket t where k.id = t.kategori_id and t.is_autoclose is null and k.type = 'REQ' group by k.id,k.name order by jumlah desc limit 5");
 
 
         $n_unit = DB::select("SELECT p.personnel_subarea_name, count(t.id) as jumlah FROM tiket t,pegawai p where t.nip = p.nip group by p.personnel_subarea_name order by jumlah desc");
@@ -145,15 +145,15 @@ class PageController extends Controller
         $tiket_open = Tiket::where('status_tiket','open')->where('sti_id',$auth)->get();
         $tiket_assigned = Tiket::where('status_tiket','assigned')->where('sti_id',$auth)->get();
 
-        $n_kategori = DB::select("select k.id,k.name,count(t.id) as jumlah from kategori k,tiket t where k.id = t.kategori_id and t.is_autoclose is null and k.type = 'INC' and t.sti_id = ".$auth." group by k.id,k.name");
+        $n_kategori = DB::select("select k.id,k.name,count(t.id) as jumlah from kategori k,tiket t where k.id = t.kategori_id and t.is_autoclose is null and k.type = 'INC' and t.sti_id = ".$auth." group by k.id,k.name order by jumlah desc limit 5");
 
-        $n_autoclose = DB::select("select t.permasalahan, count(t.id) as jumlah from tiket t where t.is_autoclose = 1 and t.sti_id = ".$auth." group by t.permasalahan");
+        $n_autoclose = DB::select("select t.permasalahan, count(t.id) as jumlah from tiket t where t.is_autoclose = 1 and t.sti_id = ".$auth." group by t.permasalahan order by jumlah desc limit 5");
 
-        $n_support = DB::select("select u.id, u.name, count(t.id) as jumlah from tiket t, users u where t.it_support = u.username and t.sti_id = ".$auth." group by u.id, u.name order by jumlah desc limit 3");
+        $n_support = DB::select("select u.id, u.name, count(t.id) as jumlah from tiket t, users u where t.it_support = u.username and t.sti_id = ".$auth." group by u.id, u.name order by jumlah desc limit 5");
 
-        $n_user = DB::select("select p.nip, p.name, count(t.id) as jumlah from pegawai p, tiket t where p.nip = t.nip and t.sti_id = ".$auth." group by p.nip, p.name order by jumlah desc limit 3");
+        $n_user = DB::select("select p.nip, p.name, count(t.id) as jumlah from pegawai p, tiket t where p.nip = t.nip and t.sti_id = ".$auth." group by p.nip, p.name order by jumlah desc limit 5");
 
-        $n_service_request = DB::select("select k.id,k.name,count(t.id) as jumlah from kategori k,tiket t where k.id = t.kategori_id and t.is_autoclose is null and k.type = 'REQ' and t.sti_id = ".$auth." group by k.id,k.name");
+        $n_service_request = DB::select("select k.id,k.name,count(t.id) as jumlah from kategori k,tiket t where k.id = t.kategori_id and t.is_autoclose is null and k.type = 'REQ' and t.sti_id = ".$auth." group by k.id,k.name order by jumlah desc limit 5");
 
 
         $n_unit = DB::select("SELECT p.personnel_subarea_name, count(t.id) as jumlah FROM tiket t,pegawai p where t.nip = p.nip and t.sti_id = ".$auth." group by p.personnel_subarea_name order by jumlah desc");

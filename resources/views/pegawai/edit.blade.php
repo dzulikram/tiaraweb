@@ -1,7 +1,5 @@
 @extends('layout.app')
 
-@section('title', 'Pegawai')
-
 @section('content')
 <div class="content">
         <div class="container-fluid">
@@ -69,7 +67,14 @@
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Personnel Area Name</label>
-                          <input type="text" name="personnel_area_name" value="<?php echo $pegawai->personnel_area_name;?>" class="form-control" required>
+                          <select class="form-control" name="personnel_area_name" required>
+                            <option></option>
+                            <?php foreach ($unit_induk as $row) {
+                              ?>
+                              <option value="<?php echo $row->unit_induk; ?>" <?php if($pegawai->personnel_area_name == $row->unit_induk) echo "selected"; ?>><?php echo $row->unit_induk; ?></option>
+                              <?php
+                            } ?>
+                          <select>
                         </div>
                       </div>
                     </div>
@@ -77,7 +82,14 @@
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Business Area Name</label>
-                          <input type="text" name="business_area_name" value="<?php echo $pegawai->business_area_name;?>" class="form-control" required>
+                          <select class="form-control" name="business_area_name" required>
+                            <option></option>
+                            <?php foreach ($unit_pelaksana as $row) {
+                              ?>
+                              <option value="<?php echo $row->unit_pelaksana; ?>" <?php if($pegawai->business_area_name == $row->unit_pelaksana) echo "selected"; ?>><?php echo $row->unit_pelaksana; ?></option>
+                              <?php
+                            } ?>
+                          <select>
                         </div>
                       </div>
                     </div>
@@ -85,7 +97,14 @@
                       <div class="col-md-12">
                         <div class="form-group label-floating has-info">
                           <label class="bmd-label-floating">Personnel Subarea Name</label>
-                          <input type="text" name="personnel_subarea_name" value="<?php echo $pegawai->personnel_subarea_name;?>" class="form-control">
+                          <select class="form-control" name="personnel_subarea_name">
+                            <option></option>
+                            <?php foreach ($unit_subpelaksana as $row) {
+                              ?>
+                              <option value="<?php echo $row->unit_subpelaksana; ?>" <?php if($pegawai->personnel_subarea_name == $row->unit_subpelaksana) echo "selected"; ?>><?php echo $row->unit_subpelaksana; ?></option>
+                              <?php
+                            } ?>
+                          <select>
                         </div>
                       </div>
                     </div>
@@ -137,8 +156,9 @@
                         </div>
                       </div>
                     </div> 
-                    @endhasrole                   
-                    <button type="submit" class="btn btn-info pull-right">UPDATE PEGAWAI</button>
+                    @endhasrole                                      
+                    <button type="submit" class="btn btn-sm btn-info pull-right">UPDATE PEGAWAI</button>
+                    <a href="{{url('pegawai-unit')}}" class="btn btn-sm btn-light-dark pull-right">CANCEL</a> 
                     <div class="clearfix"></div>
                   </form>
                 </div>
