@@ -32,9 +32,9 @@ class PegawaiController extends Controller
         $auth = Auth::user()->sti_id;
         $data['state'] = "pegawai";
         $data['sti'] = RegionalSti::all();
-        $data['unit_induk'] = DB::select("select * from (select * from unit group by id) u where sti_id = ".$auth." group by unit_induk");
-        $data['unit_pelaksana'] = DB::select("select * from (select * from unit group by id) u where sti_id = ".$auth." group by unit_pelaksana");
-        $data['unit_subpelaksana'] = DB::select("select * from (select * from unit group by id) u where sti_id = ".$auth." and unit_subpelaksana<>'' ");
+        $data['unit_induk'] = DB::select("select unit_induk, sti_id from unit where sti_id = ".$auth." group by unit_induk");
+        $data['unit_pelaksana'] = DB::select("select unit_pelaksana, sti_id from unit where sti_id = ".$auth." group by unit_pelaksana");
+        $data['unit_subpelaksana'] = DB::select("select unit_subpelaksana, sti_id from unit where sti_id = ".$auth." and unit_subpelaksana<>'' ");
         return view('pegawai.create',$data);
     }
 
@@ -82,9 +82,9 @@ class PegawaiController extends Controller
         $data['state'] = "pegawai";
         $data['pegawai'] = Pegawai::find($request->id);
         $data['sti'] = RegionalSti::all();
-        $data['unit_induk'] = DB::select("select * from (select * from unit group by id) u where sti_id = ".$auth." group by unit_induk");
-        $data['unit_pelaksana'] = DB::select("select * from (select * from unit group by id) u where sti_id = ".$auth." group by unit_pelaksana");
-        $data['unit_subpelaksana'] = DB::select("select * from (select * from unit group by id) u where sti_id = ".$auth." and unit_subpelaksana<>'' ");
+        $data['unit_induk'] = DB::select("select unit_induk, sti_id from unit where sti_id = ".$auth." group by unit_induk");
+        $data['unit_pelaksana'] = DB::select("select unit_pelaksana, sti_id from unit where sti_id = ".$auth." group by unit_pelaksana");
+        $data['unit_subpelaksana'] = DB::select("select unit_subpelaksana, sti_id from unit where sti_id = ".$auth." and unit_subpelaksana<>'' ");
         //$data['roles'] = Role::all();
         return view('pegawai.edit',$data);
     }
