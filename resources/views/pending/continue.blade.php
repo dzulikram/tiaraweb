@@ -8,7 +8,7 @@
         <div class="card">
           <div class="card-header card-header-info">
             <h4 class="card-title ">PENDING TIKET</h4>
-            <p class="card-category">Divisi STI Operasional Kaltimra</p>
+            <p class="card-category">Divisi STI</p>
           </div>
           <div class="card-body">
             <form method="post" action="{{url('continue')}}/<?php echo $tiket->id; ?>">

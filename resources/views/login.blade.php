@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V12</title>
+	<title>Login TIARA</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 <!--===============================================================================================-->	
@@ -62,7 +62,7 @@
 
 					<div class="text-center w-full">
 						<a class="txt1" href="#">
-							PT. PLN (Persero) Divisi STI Operasional Kaltimra												
+							PT. PLN (Persero) Divisi STI												
 						</a>
 					</div>
 				</form>
