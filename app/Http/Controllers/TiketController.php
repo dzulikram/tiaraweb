@@ -27,6 +27,12 @@ class TiketController extends Controller
     	return view('tiket.list',$data);
     }
 
+    public function apiTiket($notiket)
+    {
+    	$tikets = Tiket::where('no_tiket',$notiket)->get();
+    	return $tikets;
+    }
+
     public function indexOpen(Request $request)
     {
     	$tikets = Tiket::where('status_tiket','open')->get();
