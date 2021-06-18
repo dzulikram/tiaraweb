@@ -27,11 +27,45 @@ class TiketController extends Controller
     	return view('tiket.list',$data);
     }
 
-    public function apiTiket($notiket)
-    {
-    	$tikets = Tiket::where('no_tiket',$notiket)->get();
-    	return $tikets;
-    }
+    public function apiTiket(Request $request)
+	{
+		$data = $request->json()->all();
+
+        $notiket = $data['no_tiket'];
+        $assignment_date = $data['assignment_date'];
+        $end_date = $data['end_date'];
+        $status_tiket = $data['status_tiket'];
+        $resolution = $data['resolution'];
+        $reason_stop = $data['reason_stop'];
+        $stop_duration = $data['stop_duration'];
+        $sla_duration = $data['sla_duration'];
+
+        $tiket = Tiket::where('no_tiket',$notiket)->first();
+        $tiket->assignment_date = $assignment_date;
+        $tiket->end_date = $end_date;
+        $tiket->status_tiket = $status_tiket;
+        $tiket->resolution = $resolution;
+        $tiket->reason_stop = $reason_stop;
+        $tiket->stop_duration = $stop_duration;
+        $tiket->sla_duration = $sla_duration;
+        $tiket->save();
+
+        if(!empty($tiket))
+        {
+            $status = "success";
+        }
+        else
+        {
+            $status = "failed";
+        }
+
+		return response()->json([
+            'replies' => $status,
+          ], 200)->withHeaders([
+            "Content-type" => "application/json",
+            "Access-Control-Allow-Origin" => "*"
+          ]);
+	}
 
     public function indexOpen(Request $request)
     {
