@@ -52,7 +52,7 @@ class TiketController extends Controller
 
         if(!empty($tiket))
         {
-            $status = "success - No.Tiket : ".$notiket;
+            $status = $notiket."-success";
         }
         else
         {
