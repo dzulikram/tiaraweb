@@ -43,7 +43,18 @@ class TiketController extends Controller
         $tiket = Tiket::where('no_tiket',$notiket)->first();
         $tiket->assignment_date = $assignment_date;
         $tiket->end_date = $end_date;
-        $tiket->status_tiket = $status_tiket;
+        if($status_tiket=="Assigned")
+        {
+            $tiket->status_tiket = "assigned";
+        }
+        if($status_tiket=="Resolved")
+        {
+            $tiket->status_tiket = "resolved";
+        }
+        if($status_tiket=="Stop Clock")
+        {
+            $tiket->status_tiket = "pending";
+        }
         $tiket->resolution = $resolution;
         $tiket->reason_stop = $reason_stop;
         $tiket->stop_duration = $stop_duration;
