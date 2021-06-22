@@ -80,7 +80,7 @@
 
 					<div class="text-center w-full p-t-25 p-b-230">
                         <a class="txt1" href="#">
-                            PT. PLN (Persero) Divisi STI Operasional Kaltimra
+                            PT. PLN (Persero) Divisi STI
                         </a>
 					</div>
 
