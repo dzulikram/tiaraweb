@@ -10,6 +10,9 @@ use App\Kategori;
 use App\RegionalSti;
 use Auth;
 use DB;
+use DateTime;
+use DatePeriod;
+use DateInterval;
 
 class TiketController extends Controller
 {
@@ -40,9 +43,15 @@ class TiketController extends Controller
         $stop_duration = $data['stop_duration'];
         $sla_duration = $data['sla_duration'];
 
+        $date1 = new DateTime($assignment_date);
+        $date1 = $date1->modify("+7 hours");
+
+        $date2 = new DateTime($end_date);
+        $date2 = $date2->modify("+7 hours");
+
         $tiket = Tiket::where('no_tiket',$notiket)->first();
-        $tiket->assignment_date = $assignment_date;
-        $tiket->end_date = $end_date;
+        $tiket->assignment_date = $date1;
+        $tiket->end_date = $date2;
         if($status_tiket=="Assigned")
         {
             $tiket->status_tiket = "assigned";

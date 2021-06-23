@@ -181,7 +181,7 @@
                 <th>No</th>
                 <th>Pelapor</th>
                 <th>Jam</th>
-                <th>Action</th>
+                <th>IT Support</th>
               </thead>
               <tbody>
                 <?php
@@ -204,7 +204,7 @@
                         ?></b>
                       </td>
                       <td><b><?php echo $row->call_type."<br/>".$row->start_date; ?></b></td>
-                      <td><a href="{{url('continue')}}/<?php echo $row->id; ?>" class="btn btn-danger btn-sm">CONTINUE</a></td>
+                      <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
                     </tr>
                     <?php
                   }
@@ -223,9 +223,7 @@
                         ?>
                       </td>
                       <td><?php echo $row->call_type."<br/>".$row->start_date; ?></td>
-                      <td>
-                        <a href="{{url('continue')}}/<?php echo $row->id; ?>" class="btn btn-success btn-sm">CONTINUE</a>
-                      </td>
+                      <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
                     </tr>
                     <?php
                   }
@@ -315,7 +313,7 @@
                 <th>No</th>
                 <th>Pelapor</th>
                 <th>Jam</th>
-                <th>Action</th>
+                <th>IT Support</th>
               </thead>
               <tbody>
                 <?php
@@ -338,10 +336,7 @@
                         ?></b>
                       </td>
                       <td><b><?php echo $row->call_type."<br/>".$row->start_date; ?></b></td>
-                      <td>
-                        <a href="{{url('resolve')}}/<?php echo $row->id; ?>" class="btn btn-info btn-sm">RESOLVE</a>
-                        <a href="{{url('pending')}}/<?php echo $row->id; ?>" class="btn btn-danger btn-sm">PENDING</a>
-                      </td>
+                      <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
                     </tr>
                     <?php
                   }
@@ -360,8 +355,7 @@
                         ?>
                       </td>
                       <td><?php echo $row->call_type."<br/>".$row->start_date; ?></td>
-                      <td><a href="{{url('resolve')}}/<?php echo $row->id; ?>" class="btn btn-info btn-sm">RESOLVE</a>
-                      <a href="{{url('pending')}}/<?php echo $row->id; ?>" class="btn btn-danger btn-sm">PENDING</a></td>
+                      <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
                     </tr>
                     <?php
                   }

@@ -77,7 +77,7 @@
                     <a href="{{url('dashboard')}}" class="btn btn-sm btn-light-dark">CANCEL</a>
                     <a href="{{url('incident-tiket')}}/<?php echo $tiket->id; ?>" class="btn btn-danger btn-sm"><i class="fa fa-check-square-o" aria-hidden="true"></i> INCIDENT</a>
                     <a href="{{url('srq-tiket')}}/<?php echo $tiket->id; ?>" class="btn btn-warning btn-sm"><i class="fa fa-minus-square-o" aria-hidden="true"></i> SERVIE REQUEST</a>
-                    <a href="{{url('email-tiket')}}/<?php echo $tiket->id; ?>" class="btn btn-info btn-sm"><i class="fa fa-envelope-o" aria-hidden="true"></i> EMAIL</a> 
+                    <a href="#" class="btn btn-info btn-sm"><i class="fa fa-envelope-o" aria-hidden="true"></i> EMAIL</a> 
                   </div>
                 </div>
               </div>

@@ -49,19 +49,7 @@
                         <a href="{{url('createitsm-tiket')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-warning">CREATE ITSM</a>
                         <?php
                       }                      
-                      if($row->status_tiket == "assigned")
-                      {
-                        ?>
-                        <a href="{{url('resolve')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-info">RESOLVE</a>
-                        <a href="{{url('pending')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-danger">PENDING</a>
-                        <?php
-                      }
-                      if($row->status_tiket == "pending")
-                      {
-                        ?>
-                        <a href="{{url('continue')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-success">CONTINUE</a>
-                        <?php
-                      }
+                      
                       ?>
                     </td>
                     </tr>
