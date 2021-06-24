@@ -142,7 +142,7 @@ c. Untuk mengakhiri percakapan";
     		}
     		else
     		{
-    			$message = "Mohon maaf, NIP anda tidak ditemukan, silakan hubungi STI Regional Setempat 🙏";
+    			$message = "Mohon maaf, NIP anda tidak ditemukan, silahkan hubungi STI Regional Setempat 🙏";
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
     			$chat->state = 56;
@@ -264,7 +264,7 @@ c. Untuk mengakhiri percakapan";
     		}
     		else if($input == 4)
     		{
-    			$message = "Silakan akses alamat berikut https://tiara.pln.co.id/pojok-it
+    			$message = "silahkan akses alamat berikut https://tiara.pln.co.id/pojok-it
 Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
@@ -275,7 +275,7 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     		}
     		else if($input == 5)
     		{
-    			$message = "Chat & saran silakan mengakses laman berikut ke https://tiara.pln.co.id/saran/create
+    			$message = "Chat & saran silahkan mengakses laman berikut ke https://tiara.pln.co.id/saran/create
 Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
@@ -377,14 +377,14 @@ c. Untuk mengakhiri percakapan";
                 }
                 if(!empty($kontak->wa_support))
                 {
-                    $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
+                    $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/".$kontak->wa_support."
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
                 }
                 else
                 {
-                    $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
+                    $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/6281385282208
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
@@ -398,7 +398,7 @@ Terima kasih telah menghubungi Tiara 🙏☺️
     		}
     		else if($input == 4)
     		{
-    			$message = "Silakan mengunjungi laman berikut : https://tiara.pln.co.id/pojok-it
+    			$message = "silahkan mengunjungi laman berikut : https://tiara.pln.co.id/pojok-it
 Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
@@ -409,7 +409,7 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     		}
     		else if($input == 5)
     		{
-    			$message = "Untuk keluhan dan saran, silakan mengunjungi laman berikut : https://tiara.pln.co.id/saran/create
+    			$message = "Untuk keluhan dan saran, silahkan mengunjungi laman berikut : https://tiara.pln.co.id/saran/create
 Terima kasih telah menghubungi Tiara 🙏😊";
 				$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
@@ -617,7 +617,7 @@ c. Untuk mengakhiri percakapan";
     	{
     		if($input == 1)
     		{
-    			$message = "Untuk panduan VPN, silakan kunjungi link berikut : https://bit.ly/panduanvpnkaltimra";
+    			$message = "Untuk panduan VPN, silahkan kunjungi link berikut : https://bit.ly/panduanvpnkaltimra";
 				$chat->state = 24;
 				$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
@@ -664,14 +664,14 @@ c. Untuk mengakhiri percakapan";
                 }
                 if(!empty($kontak->wa_support))
                 {
-                    $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
+                    $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/".$kontak->wa_support."
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
                 }
                 else
                 {
-                    $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
+                    $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/6281385282208
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
@@ -756,7 +756,7 @@ Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tia
     		}
     		else if($input == 2)
     		{
-    			$message = "Silakan connect ke wifi yang tersedia terlebih dahulu dengan user yang dimiliki
+    			$message = "silahkan connect ke wifi yang tersedia terlebih dahulu dengan user yang dimiliki
 1. Tidak ada wifi yang tersedia
 2. Masih gagal connect
 3. Sudah berhasil
@@ -952,14 +952,14 @@ Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tia
                 }
                 if(!empty($kontak->wa_support))
                 {
-                    $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
+                    $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/".$kontak->wa_support."
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
                 }
                 else
                 {
-                    $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
+                    $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/6281385282208
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
@@ -1000,14 +1000,14 @@ Terima kasih telah menghubungi Tiara 🙏☺️
                 }
                 if(!empty($kontak->wa_support))
                 {
-                    $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
+                    $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/".$kontak->wa_support."
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
                 }
                 else
                 {
-                    $message = "Silakan melakukan percakapan langsung dengan IT Support kami : 
+                    $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/6281385282208
 Terima kasih telah menghubungi Tiara 🙏☺️
 ";
@@ -1025,7 +1025,7 @@ Terima kasih telah menghubungi Tiara 🙏☺️
     		}
     		else if($input == 2)
     		{
-    			$message = "Untuk panduan VPN, silakan kunjungi link berikut : https://bit.ly/panduanvpnkaltimra.
+    			$message = "Untuk panduan VPN, silahkan kunjungi link berikut : https://bit.ly/panduanvpnkaltimra.
 Terima kasih telah menghubungi Tiara 🙏😊";
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();

@@ -50,6 +50,22 @@ class TiketController extends Controller
         $date2 = $date2->modify("+7 hours");
 
         $tiket = Tiket::where('no_tiket',$notiket)->first();
+
+        if($tiket->regional->timezone == 'wib')
+        {
+        $date1 = new DateTime($assignment_date);
+        $date1 = $date1->modify("+7 hours");
+        $date2 = new DateTime($end_date);
+        $date2 = $date2->modify("+7 hours");
+        }
+        if($tiket->regional->timezone == 'wita')
+        {
+        $date1 = new DateTime($assignment_date);
+        $date1 = $date1->modify("+8 hours");
+        $date2 = new DateTime($end_date);
+        $date2 = $date2->modify("+8 hours");
+        }
+
         $tiket->assignment_date = $date1;
         $tiket->end_date = $date2;
         if($status_tiket=="Assigned")
@@ -224,8 +240,9 @@ class TiketController extends Controller
             );
             $response = $this->performRequestCurl($url,"POST",$param);
             
-            if($auth != 2){$users = json_decode($response['response']);}
-            else{$users = User::where('is_itsupport',2)->get();}                
+            if($tiket->pegawai->sender == 2){$users = User::where('is_itsupport',2)->get();}
+            elseif($tiket->pegawai->sender == 4){$users = User::where('is_itsupport',4)->get();}
+            else{$users = json_decode($response['response']);}                
             //dd($recid);
         } catch (\Exception $e) {
             $users = User::where('is_itsupport',1)->get();    
@@ -254,7 +271,14 @@ class TiketController extends Controller
         $tiket->urgency = $request->urgency;
     	$tiket->save();
         
-        if($auth != 421)
+        if($auth == 421 || $auth == 435)
+        {
+            $no_tiket = $request->id;
+            $tiket->no_tiket = $no_tiket;
+            $tiket->save();
+            
+        }
+        else
         {
             $inc_timezone = $tiket->regional->timezone;
             $inc_serviceid = $tiket->kategori->service_id;
@@ -300,13 +324,7 @@ class TiketController extends Controller
             $tiket->no_tiket = $no_tiket;
             $tiket->save();
         }
-        else
-        {
-            $no_tiket = $request->id;
-            $tiket->no_tiket = $no_tiket;
-            $tiket->save();
-        }
-        
+
         if (!empty($no_tiket))
              {$message='success';}
         else
@@ -330,12 +348,13 @@ class TiketController extends Controller
             );
             $response = $this->performRequestCurl($url,"POST",$param);
             
-            if($auth != 2){$users = json_decode($response['response']);}
-            else{$users = User::where('is_itsupport',2)->get();}                
+            if($tiket->pegawai->sender == 2){$users = User::where('is_itsupport',2)->get();}
+            elseif($tiket->pegawai->sender == 4){$users = User::where('is_itsupport',4)->get();}
+            else{$users = json_decode($response['response']);}                
             //dd($recid);
-        } catch (\Exception $e) {
-            $users = User::where('is_itsupport',1)->get();    
-        }
+            } catch (\Exception $e) {
+                $users = User::where('is_itsupport',1)->get();    
+            }
  
         $kategoris = Kategori::where('type','REQ')->get();
 
@@ -360,7 +379,14 @@ class TiketController extends Controller
         $tiket->urgency = $request->urgency;
     	$tiket->save();
         
-        if($auth != 421)
+        if($auth == 421 || $auth == 435)
+        {
+            $no_tiket = $request->id;
+            $tiket->no_tiket = $no_tiket;
+            $tiket->save();
+            
+        }
+        else
         {
             $srq_timezone = $tiket->regional->timezone;
             $srq_serviceid = $tiket->kategori->service_id;
@@ -403,12 +429,6 @@ class TiketController extends Controller
             // print_r($output);
             // echo "</pre>";
             $no_tiket = $output->ServiceReqNumber;
-            $tiket->no_tiket = $no_tiket;
-            $tiket->save();
-        }
-        else
-        {
-            $no_tiket = $request->id;
             $tiket->no_tiket = $no_tiket;
             $tiket->save();
         }

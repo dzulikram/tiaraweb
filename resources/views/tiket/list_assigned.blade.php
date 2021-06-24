@@ -18,8 +18,11 @@
                   <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Nama</th>
                   <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Email</th>
                   <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">No Tiket</th>
+                  @hasrole('manual')
+                  <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Action</th>                  
+                  @else
                   <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Assign To</th>
-                  <!-- <th nowrap bgcolor="#1CBFD4" style="vertical-align:middle;text-align:center;color:white;">Action</th> -->
+                  @endhasrole
                 </thead>
                 <tbody>
                   <?php
@@ -37,9 +40,14 @@
                         }
                         ?></td>
                       <td><?php echo $row->pegawai->email; ?></td>
-                      <td><?php echo $row->no_tiket; ?></td>
-                      <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>                      
-                      
+                      <td><?php echo $row->no_tiket; ?></td>    
+                      @hasrole('manual')
+                      <td><a href="{{url('resolve')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-info">RESOLVE</a>
+                        <a href="{{url('pending')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-danger">PENDING</a>
+                      </td>
+                      @else
+                      <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>   
+                      @endhasrole          
                     </tr>
                     <?php
                   }

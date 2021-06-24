@@ -42,16 +42,40 @@
                       <td><?php echo $row->no_tiket; ?></td>
                       <td><?php echo $row->status_tiket; ?></td>
                       <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
+                      @hasrole('manual')
                       <td><?php
                       if($row->status_tiket == "open")
                       {
                         ?>
                         <a href="{{url('createitsm-tiket')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-warning">CREATE ITSM</a>
                         <?php
-                      }                      
-                      
+                      }                                            
+                      if($row->status_tiket == "assigned")
+                      {
+                        ?>
+                        <a href="{{url('resolve')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-info">RESOLVE</a>
+                        <a href="{{url('pending')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-danger">PENDING</a>
+                        <?php
+                      }
+                      if($row->status_tiket == "pending")
+                      {
+                        ?>
+                        <a href="{{url('continue')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-success">CONTINUE</a>
+                        <?php
+                      }
                       ?>
-                    </td>
+                      </td>
+                      @else
+                      <td><?php
+                      if($row->status_tiket == "open")
+                      {
+                        ?>
+                        <a href="{{url('createitsm-tiket')}}/<?php echo $row->id; ?>" class="btn btn-sm btn-warning">CREATE ITSM</a>
+                        <?php
+                      }
+                      ?>
+                      </td>
+                      @endhasrole                      
                     </tr>
                     <?php
                   }
