@@ -98,7 +98,7 @@
                 <div class="col-md-12">
                   <div class="form-group label-floating has-info">
                     <label class="bmd-label-floating">NO Tiket</label>
-                    <input type="text" name="no_tiket" value="<?php echo $tiket->no_tiket; ?>" class="form-control" disabled>
+                    <input type="text" name="no_tiket" value="<?php echo $tiket->no_tiket; ?>" class="form-control">
                   </div>
                 </div>
               </div>
