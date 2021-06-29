@@ -5,6 +5,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
+        <a href="{{url('tiket-export')}}" class="btn btn-sm btn-success"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export Tiket</a>
         <div class="card">
           <div class="card-header card-header-info">
             <h4 class="card-title ">DAFTAR TIKET</h4>

@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('tiket-createitsm','TiketController@indexCreateitsm');
 	Route::get('tiket-assigned','TiketController@indexAssigned');
 	Route::get('tiket-resolved','TiketController@indexResolved');
+	Route::get('tiket-export','TiketController@export');	
 	
 	Route::get('tiket-unit','TiketController@indexunit');
 	Route::get('tiket-open-unit','TiketController@indexOpenunit');	

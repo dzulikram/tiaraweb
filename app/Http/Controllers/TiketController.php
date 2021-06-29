@@ -13,6 +13,8 @@ use DB;
 use DateTime;
 use DatePeriod;
 use DateInterval;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\Export;
 
 class TiketController extends Controller
 {
@@ -243,7 +245,7 @@ class TiketController extends Controller
             if($tiket->pegawai->sender == 2){$users = User::where('is_itsupport',2)->get();}
             elseif($tiket->pegawai->sender == 4){$users = User::where('is_itsupport',4)->get();}
             else{$users = json_decode($response['response']);}                
-            //dd($recid);
+            //dd($users);
         } catch (\Exception $e) {
             $users = User::where('is_itsupport',1)->get();    
         }
@@ -650,6 +652,12 @@ class TiketController extends Controller
         $tikets->feedback = $request->feedback;
         $tikets->save();
         return redirect('/thanksfeed');
+    }
+
+    public function export()
+    {
+        $auth = Auth::user()->sti_id;
+        return Excel::download(new Export($auth), 'tiket-TIARA.xlsx');
     }
 
     public function auth()

@@ -149,13 +149,18 @@
                     <select class="form-control" name="it_support_username" required>
                       <option></option>
                       <?php foreach ($users as $row) {
-                        ?>
-                        <option value="<?php if(!empty($row->username)) echo $row->username; ?>
-                          <?php if(!empty($row->LoginID)) echo $row->LoginID; ?>">
-                          <?php if(!empty($row->name)) echo $row->name; ?>
-                          <?php if(!empty($row->Nama)) echo $row->Nama; ?></option>
-                        <?php
-                      } ?>
+                          if(!empty($row->LoginID) && $row->Avail == 'Y')
+                          {
+                          ?>
+                          <option value="<?php echo $row->LoginID; ?>"> <?php echo $row->Nama; ?></option>
+                          <?php }
+                          if(!empty($row->username)) 
+                          {
+                          ?>
+                          <option value="<?php echo $row->username; ?>"><?php echo $row->name; ?></option>
+                          <?php
+                          }
+                        } ?>                          
                     </select>
                   </div>
                 </div>

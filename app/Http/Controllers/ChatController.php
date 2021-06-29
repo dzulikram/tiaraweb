@@ -84,7 +84,9 @@ class ChatController extends Controller
             $chat->end_conversation = $this->getTimeNow();
 			$chat->save();
 		}
-		$message = "Percakapan telah diakhiri. Terima kasih telah menghubungi Tiara 🙏☺️";
+		$message = "Percakapan telah diakhiri. Terima kasih telah menghubungi Tiara 🙏☺️
+		
+".$sponsor->sponsor;
 
 		$response = $this->getResponse($message);
 
@@ -132,7 +134,9 @@ class ChatController extends Controller
     			$message = "Salam hangat, Bapak/ibu ".$pegawai->name.", apakah saat ini sedang WFH/WFO?
 1. WFO
 2. WFH
-c. Untuk mengakhiri percakapan";
+c. Untuk mengakhiri percakapan
+
+Silahkan balas dengan 1 karakter sesuai pilihan";
 				$chat->nip = $pegawai->nip;
 				$chat->state = 1;
 				$chat->save();
@@ -265,7 +269,9 @@ c. Untuk mengakhiri percakapan";
     		else if($input == 4)
     		{
     			$message = "silahkan akses alamat berikut https://tiara.pln.co.id/pojok-it
-Terima kasih telah menghubungi Tiara 🙏😊";
+Terima kasih telah menghubungi Tiara 🙏😊
+
+".$sponsor->sponsor;
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
 				$chat->state = 7;
@@ -276,7 +282,9 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     		else if($input == 5)
     		{
     			$message = "Chat & saran silahkan mengakses laman berikut ke https://tiara.pln.co.id/saran/create
-Terima kasih telah menghubungi Tiara 🙏😊";
+Terima kasih telah menghubungi Tiara 🙏😊
+
+".$sponsor->sponsor;
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
 				$chat->state = 8;
@@ -291,7 +299,9 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     			$message = "Salam hangat, Bapak/ibu ".$pegawai->name.", apakah saat ini sedang WFH/WFO?
 1. WFO
 2. WFH
-c. Untuk mengakhiri percakapan";
+c. Untuk mengakhiri percakapan
+
+Silahkan balas dengan 1 karakter sesuai pilihan";
 				$chat->nip = $pegawai->nip;
 				$chat->state = 1;
 				$chat->save();
@@ -330,7 +340,9 @@ Layanan apa yang anda butuhkan?
 			else if($input == 7)
     		{
     			$message = "Untuk permohonan reset password atau permintaan VPN silahkan mengakses laman berikut : https://linktr.ee/stikaltimra
-Terima kasih telah menghubungi Tiara 🙏😊";
+Terima kasih telah menghubungi Tiara 🙏😊
+
+".$sponsor->sponsor;
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
 				$chat->state = 7;
@@ -380,14 +392,16 @@ c. Untuk mengakhiri percakapan";
                     $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/".$kontak->wa_support."
 Terima kasih telah menghubungi Tiara 🙏☺️
-";
+
+".$sponsor->sponsor;
                 }
                 else
                 {
                     $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/6281385282208
 Terima kasih telah menghubungi Tiara 🙏☺️
-";
+
+".$sponsor->sponsor;
                 }
 				$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
@@ -399,7 +413,9 @@ Terima kasih telah menghubungi Tiara 🙏☺️
     		else if($input == 4)
     		{
     			$message = "silahkan mengunjungi laman berikut : https://tiara.pln.co.id/pojok-it
-Terima kasih telah menghubungi Tiara 🙏😊";
+Terima kasih telah menghubungi Tiara 🙏😊
+
+".$sponsor->sponsor;
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
     			$chat->state = 7;
@@ -410,7 +426,9 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     		else if($input == 5)
     		{
     			$message = "Untuk keluhan dan saran, silahkan mengunjungi laman berikut : https://tiara.pln.co.id/saran/create
-Terima kasih telah menghubungi Tiara 🙏😊";
+Terima kasih telah menghubungi Tiara 🙏😊
+
+".$sponsor->sponsor;
 				$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
     			$chat->state = 8;
@@ -425,7 +443,9 @@ Terima kasih telah menghubungi Tiara 🙏😊";
     			$message = "Salam hangat, Bapak/ibu ".$pegawai->name.", apakah saat ini sedang WFH/WFO?
 1. WFO
 2. WFH
-c. Untuk mengakhiri percakapan";
+c. Untuk mengakhiri percakapan
+
+Silahkan balas dengan 1 karakter sesuai pilihan";
 				$chat->nip = $pegawai->nip;
 				$chat->state = 1;
 				$chat->save();
@@ -464,7 +484,9 @@ Layanan apa yang anda butuhkan?
 			else if($input == 7)
     		{
     			$message = "Untuk permohonan reset password atau permintaan VPN silahkan mengakses laman berikut : https://linktr.ee/stikaltimra
-Terima kasih telah menghubungi Tiara 🙏😊";
+Terima kasih telah menghubungi Tiara 🙏😊
+
+".$sponsor->sponsor;
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
 				$chat->state = 7;
@@ -510,7 +532,9 @@ c. Untuk mengakhiri percakapan";
     			$message = "Salam hangat, Bapak/ibu ".$pegawai->name.", apakah saat ini sedang WFH/WFO?
 1. WFO
 2. WFH
-c. Untuk mengakhiri percakapan";
+c. Untuk mengakhiri percakapan
+
+Silahkan balas dengan 1 karakter sesuai pilihan";
 				$chat->nip = $pegawai->nip;
 				$chat->state = 1;
 				$chat->save();
@@ -584,7 +608,9 @@ c. Untuk mengakhiri percakapan";
     			$message = "Salam hangat, Bapak/ibu ".$pegawai->name.", apakah saat ini sedang WFH/WFO?
 1. WFO
 2. WFH
-c. Untuk mengakhiri percakapan";
+c. Untuk mengakhiri percakapan
+
+Silahkan balas dengan 1 karakter sesuai pilihan";
 				$chat->nip = $pegawai->nip;
 				$chat->state = 1;
 				$chat->save();
@@ -643,7 +669,9 @@ c. Untuk mengakhiri percakapan";
     			$message = "Salam hangat, Bapak/ibu ".$pegawai->name.", apakah saat ini sedang WFH/WFO?
 1. WFO
 2. WFH
-c. Untuk mengakhiri percakapan";
+c. Untuk mengakhiri percakapan
+
+Silahkan balas dengan 1 karakter sesuai pilihan";
 				$chat->nip = $pegawai->nip;
 				$chat->state = 1;
 				$chat->save();
@@ -667,14 +695,16 @@ c. Untuk mengakhiri percakapan";
                     $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/".$kontak->wa_support."
 Terima kasih telah menghubungi Tiara 🙏☺️
-";
+
+".$sponsor->sponsor;
                 }
                 else
                 {
                     $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/6281385282208
 Terima kasih telah menghubungi Tiara 🙏☺️
-";
+
+".$sponsor->sponsor;
                 }
     		$chat->status = "close-conversation";
             $chat->end_conversation = $this->getTimeNow();
@@ -955,14 +985,16 @@ Untuk memberikan feedback tiket anda silahkan mengisi link berikut : https://tia
                     $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/".$kontak->wa_support."
 Terima kasih telah menghubungi Tiara 🙏☺️
-";
+
+".$sponsor->sponsor;
                 }
                 else
                 {
                     $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/6281385282208
 Terima kasih telah menghubungi Tiara 🙏☺️
-";
+
+".$sponsor->sponsor;
                 }
 				$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
@@ -1003,14 +1035,16 @@ Terima kasih telah menghubungi Tiara 🙏☺️
                     $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/".$kontak->wa_support."
 Terima kasih telah menghubungi Tiara 🙏☺️
-";
+
+".$sponsor->sponsor;
                 }
                 else
                 {
                     $message = "silahkan melakukan percakapan langsung dengan IT Support kami : 
 http://wa.me/6281385282208
 Terima kasih telah menghubungi Tiara 🙏☺️
-";
+
+".$sponsor->sponsor;
                 }
 				$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
@@ -1026,7 +1060,9 @@ Terima kasih telah menghubungi Tiara 🙏☺️
     		else if($input == 2)
     		{
     			$message = "Untuk panduan VPN, silahkan kunjungi link berikut : https://bit.ly/panduanvpnkaltimra.
-Terima kasih telah menghubungi Tiara 🙏😊";
+Terima kasih telah menghubungi Tiara 🙏😊
+
+".$sponsor->sponsor;
     			$chat->status = "close-conversation";
                 $chat->end_conversation = $this->getTimeNow();
 				$chat->state = 24;
