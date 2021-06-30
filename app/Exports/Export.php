@@ -24,7 +24,6 @@ class Export implements WithHeadings, FromQuery
     public function __construct($auth)
     {
        $this->proj_id = $auth;
-       $this->is_its = $its;
     }
 
     // public function collection()
@@ -59,7 +58,7 @@ class Export implements WithHeadings, FromQuery
         return DB::table('tiket')        
         ->join('kategori','tiket.kategori_id', '=','kategori.id')
         ->join('pegawai','tiket.nip', '=','pegawai.nip')
-        ->select('tiket.sender','assignment_date','end_date','no_tiket','tiket.nip','kategori.name','pegawai.unit','pegawai.unit_induk','call_type','permasalahan','kategori.name','it_support','resolution','reason_stop','stop_duration','sla_duration')
+        ->select('tiket.sender','tiket.assignment_date','tiket.end_date','tiket.no_tiket','pegawai.nip','pegawai.name','pegawai.unit','pegawai.unit_induk','tiket.call_type','tiket.permasalahan','kategori.jenis','tiket.it_support','tiket.resolution','tiket.reason_stop','tiket.stop_duration','tiket.sla_duration')
         ->where('tiket.sti_id','=',$this->proj_id)  
         ->orderBy('tiket.id');
 	}
