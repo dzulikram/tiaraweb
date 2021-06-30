@@ -110,6 +110,14 @@
                   </div>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group label-floating has-info">
+                    <label class="bmd-label-floating">Resolution</label>
+                    <input type="text" name="resolution" class="form-control">
+                  </div>
+                </div>
+              </div>
               <?php } ?>
               <button type="submit" class="btn btn-sm btn-info pull-right">RESOLVE</button>
               <a href="{{url('dashboard')}}" class="btn btn-sm btn-light-dark pull-right">CANCEL</a>

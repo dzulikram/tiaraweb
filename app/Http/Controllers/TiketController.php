@@ -517,7 +517,8 @@ class TiketController extends Controller
     {
         $auth = Auth::user()->id;
         $tiket = Tiket::find($request->id);
-        // $tiket->no_tiket = $request->no_tiket;
+        $tiket->no_tiket = $request->no_tiket;
+        $tiket->resolution = $request->resolution;
         $tiket->status_tiket = 'resolved';
         $tiket->save();
         if($auth != 1)
