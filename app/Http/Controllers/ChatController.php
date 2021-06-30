@@ -75,6 +75,7 @@ class ChatController extends Controller
 
 	public function closeTicket(Request $request)
 	{
+		$sponsor = Sponsor::where('id',1)->first();
 		$data = $request->json()->all();
 		$sender = $data['query']['sender'];
 		$chat = Chat::where('sender',$sender)->where('status','open')->first();
