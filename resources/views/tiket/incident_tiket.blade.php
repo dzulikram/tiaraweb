@@ -152,12 +152,12 @@
                           if(!empty($row->LoginID) && $row->Avail == 'Y')
                           {
                           ?>
-                          <option value="<?php echo $row->LoginID; ?>"> <?php echo $row->Nama; ?></option>
+                          <option value="<?php echo $row->LoginID; ?>"> <?php echo $row->Nama." - ".$row->Penempatan; ?></option>
                           <?php }
                           if(!empty($row->username)) 
                           {
                           ?>
-                          <option value="<?php echo $row->username; ?>"><?php echo $row->name; ?></option>
+                          <option value="<?php echo $row->username; ?>"><?php echo $row->name." - ".$row->unit; ?></option>
                           <?php
                           }
                         } ?>                          

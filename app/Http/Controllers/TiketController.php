@@ -244,6 +244,7 @@ class TiketController extends Controller
             
             if($tiket->pegawai->sender == 2){$users = User::where('is_itsupport',2)->get();}
             elseif($tiket->pegawai->sender == 4){$users = User::where('is_itsupport',4)->get();}
+            elseif($tiket->pegawai->sender == 21){$users = User::where('is_itsupport',21)->get();}
             else{$users = json_decode($response['response']);}                
             //dd($users);
         } catch (\Exception $e) {
@@ -273,7 +274,9 @@ class TiketController extends Controller
         $tiket->urgency = $request->urgency;
     	$tiket->save();
         
-        if($auth == 421 || $auth == 435)
+        $its = $tiket->its->is_itsupport;
+        
+        if($auth == 421 || $auth == 435 || $its == 21)
         {
             $no_tiket = $request->id;
             $tiket->no_tiket = $no_tiket;
@@ -352,6 +355,7 @@ class TiketController extends Controller
             
             if($tiket->pegawai->sender == 2){$users = User::where('is_itsupport',2)->get();}
             elseif($tiket->pegawai->sender == 4){$users = User::where('is_itsupport',4)->get();}
+            elseif($tiket->pegawai->sender == 21){$users = User::where('is_itsupport',21)->get();}
             else{$users = json_decode($response['response']);}                
             //dd($recid);
             } catch (\Exception $e) {
@@ -380,8 +384,10 @@ class TiketController extends Controller
         $tiket->priority = $request->priority;
         $tiket->urgency = $request->urgency;
     	$tiket->save();
+
+        $its = $tiket->its->is_itsupport;
         
-        if($auth == 421 || $auth == 435)
+        if($auth == 421 || $auth == 435 || $its == 21)
         {
             $no_tiket = $request->id;
             $tiket->no_tiket = $no_tiket;
@@ -657,6 +663,7 @@ class TiketController extends Controller
     public function export()
     {
         $auth = Auth::user()->sti_id;
+        
         return Excel::download(new Export($auth), 'tiket-TIARA.xlsx');
     }
 
