@@ -14,12 +14,13 @@ class EmailController extends Controller
     public function email(Request $request)
     {
         $auth = Auth::user()->id;
+        $email_auth = Auth::user()->email;
         $tiket = Tiket::find($request->id);
         $tiket->kategori_id = $request->kategori_id;
         
         $tiket->save();          
         $kategorimail = $tiket->kategori->name;
-        Mail::to("servicedesk@pln.co.id")->send(new Email($tiket->id,$tiket->call_type,$tiket->permasalahan,$tiket->pegawai->nip,$tiket->pegawai->name,$tiket->pegawai->position,$tiket->pegawai->unit,$tiket->pegawai->email,$kategorimail));
+        Mail::to("dzul.ikram@pln.co.id")->send(new Email($tiket->id,$tiket->call_type,$tiket->permasalahan,$tiket->pegawai->nip,$tiket->pegawai->name,$tiket->pegawai->position,$tiket->pegawai->unit,$tiket->pegawai->email,$kategorimail,$email_auth));
         $tiket->status_tiket = 'assigned';
     	$tiket->save();
         if($auth != 1)

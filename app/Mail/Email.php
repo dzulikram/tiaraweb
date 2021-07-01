@@ -17,7 +17,7 @@ class Email extends Mailable
      *
      * @return void
      */
-    public function __construct($id,$call_type,$permasalahan,$nip,$name,$position,$unit,$email,$kategori)
+    public function __construct($id,$call_type,$permasalahan,$nip,$name,$position,$unit,$email,$kategori,$email_auth)
     {
         $this->id=$id;
         $this->call_type=$call_type;
@@ -28,6 +28,7 @@ class Email extends Mailable
         $this->unit=$unit;
         $this->email=$email;
         $this->kategori=$kategori;
+        $this->email_auth=$email_auth;
     }
 
     /**
@@ -55,7 +56,7 @@ class Email extends Mailable
         $data['email']=$this->email;
         $data['kategori']=$this->kategori;
         return $this->from($this->email)
-                    ->cc(['tiara@pln.co.id',$this->email])
+                    ->cc(['tiara@pln.co.id',$this->email,$this->email_auth])
                     ->view('email',$data)
                     ->subject($subject."-".$this->kategori." #T".$this->id)
                     ->with(
