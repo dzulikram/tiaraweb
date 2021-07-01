@@ -1,6 +1,7 @@
 <p>Nama : <?php echo $name; ?></p>
 <p>NIP : <?php echo $nip; ?></p>
 <p>Unit : <?php echo $unit; ?></p>
+<p>Jabatan : <?php echo $position; ?></p>
 <p>Email : <?php echo $email; ?></p>
 <p>Aplikasi : <?php echo $kategori; ?></p>
 <p>Case Description : <?php echo $permasalahan; ?></p>

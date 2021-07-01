@@ -43,7 +43,6 @@
                       <td><?php echo $row->no_tiket; ?></td>
                       <td><?php echo $row->status_tiket; ?></td>
                       <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
-                      @hasrole('manual')
                       <td><?php
                       if($row->status_tiket == "open")
                       {
@@ -66,7 +65,6 @@
                       }
                       ?>
                       </td>
-                      @else
                       <td><?php
                       if($row->status_tiket == "open")
                       {
@@ -75,8 +73,7 @@
                         <?php
                       }
                       ?>
-                      </td>
-                      @endhasrole                      
+                      </td>                     
                     </tr>
                     <?php
                   }

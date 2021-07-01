@@ -181,11 +181,7 @@
                 <th>No</th>
                 <th>Pelapor</th>
                 <th>Jam</th>
-                @hasrole('manual')
                 <th>Action</th>
-                @else
-                <th>IT Support</th>
-                @endhasrole
               </thead>
               <tbody>
                 <?php
@@ -208,11 +204,7 @@
                         ?></b>
                       </td>
                       <td><b><?php echo $row->call_type."<br/>".$row->start_date; ?></b></td>
-                      @hasrole('manual')
                       <td><a href="{{url('continue')}}/<?php echo $row->id; ?>" class="btn btn-danger btn-sm">CONTINUE</a></td>
-                      @else
-                      <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
-                      @endhasrole
                     </tr>
                     <?php
                   }
@@ -231,11 +223,7 @@
                         ?>
                       </td>
                       <td><?php echo $row->call_type."<br/>".$row->start_date; ?></td>
-                      @hasrole('manual')
                       <td><a href="{{url('continue')}}/<?php echo $row->id; ?>" class="btn btn-danger btn-sm">CONTINUE</a></td>
-                      @else
-                      <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
-                      @endhasrole
                     </tr>
                     <?php
                   }
@@ -259,11 +247,7 @@
                 <th>No</th>
                 <th>Pelapor</th>
                 <th>Jam</th>
-                @hasrole('manual')
                 <th>Action</th>
-                @else
-                <th>IT Support</th>
-                @endhasrole
               </thead>
               <tbody>
                 <?php
@@ -305,14 +289,10 @@
                         ?>
                       </td>
                       <td><?php echo $row->call_type."<br/>".$row->start_date; ?></td>
-                      @hasrole('manual')
                       <td>
                         <a href="{{url('resolve')}}/<?php echo $row->id; ?>" class="btn btn-info btn-sm">RESOLVE</a>
                         <a href="{{url('pending')}}/<?php echo $row->id; ?>" class="btn btn-danger btn-sm">PENDING</a>
                       </td>
-                      @else
-                      <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
-                      @endhasrole
                     </tr>
                     <?php
                   }

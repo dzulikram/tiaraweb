@@ -49,7 +49,7 @@ class Export implements WithHeadings, FromQuery
             'resolution',
             'reason_stop',
             'stop_duration',
-            'sla_duration'         
+            'sla_duration(menit)'         
         ];
     }
 

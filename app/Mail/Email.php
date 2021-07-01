@@ -17,13 +17,14 @@ class Email extends Mailable
      *
      * @return void
      */
-    public function __construct($id,$call_type,$permasalahan,$nip,$name,$unit,$email,$kategori)
+    public function __construct($id,$call_type,$permasalahan,$nip,$name,$position,$unit,$email,$kategori)
     {
         $this->id=$id;
         $this->call_type=$call_type;
         $this->permasalahan=$permasalahan;
         $this->nip=$nip;
         $this->name=$name;
+        $this->position=$position;
         $this->unit=$unit;
         $this->email=$email;
         $this->kategori=$kategori;
@@ -49,10 +50,11 @@ class Email extends Mailable
         $data['permasalahan']=$this->permasalahan;
         $data['nip']=$this->nip;
         $data['name']=$this->name;
+        $data['position']=$this->position;
         $data['unit']=$this->unit;
         $data['email']=$this->email;
         $data['kategori']=$this->kategori;
-        return $this->from('tiara@pln.co.id')
+        return $this->from($this->email)
                     ->cc(['tiara@pln.co.id',$this->email])
                     ->view('email',$data)
                     ->subject($subject."-".$this->kategori." #T".$this->id)

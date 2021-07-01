@@ -84,7 +84,7 @@
                   </div>
                 </div>
               </div> 
-              <button type="submit" class="btn btn-sm btn-info pull-right">CREATE ITSM</button>       
+              <button type="submit" class="btn btn-sm btn-info pull-right">KIRIM EMAIL</button>       
               <a href="{{url('createitsm-tiket')}}/<?php echo $tiket->id; ?>" class="btn btn-sm btn-light-dark pull-right">Cancel</a>     
               <div class="clearfix"></div>
             </form>
@@ -93,8 +93,7 @@
       </div>
       <div class="col-md-12">
         <div class="card card-plain">
-          <div class="card-body">
-            
+          <div class="card-body">            
           </div>
         </div>
       </div>
