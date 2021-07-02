@@ -270,7 +270,10 @@
                         ?></b>
                       </td>
                       <td><b><?php echo $row->call_type."<br/>".$row->start_date; ?></b></td>
-                      <td><?php if(!empty($row->its->name)) echo $row->its->name; ?></td>
+                      <td>
+                        <a href="{{url('resolve')}}/<?php echo $row->id; ?>" class="btn btn-info btn-sm">RESOLVE</a>
+                        <a href="{{url('pending')}}/<?php echo $row->id; ?>" class="btn btn-danger btn-sm">PENDING</a>
+                      </td>
                     </tr>
                     <?php
                   }
