@@ -21,14 +21,15 @@
                 <p style="font-family:Bahnschrift;color:white">3. Instal Antivirus korporat dan lakukan update secara berkala</p>
                 <p style="font-family:Bahnschrift;color:white">4. Berhati-hati dalam mengunduh aplikasi yang berbahaya untuk komputer/laptop</p>
                 <p style="font-family:Bahnschrift;color:white">5. Melakukan scanning antivirus setiap ingin menggunakan USB di komputer/laptop</p>
-                
+                </br>
+                <h6 style="color:white;">Sebagai bahan evaluasi kami, dimohon kesediaan Bapak/Ibu untuk mengisi Survey Kepuasan Layanan TI berikut : <a href="https://bit.ly/surveySTIKaltimraJuli2021" class="btn btn-danger btn-lg" role="button" aria-pressed="true">Isi Survey</a></h6>
             </div>
 		</div>
         <div class="row">
 			<div class="col-lg-6"></br></br>
                 <h6 style="font-family:Bahnschrift;color:white">Butuh bantuan dalam permasalahan layanan TI ?</h6>
                 <h6 style="font-family:Bahnschrift;color:white">Silahkan menghubungi TIARA di nomor berikut :</h6>
-                <h3 style="font-family:Bahnschrift;color:white"><img src="{{asset('assets/wa.png')}}" class="img-responsive" width="7%"> 08115430600</h3>
+                <h3 style="font-family:Bahnschrift;color:white"><img src="{{asset('assets/wa.png')}}" class="img-responsive" width="7%"> 08114771424</h3>
                 </br><p style="color:white;font-size:15px;">&copy;STI Operasional Kaltimra</p>
             </div> 
             <div class="col-lg-6">
