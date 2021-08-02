@@ -170,7 +170,7 @@ Silahkan balas dengan 1 karakter sesuai pilihan";
 4. Pojok TI
 5. Chat dan Layanan
 6. Service Request
-7. Reset Password/Permintaan VPN
+7. Reset Password Email/Permintaan VPN
 8. Kembali ke menu utama
 c. Untuk mengakhiri percakapan";
 				}
@@ -204,7 +204,7 @@ c. Untuk mengakhiri percakapan";
 4. Pojok TI
 5. Chat dan Layanan
 6. Service Request
-7. Reset Password/Permintaan VPN
+7. Reset Password Email/Permintaan VPN
 8. Kembali ke menu utama
 c. Untuk mengakhiri percakapan";
 				}
@@ -340,7 +340,7 @@ Layanan apa yang anda butuhkan?
     		}
 			else if($input == 7)
     		{
-    			$message = "Untuk permohonan reset password atau permintaan VPN silahkan mengakses laman berikut : https://linktr.ee/stikaltimra
+    			$message = "Untuk permohonan reset password Email atau permintaan VPN silahkan mengakses laman berikut : https://linktr.ee/stikaltimra
 Terima kasih telah menghubungi Tiara 🙏😊
 
 ".$sponsor->sponsor;
@@ -484,7 +484,7 @@ Layanan apa yang anda butuhkan?
     		}
 			else if($input == 7)
     		{
-    			$message = "Untuk permohonan reset password atau permintaan VPN silahkan mengakses laman berikut : https://linktr.ee/stikaltimra
+    			$message = "Untuk permohonan reset password Email atau permintaan VPN silahkan mengakses laman berikut : https://linktr.ee/stikaltimra
 Terima kasih telah menghubungi Tiara 🙏😊
 
 ".$sponsor->sponsor;
