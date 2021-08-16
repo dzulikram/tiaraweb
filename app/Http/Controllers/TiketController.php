@@ -510,6 +510,7 @@ class TiketController extends Controller
         $data['state'] = "tiket";
         $data['tiket'] = $tiket;
         //echo $tiket->its->name;
+        //echo $tiket->its->name;
         return view('tiket.resolve',$data);
     }
 
