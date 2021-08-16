@@ -518,6 +518,7 @@ class TiketController extends Controller
         $auth = Auth::user()->id;
         $tiket = Tiket::find($request->id);
         $tiket->no_tiket = $request->no_tiket;
+        $tiket->end_date = $this->getTimeNow();
         $tiket->resolution = $request->resolution;
         $tiket->status_tiket = 'resolved';
         $tiket->save();
