@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Spatie\Permission\Models\Role;
 use App\HistoryPassword;
+use Auth;
 
 class UserController extends Controller
 {
@@ -29,6 +30,7 @@ class UserController extends Controller
         // {
         //     return redirect('users/create?username_exsist=true');
         // }
+        
         
     	$user = new User();
     	$user->name = $request->name;

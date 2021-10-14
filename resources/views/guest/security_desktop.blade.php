@@ -22,7 +22,7 @@
                 <p style="font-family:Bahnschrift;color:white">4. Berhati-hati dalam mengunduh aplikasi yang berbahaya untuk komputer/laptop</p>
                 <p style="font-family:Bahnschrift;color:white">5. Melakukan scanning antivirus setiap ingin menggunakan USB di komputer/laptop</p>
                 </br>
-                <h6 style="color:white;">Sebagai bahan evaluasi kami, dimohon kesediaan Bapak/Ibu untuk mengisi Survey Kepuasan Layanan TI berikut : <a href="https://bit.ly/surveySTIKaltimraJuli2021" class="btn btn-danger btn-lg" role="button" aria-pressed="true">Isi Survey</a></h6>
+                <h6 style="color:white;">Sehubungan dengan kebutuhan pendataan lisensi korporat,  kepatuhan dalam pelaksanaan tata kelola teknologi informasi dan penerapan Good Corporate Governance di lingkungan PT. PLN (Persero) mohon bantuannya untuk mengisi kuesioner berikut : </h6><i><h8 style="color:white;">(Periode Pengisian 13 - 17 oktober 2021)</h8></i> <br> <a href="https://forms.zohopublic.com/pln180/form/PendataanSoftwareLisensidanNonLisensi/formperma/JsrOp8gvLR35k5TuPxd-scZNbrZs0tquMdaBKf-7_AQ" class="btn btn-danger btn-lg" role="button" aria-pressed="true">Isi Kuesioner</a>
             </div>
 		</div>
         <div class="row">

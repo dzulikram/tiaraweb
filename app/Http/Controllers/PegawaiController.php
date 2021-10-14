@@ -41,7 +41,13 @@ class PegawaiController extends Controller
     public function store(Request $request)
     {
         $auth = Auth::user()->id;
-        $sti = Auth::user()->sti_id;   
+        $sti = Auth::user()->sti_id; 
+        
+        if($sti == 2)
+        {$sender = 2;}
+        else
+        {$sender = 0;}
+
         $pegawai = new Pegawai();
         $pegawai->name = $request->name;
         $pegawai->nip = $request->nip;
@@ -56,6 +62,7 @@ class PegawaiController extends Controller
         $pegawai->unit = $request->unit;
         $pegawai->position = $request->position;
         $pegawai->email = $request->email;
+        $pegawai->sender = $sender;
         if($auth == 1)
         {
             $pegawai->sti_id = $request->sti_id;
