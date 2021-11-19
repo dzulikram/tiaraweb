@@ -21,8 +21,8 @@
                 <p style="font-family:Bahnschrift;color:white">3. Instal Antivirus korporat dan lakukan update secara berkala</p>
                 <p style="font-family:Bahnschrift;color:white">4. Berhati-hati dalam mengunduh aplikasi yang berbahaya untuk komputer/laptop</p>
                 <p style="font-family:Bahnschrift;color:white">5. Melakukan scanning antivirus setiap ingin menggunakan USB di komputer/laptop</p>
-                </br>
-                <h6 style="color:white;">Sehubungan dengan kebutuhan pendataan lisensi korporat,  kepatuhan dalam pelaksanaan tata kelola teknologi informasi dan penerapan Good Corporate Governance di lingkungan PT. PLN (Persero) mohon bantuannya untuk mengisi kuesioner berikut : </h6><i><h8 style="color:white;">(Periode Pengisian 13 - 17 oktober 2021)</h8></i> <br> <a href="https://forms.zohopublic.com/pln180/form/PendataanSoftwareLisensidanNonLisensi/formperma/JsrOp8gvLR35k5TuPxd-scZNbrZs0tquMdaBKf-7_AQ" class="btn btn-danger btn-lg" role="button" aria-pressed="true">Isi Kuesioner</a>
+                
+                <h6 style="color:white;">Sehubungan peningkatan kualitas organisasi dan layanan Divisi Sistem & Teknologi Informasi PT PLN (Persero), dengan ini kami mengharapkan partisipasi Bapak/Ibu/Sdr/i untuk mengikuti Survey Service Quality DIVSTI Tahun 2021.</h6><i><h8 style="color:white;">(Periode Pengisian 16 - 22 November 2021)</h8></i> <br> <a href="https://bit.ly/squa2021" class="btn btn-danger btn-lg" role="button" aria-pressed="true">Isi Survey</a></br> <h9 style="color:white;">Terima kasih atas waktu yang Bapak/Ibu/Sdr/i berikan dalam melengkapi survey ini. Untuk 10 responden yang beruntung akan mendapatkan merchandise menarik dari DIVSTI.</h9>
             </div>
 		</div>
         <div class="row">
