@@ -31,7 +31,7 @@
 
 				<form class="login100-form validate-form">
                     <div class="container">
-						<center> <img src="{{asset('assets/img/logo5.png')}}" alt="Image" style="width:250px;height:260px;"> </center>
+						<center> <img src="{{asset('assets/img/LOGO5.png')}}" alt="Image" style="width:250px;height:260px;"> </center>
                     </div>
                     
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
