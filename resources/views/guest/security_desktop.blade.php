@@ -35,7 +35,7 @@
             </div> 
             <div class="col-lg-6">
                 </br></br>
-                <h4 style="color:white;">Anda akan dialihkan dalam <span id="counter">10</span>...  <a href="http://10.32.1.32/portal" class="btn btn-dark btn-lg" role="button" aria-pressed="true">Skip</a></h4>
+                <h4 style="color:white;">Anda akan dialihkan dalam <span id="counter">20</span>...  <a href="http://10.32.1.32/portal" class="btn btn-dark btn-lg" role="button" aria-pressed="true">Skip</a></h4>
             </div>       
 		</div>        
 	</div> 
@@ -50,7 +50,7 @@
                     window.location.replace("http://10.32.1.32/portal");
                 }
             }
-        }, 10000);
+        }, 1500);
         </script>
 </body>
 </html>
