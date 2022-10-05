@@ -11,18 +11,18 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-6">			
-				<center><img src="{{asset('assets/TIARA_SECURITY2.png')}}" class="img-responsive" style="padding-top:50px;" width="100%"></center>
+				<center><img src="{{asset('assets/KeamananPassword.png')}}" class="img-responsive" style="padding-top:50px;" width="100%"></center>
             </div>
             <div class="col-lg-6"></br></br>
-                <center><h4 style="font-family:Bahnschrift;color:white">IT SECURITY AWARENESS</h4>	
-                <h5 style="font-family:Bahnschrift;color:white">KEAMANAN WORKSPACE</h5></center></br>			
-				<p style="font-family:Bahnschrift;color:white">1. Tidak meninggalkan komputer/laptop dalam keadaan hidup jika tidak digunakan</p>
-                <p style="font-family:Bahnschrift;color:white">2. Pastikan untuk selalu logout semua aplikasi korporat jika tidak digunakan</p>
-                <p style="font-family:Bahnschrift;color:white">3. Instal Antivirus korporat dan lakukan update secara berkala</p>
-                <p style="font-family:Bahnschrift;color:white">4. Berhati-hati dalam mengunduh aplikasi yang berbahaya untuk komputer/laptop</p>
-                <p style="font-family:Bahnschrift;color:white">5. Melakukan scanning antivirus setiap ingin menggunakan USB di komputer/laptop</p>
+                <center><h4 style="font-family:Bahnschrift;color:white">LANGKAH-LANGKAH</h4>	
+                <h5 style="font-family:Bahnschrift;color:white">PENGAMANAN PASSWORD</h5></center></br>			
+				<p style="font-family:Bahnschrift;color:white">1. Hindari menuliskan password akses aplikasi di tempat yang terlihat banyak orang</p>
+                <p style="font-family:Bahnschrift;color:white">2. Tidak menggunakan default password atau password yang merepresentasikan diri anda</p>
+                <p style="font-family:Bahnschrift;color:white">3. Gunakan kombinasi password sesuai dengan kebijakan korporat, minimal menggunakan gabungan dari huruf kapital,huruf kecil, dan angka. Contoh : C4ptainM4rv3L, H4wk3y3s, dll.</p>
+                <p style="font-family:Bahnschrift;color:white">4. Lakukan pembaharuan password secara periodik</p>
+                <p style="font-family:Bahnschrift;color:white">5. Password baru tidak boleh sama dengan 15 password terakhir</p>
                 
-                <h6 style="color:white;">Sehubungan peningkatan kualitas organisasi dan layanan Divisi Sistem & Teknologi Informasi PT PLN (Persero), dengan ini kami mengharapkan partisipasi Bapak/Ibu/Sdr/i untuk mengikuti Survey Service Quality DIVSTI Tahun 2021.</h6><i><h8 style="color:white;">(Periode Pengisian 16 - 22 November 2021)</h8></i> <br> <a href="https://bit.ly/squa2021" class="btn btn-danger btn-lg" role="button" aria-pressed="true">Isi Survey</a></br> <h9 style="color:white;">Terima kasih atas waktu yang Bapak/Ibu/Sdr/i berikan dalam melengkapi survey ini. Untuk 10 responden yang beruntung akan mendapatkan merchandise menarik dari DIVSTI.</h9>
+                <!-- <h6 style="color:white;">Sehubungan peningkatan kualitas organisasi dan layanan Divisi Sistem & Teknologi Informasi PT PLN (Persero), dengan ini kami mengharapkan partisipasi Bapak/Ibu/Sdr/i untuk mengikuti Survey Service Quality DIVSTI Tahun 2021.</h6><i><h8 style="color:white;">(Periode Pengisian 16 - 22 November 2021)</h8></i> <br> <a href="https://bit.ly/squa2021" class="btn btn-danger btn-lg" role="button" aria-pressed="true">Isi Survey</a></br> <h9 style="color:white;">Terima kasih atas waktu yang Bapak/Ibu/Sdr/i berikan dalam melengkapi survey ini. Untuk 10 responden yang beruntung akan mendapatkan merchandise menarik dari DIVSTI.</h9> -->
             </div>
 		</div>
         <div class="row">
@@ -30,6 +30,7 @@
                 <h6 style="font-family:Bahnschrift;color:white">Butuh bantuan dalam permasalahan layanan TI ?</h6>
                 <h6 style="font-family:Bahnschrift;color:white">Silahkan menghubungi TIARA di nomor berikut :</h6>
                 <h3 style="font-family:Bahnschrift;color:white"><img src="{{asset('assets/wa.png')}}" class="img-responsive" width="7%"> 08114771424</h3>
+                <a href="https://wa.me/628114771424" target="_blank" class="btn btn-success btn-sm" role="button" aria-pressed="true">Klik Untuk Mengirim WA</a>
                 </br><p style="color:white;font-size:15px;">&copy;STI Operasional Kaltimra</p>
             </div> 
             <div class="col-lg-6">
@@ -49,7 +50,7 @@
                     window.location.replace("http://10.32.1.32/portal");
                 }
             }
-        }, 1000);
+        }, 10000);
         </script>
 </body>
 </html>
