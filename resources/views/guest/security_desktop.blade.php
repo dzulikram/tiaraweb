@@ -19,7 +19,7 @@
 				<p style="font-family:Bahnschrift;color:white">1. Hindari menuliskan password akses aplikasi di tempat yang terlihat banyak orang</p>
                 <p style="font-family:Bahnschrift;color:white">2. Tidak menggunakan default password atau password yang merepresentasikan diri anda</p>
                 <p style="font-family:Bahnschrift;color:white">3. Gunakan kombinasi password sesuai dengan kebijakan korporat, minimal menggunakan gabungan dari huruf kapital,huruf kecil, dan angka. Contoh : C4ptainM4rv3L, H4wk3y3s, dll.</p>
-                <p style="font-family:Bahnschrift;color:white">4. Lakukan pembaharuan password secara periodik</p>
+                <p style="font-family:Bahnschrift;color:white">4. Lakukan pembaharuan password secara periodik (30 Hari)</p>
                 <p style="font-family:Bahnschrift;color:white">5. Password baru tidak boleh sama dengan 15 password terakhir</p>
                 
                 <!-- <h6 style="color:white;">Sehubungan peningkatan kualitas organisasi dan layanan Divisi Sistem & Teknologi Informasi PT PLN (Persero), dengan ini kami mengharapkan partisipasi Bapak/Ibu/Sdr/i untuk mengikuti Survey Service Quality DIVSTI Tahun 2021.</h6><i><h8 style="color:white;">(Periode Pengisian 16 - 22 November 2021)</h8></i> <br> <a href="https://bit.ly/squa2021" class="btn btn-danger btn-lg" role="button" aria-pressed="true">Isi Survey</a></br> <h9 style="color:white;">Terima kasih atas waktu yang Bapak/Ibu/Sdr/i berikan dalam melengkapi survey ini. Untuk 10 responden yang beruntung akan mendapatkan merchandise menarik dari DIVSTI.</h9> -->
