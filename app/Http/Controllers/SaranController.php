@@ -115,4 +115,9 @@ class SaranController extends Controller
         return view('guest.security_desktop');
     }
 
+    public function landingDesktopUip()
+    {
+        return view('guest.security_desktopuip');
+    }
+
 }

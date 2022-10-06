@@ -185,6 +185,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('thanks','SaranController@thanks');
 Route::get('landingDesktop','SaranController@landingDesktop');
+Route::get('landingDesktopUip','SaranController@landingDesktopUip');
 Route::get('landing','SaranController@landing');
 Route::get('thanksfeed','SaranController@thanksFeed');
 Route::get('input-saran','SaranController@createGuest'); // create saran
