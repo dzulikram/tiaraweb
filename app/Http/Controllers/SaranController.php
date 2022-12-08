@@ -112,12 +112,12 @@ class SaranController extends Controller
 
     public function landingDesktop()
     {
-        return view('guest.awareness');
+        return view('guest.alert');
     }
 
     public function landingDesktopUip()
     {
-        return view('guest.awareness');
+        return view('guest.alertuip');
     }
 
 }
