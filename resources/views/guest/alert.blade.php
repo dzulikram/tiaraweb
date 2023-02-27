@@ -11,17 +11,18 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-6">			
-				<center><img src="{{asset('assets/hoax.jpeg')}}" class="img-responsive" style="padding-top:50px;" width="50%"></center>
+				<center><img src="{{asset('assets/land27022023.jpg')}}" class="img-responsive" style="padding-top:10px;" width="50%"></center>
             </div>
             <div class="col-lg-6"></br></br>
-                <h4 style="font-family:Bahnschrift;color:white">Electrizen, PLN mengajak seluruh pelanggan untuk berhati-hati terhadap berita hoax yang beredar di media sosial.</h4></br>		
-				<p style="font-family:Bahnschrift;color:white">Pemberitaan yang terkait tunggakan rekening listrik disertai ajakan mendownload atau membuka aplikasi PLN.apk agar terhindar dari pemblokiran dan pemutusan listrik rumah pelanggan itu tidak benar, dan informasi tersebut bukan informasi dari PT PLN (Persero). </p>
-                <p style="font-family:Bahnschrift;color:white">Untuk informasi resmi terkait layanan dan promo PLN hanya dapat dilihat melalui PLN Mobile. Pastikan Electrizen sudah mendownload PLN Mobile sebagai sumber yang terpercaya. </p>
-                <p style="font-family:Bahnschrift;color:white">#PLNMobile #PLN #NoHoax #PLNUntukIndonesia</p>
+                <h4 style="font-family:Bahnschrift;color:white">KEAMANAN DATA RAHASIA</h4></br>		
+				<p style="font-family:Bahnschrift;color:white">1. Tidak melakukan sharing data rahasia tanpa izin pemilik informasi </p>
+                <p style="font-family:Bahnschrift;color:white">2. Hindari menyebarkan data-data rahasia melalui media sosial</p>
+                <p style="font-family:Bahnschrift;color:white">3. Pengiriman data yang bersifat rahasia harus menggunakan amplop tertutup dan tersegel jika data dalam bentuk fisik dan enkripsi jika data dalam bentuk elektronik/digital</p>
+                <p style="font-family:Bahnschrift;color:white">4. Penghapusan data rahasia dilakukan dengan cara dihancurkan jika dalam bentuk fisik dan diformat sebanyak 5 kali atau media penyimpanan dihancurkan</p>
             </div>
 		</div>
         <div class="row">
-			<div class="col-lg-6"></br></br>
+			<div class="col-lg-6"></br>
                 <h6 style="font-family:Bahnschrift;color:white">Butuh bantuan dalam permasalahan layanan TI ?</h6>
                 <h6 style="font-family:Bahnschrift;color:white">Silahkan menghubungi TIARA di nomor berikut :</h6>
                 <h3 style="font-family:Bahnschrift;color:white"><img src="{{asset('assets/wa.png')}}" class="img-responsive" width="7%"> 08114771424</h3>
