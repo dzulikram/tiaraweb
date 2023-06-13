@@ -10,18 +10,30 @@
 <body style="background: #02849E;">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-6">			
-				<center><img src="{{asset('assets/land27022023.jpg')}}" class="img-responsive" style="padding-top:10px;" width="50%"></center>
+            <div class="col-lg-6">			
+				<center><img src="{{asset('assets/cleandesk.jpg')}}" class="img-responsive" style="padding-top:10px;" width="80%"></center>
             </div>
-            <div class="col-lg-6"></br></br>
+            <div class="col-lg-6"></br>
+                <h6 style="font-family:Bahnschrift;color:white">Butuh bantuan dalam permasalahan layanan TI ?</h6>
+                <h6 style="font-family:Bahnschrift;color:white">Silahkan Chat Whatsapp ke nomor berikut :</h6>
+                <h3 style="font-family:Bahnschrift;color:white"><img src="{{asset('assets/wa.png')}}" class="img-responsive" width="7%"> 085281527150</h3>
+                <a href="https://wa.me/6285281527150" target="_blank" class="btn btn-success btn-sm" role="button" aria-pressed="true">Klik Untuk Mengirim WA</a>
+                
+                </br></br>
+                <h4 style="color:white;">Anda akan dialihkan dalam <span id="counter">20</span>...  <a href="http://10.32.1.32/portal" class="btn btn-dark btn-lg" role="button" aria-pressed="true">Skip</a></h4>
+                <p style="color:white;font-size:15px;">&copy;STI Operasional Kaltimra</p>
+            </div>
+			
+            <!-- <div class="col-lg-6"></br></br>
                 <h4 style="font-family:Bahnschrift;color:white">KEAMANAN DATA RAHASIA</h4></br>		
-				<p style="font-family:Bahnschrift;color:white">1. Tidak melakukan sharing data rahasia tanpa izin pemilik informasi </p>
-                <p style="font-family:Bahnschrift;color:white">2. Hindari menyebarkan data-data rahasia melalui media sosial</p>
-                <p style="font-family:Bahnschrift;color:white">3. Pengiriman data yang bersifat rahasia harus menggunakan amplop tertutup dan tersegel jika data dalam bentuk fisik dan enkripsi jika data dalam bentuk elektronik/digital</p>
-                <p style="font-family:Bahnschrift;color:white">4. Penghapusan data rahasia dilakukan dengan cara dihancurkan jika dalam bentuk fisik dan diformat sebanyak 5 kali atau media penyimpanan dihancurkan</p>
-            </div>
+				<p style="font-family:Bahnschrift;color:white">1. Pastikan komputer tidak dalam keadaan terbuka apabila tidak digunakan </p>
+                <p style="font-family:Bahnschrift;color:white">2. Selalu logout aplikasi-aplikasi korporat jika sudah tidak digunakan</p>
+                <p style="font-family:Bahnschrift;color:white">3. Instal Antivirus korporat pada komputer dan selalu melakukan pembaharuan secara periodik</p>
+                <p style="font-family:Bahnschrift;color:white">4. Lebih cermat dalam memasukkan media penyimpanan ke Laptop/Desktop korporat</p>
+                <p style="font-family:Bahnschrift;color:white">5. Lakukan scanning dengan antivirus setiap kali akan memasukkan media penyimpanan ke Laptop/Desktop</p>
+            </div> -->
 		</div>
-        <div class="row">
+        <!-- <div class="row">
 			<div class="col-lg-6"></br>
                 <h6 style="font-family:Bahnschrift;color:white">Butuh bantuan dalam permasalahan layanan TI ?</h6>
                 <h6 style="font-family:Bahnschrift;color:white">Silahkan menghubungi TIARA di nomor berikut :</h6>
@@ -33,7 +45,7 @@
                 </br></br>
                 <h4 style="color:white;">Anda akan dialihkan dalam <span id="counter">20</span>...  <a href="http://10.32.1.32/portal" class="btn btn-dark btn-lg" role="button" aria-pressed="true">Skip</a></h4>
             </div>       
-		</div>        
+		</div>         -->
 	</div> 
         <script>
         setInterval(function() {

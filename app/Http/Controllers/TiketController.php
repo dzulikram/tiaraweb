@@ -250,7 +250,7 @@ class TiketController extends Controller
         } catch (\Exception $e) {
             $users = User::where('is_itsupport',1)->get();    
         }
- 
+        dd($response);
         $kategoris = Kategori::where('type','INC')->get();
 
         $data['users'] = $users;
