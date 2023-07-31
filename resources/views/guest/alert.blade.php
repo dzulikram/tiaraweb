@@ -11,7 +11,7 @@
 	<div class="container-fluid">
 		<div class="row">
             <div class="col-lg-6">			
-				<center><img src="{{asset('assets/cleandesk.jpg')}}" class="img-responsive" style="padding-top:10px;" width="80%"></center>
+				<center><img src="{{asset('assets/landingsoft.jpg')}}" class="img-responsive" style="padding-top:10px;" width="100%"></center>
             </div>
             <div class="col-lg-6"></br>
                 <h6 style="font-family:Bahnschrift;color:white">Butuh bantuan dalam permasalahan layanan TI ?</h6>
